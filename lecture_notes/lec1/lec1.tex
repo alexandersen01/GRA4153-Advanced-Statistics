@@ -176,7 +176,7 @@ Cumulative Distribution Function
 \end{align*}
 
 
-Properties of CDF:
+\textbf{Properties of CDF:}
 if $F$ is the cdf of a random variable $X$, then: 
 \begin{align*}
     i) \lim_{x \to -\infty} F(x) = 0 \text{ and }\lim_{x \to \infty} F(x) = 1\\
@@ -200,5 +200,246 @@ if $F$ is the cdf of a random variable $X$, then:
     \\
     z_n \uparrow x \to (-\infty, z_n] \uparrow (-\infty, x)
 \end{align*}
+
+\textbf{Identically distributed:}
+
+\begin{align*}
+    \text{let $x$ and $y$ be a random variable}\\
+    \forall B \in \mathcal{B}\\
+    P(x \in B) = P(y \in B)\\
+    P_x(B) = P_y(B)\\
+    \text{This is like flipping two coins, coin one is $x$ and coin two is $y$ (they are not the same coin, hence the same probability)}
+\end{align*}
+
+random variables can also be Identically distributed:
+
+\begin{align*}
+    \text{if } F_x = F_y \quad \forall x \in \mathbb{R}
+\end{align*}
+
+\newpage
+
+\begin{align*}
+    F_x(x) = P\big(x \in (-\infty, x]\big) = P_x\big((-\infty, x]\big)\\
+    = P_y\big((-\infty, x]\big) \\
+    = P\big(y \in (-\infty, x]\big)\\
+    = F_y(x)
+\end{align*}
+
+\subsection{Continuous and discrete distributions: }
+
+\textbf{$x$ is discrete: }
+
+$x$ has a pmf: $f(x) = P(X=x), \quad x\in\mathbb{R}$
+
+\begin{align*}
+    B \in \mathcal{B}\\
+    P_x(B) = P(x \in B) = \sum_{t \in B} f(t)\\
+    P(\text{even}) = f(2) + f(4) + f(6) \quad\text{(like the example about the dice)}
+\end{align*}
+
+\begin{align*}
+    F(x) = P_x\big((-\infty, x]\big)\\
+    = \sum_{t \leq x} f(t) \quad\text{(\textbf{countable} points that are more than zero)}
+\end{align*}
+
+\newpage
+
+\section{Three common  distributions: }
+
+1. \textbf{Bernoulli:} 
+
+\begin{align*}
+    X \sim \text{Bernoulli}(p), \quad p \in [0, 1]
+\end{align*}
+
+\[
+    X = 
+    \begin{cases}
+        1 & \text{if prob. }p\\
+        0 & \text{if prob. } 1-p
+    \end{cases}
+\]
+
+\[
+    f(x)
+    \begin{cases}
+        p & x = 1\\
+        p & x 0 1\\
+        p & x \notin \{0, 1\}
+    \end{cases}
+\]
+
+Ex: we have two different websites and we want to measure website performance of how many people bought stuff on each
+of the websites $\to$ \textbf{proportions}
+\hfill
+
+2. \textbf{Binomial:}
+
+\begin{align*}
+    X \sim \text{Binom}(n, p)\\
+    f(x) = \binom{n}{x} p^x (1-p)^{n-x}, \quad x = 0, 1, …, n\\
+\end{align*}
+
+3. \textbf{Poisson:}
+
+\begin{align*}
+    X \sim \text{Poisson}(\lambda)\\
+    f(x) = \frac{\exp (-\lambda)\lambda^x}{x!}, \quad x = 0, 1, 2, … 
+\end{align*}
+
+Example: ordered packages, how likely is it that 6 of my packages are going to arrive before lunch? lambda is package arrival intensity
+
+\newpage
+
+\subsection{Continuous random variables}
+
+X is continuous 
+
+\begin{align*}
+    f. \\
+    f(x) \neq P(X=x)\\
+    P(X=x) = 0 \quad\forall x \in \mathbb{R} \quad\text{(The probability of hitting any specific exact value is essentially zero)}
+\end{align*}
+
+\begin{align*}
+    P(X \leq x) = F(x) = \int_{-\infty}^{x}f(t)dt\\
+    P(x \in B) = \int_{-B}f(t)dt = \int_{-\infty}^{\infty}\mathbb{1}_B(t)f(t)dt
+\end{align*}
+
+\textbf{Uniform distribution}
+
+$X \sim \text{uniform}(a, b)$
+\[
+    f(x) = 
+    \begin{cases}
+        \frac{1}{b -a} & x \in [a, b]\\
+        0 & \text{otherwise}
+    \end{cases}
+\]
+
+\textbf{Normal distribution:}
+
+$X \sim \text{Normal}(\mu, \sigma^2)$
+
+\begin{align*}
+    f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}\exp \bigg(\frac{-(x - \mu^2)}{2\sigma^2}\bigg)
+\end{align*}
+
+\textbf{Student's distribution}
+
+$X \sim t(v)$
+
+\begin{align*}
+    f(x) = \frac{\Gamma\big((v + 1) / 2\big)}{\Gamma(v/2)\sqrt{v\pi}} \bigg(1 + \frac{x^2}{v}\bigg)^{-(v\pi) / 2}
+\end{align*}
+
+\textbf{Chi-squared - related to the N dist}
+
+$X \sim \chi^2(p)$
+
+Ugly formula – google it
+
+\newpage
+
+$f$ is a pdf/pmf of r.v. $x$
+
+\begin{align*}
+    i) f(x) \geq 0\\
+    ii) \int_{-\infty}^{\infty}f(x)dx = 1; \quad \sum_{x \in \mathcal{X}}f(x) = 0
+\end{align*}
+
+
+i) continuous 
+
+\begin{align*}
+    \text{as } F(x) \uparrow\quad F(x) = \int_{-\infty}^{x}f(t)dt
+\end{align*}
+
+ii) discrete
+
+\begin{align*}
+    \sum_{x \in \mathcal{X}} f(x) = \lim_{t \to \infty} \sum_{x \leq t, x \in \mathcal{X}}f(x)\\
+    = \lim_{t \to \infty} F(t)\\
+    = 1
+\end{align*}
+
+\begin{align*}
+    \int_{-\infty}^{\infty}f(x) dx = \lim_{t \to \infty} \int_{-\infty}^{t} f(x) dx = \lim_{t \to \infty} F(t) = 1
+\end{align*}
+
+\newpage
+
+\section{Creating r.vs from an r.v.}
+
+$X: S \to \mathbb{R}$
+
+$g: \mathbb{R} \to \mathbb{R}$
+
+$Y = g(X) : S \to \mathbb{R}$
+
+$P(y \in A) = P(g(x) \in A) = P\big(\{x \in \mathbb{R}: g(x) \in A\}\big) = P\big(x \in g^{-1}(A)\big)$
+
+If this transformation is well ´-behaved, we can compute the pdf of g(x)
+
+i) If $x$ is discrete, then $Y = g(x)$ is also discrete: $\quad f_y(y) = \sum_{x \in g^{-1}(\{y\})} f_x(x)$
+
+ii) If $x$ is cont., then the output will be discrete: 
+
+$F_Y(y) = \int_{\{x: g(x) \leq y\}}f_X(x)dx = P(g(x) \leq y) = P\Big(x \in g^{-1}\big(\{y\}\big)\Big) = P(Y \leq y)$
+
+iii) if $g$ is strictly monotone increasing, then $h = g^{-1}$ is differentiable, THEN 
+
+$$
+F_Y(y) = F_X\big(h(y)\big), \quad f_Y(y) = f_X\big(h(x)\big)h'(y)
+$$
+
+$$
+F_X(y) = \int_{-\infty}^{g^{-1}(y)}f_X(x)dx = F_X\big(h(y)\big)
+$$
+
+\newpage
+
+\section{Mean variance of an arbitrary distribution}
+
+\begin{align*}
+    \mathbb{E}g(x) = \int_{-\infty}^{\infty}g(x)f(x)dx\\
+    = \sum_{x \in \mathcal{X}}g(x)f(x) \quad\text{(in the discrete case)}\\
+    \mathbb{E}X = \int_{-\infty}^{\infty}x(fx)dx\quad\text{{this technically does not exist, hope this helps}}
+\end{align*}
+
+we can always write 
+\begin{align*}
+    g(x) = g^+(x) - g^-(x)\quad\text{(both funcs are positive)}
+\end{align*}
+
+expectation exists if: 
+\begin{align*}
+    \mathbb{E} |g(x)| < \infty
+\end{align*}
+
+in the case that 
+\begin{align*}
+    \mathbb{E} |g(x)| \geq \infty
+\end{align*}
+
+we can say that it \textit{may} not exist 
+
+\begin{align*}
+    i) \mathbb{E}[\alpha g_1(x)] = \alpha\mathbb{E}[g(x)]\\
+    \mathbb{E}[g_1(x) + g_2(x)] = \mathbb{E}[g_1(x)] + \mathbb{E}[g_2(x)]\\
+    \\
+    ii) g_1(x) \geq 0 \quad\forall f(x) > 0 \to \mathbb{E}g_1(x) \geq 0 \quad\text{(proof below)}
+\end{align*}
+
+± inf are implied
+
+\begin{align*}
+    \mathbb{E}\alpha g_1(x) = \int \alpha g_1(x)f(x) dx = \alpha \int g(x) f(x) dx = \alpha \mathbb{E}g_1(x)\\
+    \mathbb{E} \big(g_1(x) + g_2(x)\big) = \int \big(g_1(x) + g_2(x)\big)f(x)dx = \int g_1(x)f(x) + g_2(x)f(x) dx\\
+    = \int g_1(x)f(x)dx + \int g_2(x)f(x)dx
+\end{align*}
+
+remember to look at ii) from the notes
 
 \end{document}

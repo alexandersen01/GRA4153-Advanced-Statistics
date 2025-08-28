@@ -4,3 +4,8 @@
 \contentsline {section}{\numberline {2}Probability}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}2.1.1 Events and probabilities}{3}{subsection.2.1}%
 \contentsline {section}{\numberline {3}CDF}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Continuous and discrete distributions: }{7}{subsection.3.1}%
+\contentsline {section}{\numberline {4}Three common distributions: }{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Continuous random variables}{9}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Creating r.vs from an r.v.}{11}{section.5}%
+\contentsline {section}{\numberline {6}Mean variance of an arbitrary distribution}{12}{section.6}%
