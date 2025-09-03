@@ -1,0 +1,189 @@
+\documentclass[10pt]{article}
+
+\usepackage{parskip}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{href-ul}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Promblems 1}
+\author{Jakob Sverre Alexandersen\\
+GRA4153 Advanced Statistics}
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Probabilities, random variables}
+
+1. A fair die is thrown until a 6 appears. What is the probability that 
+it must be thrown at least $k$ times?
+
+\begin{align*}
+    P(\text{at least $k$ throws}) = 1 - P(\text{fewer than $k$ throws}) \\
+    P(\text{fewer than $k$ throws}) = P(\text{success in first $k-1$ throws}) \\
+    P(\text{success in first $k-1$ throws}) = 1 - \Big(\frac{5}{6}\Big)^{k - 1}
+\end{align*}
+
+\hfill 
+
+2. For $x \in \mathbb{R}^K$, let $f_\theta(x) :=h(x) \exp(\eta(\theta)'T(x) - A(\theta))$ for functions $h, \eta, T, A$. When 
+is this a pdf? i.e. when is $f(x) \geq 0$ and such that its integral is equal to one?
+
+\textbf{Non-negativity: } $f_\theta(x) \geq 0$
+
+\begin{align*}
+    h(x) \geq 0 \quad\forall x \text{ in the support}\\
+    \exp(\eta(\theta)'T(x) - A(\theta)) \geq 0
+\end{align*}
+
+\textbf{Integrating to 1: }
+
+This is where the log-partition function $A(\theta)$ plays a crucial role:
+
+\begin{align*}
+    \int f_\theta(x) dx = \int h(x) \exp (\eta(\theta)'T(x) - A(\theta)) dx = 1\\
+    = \exp(-A(\theta)) \int h(x) \exp(\eta(\theta)'T(x)) dx = 1 \\
+    \therefore A(\theta) = \log \int h(x) \exp(\eta(\theta)'T(x)) dx
+\end{align*}
+
+\newpage
+
+3. For each $i = 1, …, K$, let $f_i$ be pdfs (resp.) and define $f(x) := \sum_{i = 1}^{K}w_if_i(x)$ where $w_i \geq 0$ and 
+$\sum_{i = 1}^{K}w_i = 1$. Show that $f$ is a probability density (resp. probability mass) function. i.e. show that $f(x) \geq 0$ and its integral / sum is equal to one in the density / mass case respectively
+
+Here we need to verify two conditions: 
+\begin{itemize}
+    \item \textbf{Non-negativity:} Show that $f(x) \geq 0\quad\forall x$
+    \item \textbf{Normalization:} Show that the integral (or sum) equals 1
+\end{itemize}
+
+\textbf{Non-negativity:}
+
+Since each $f_i(x)$ is a valid pdf/pmf, we have $f_i(x) \geq 0 \quad\forall x \land (i = 1, …, K)$
+
+Additionally, we have given that $w_i \geq 0 \quad\forall i = 1, …, K$
+
+\begin{align*}
+    \therefore f(x) = \sum_{i = 1}^{K} w_i f_i(x) \geq 0
+\end{align*}
+
+Since we are summing non-negative terms ($w_i \geq 0 \land f_i \geq 0$)
+
+\hfill
+
+\textbf{Normalization:}
+
+\textbf{Case 1: pdf}
+
+\begin{align*}
+    \int_{-\infty}^{\infty} f(x) dx = \int_{-\infty}^{\infty} \sum_{i = 1}^{K} w_i f_i(x) dx \\
+    = \sum_{i = 1}^{K} w_i \int_{-\infty}^{\infty} f_i(x) dx \quad\text{(linearity of integration)}\\
+    = \sum_{i = 1}^{K} w_i \times 1 \quad\text{(since each $f_i$ is a valid pdf)} \\
+    = \sum_{i = 1}^{K} w_i \\
+    = 1 \quad\text{(given the constraint $\sum_{i = 1}^{K}w_i = 1$)}
+\end{align*}
+
+\textbf{Case 2: pmf}
+\begin{align*}
+    \sum_{x} f(x) = \sum_x \sum_{i = 1}^{K} w_i f_i(x) \\
+    = \sum_{i = 1}^{K} w_i \sum_x f_i(x) \quad\text{(linearity of summation)}\\
+    = \sum_{i = 1}^{K} w_i \times 1 \quad\text{(since each $f_i$ is a valid pmf)}\\
+    = \sum_{i = 1}^{K} w_i\\
+    = 1 \quad\text{(given constraint )}
+\end{align*}
+
+\newpage
+
+4. Let $X$ be a Poisson r.v. with mass function $f(x) = \lambda^x\exp(-\lambda) / x!, \quad x = 0, 1, …$ for $\lambda > 0$. Find the probability that X is odd
+
+\begin{align*}
+    \exp (\lambda) = \sum_{x = 0}^{\infty} \frac{\lambda^x}{x!} = 1 + \frac{\lambda}{1!} + \frac{\lambda^2}{2!} + … + \frac{\lambda^n}{n!}\\
+    \exp (-\lambda) = \sum_{x = 0}^{\infty} \frac{-\lambda^x}{x!} = 1 + \frac{-\lambda}{1!} + \frac{-\lambda^2}{2!} + … + \frac{-\lambda^n}{n!}\\
+    P(X \text{ is odd}) = \sum_{x \text{ odd}} \frac{\lambda^x e^{-\lambda}}{x!} = e^{-\lambda} \sum_{x \text{ odd}} \frac{\lambda^x}{x!}\\
+    \\
+    e^{\lambda} = \sum_{x=0}^{\infty} \frac{\lambda^x}{x!}\quad\text{(sum of all terms)}\\
+    e^{-\lambda} = \sum_{x=0}^{\infty} \frac{(-1)^x\lambda^x}{x!}\quad\text{(alternating signs)}\\
+    \\
+    e^{\lambda} + e^{-\lambda} = 2\sum_{x \text{ even}} \frac{\lambda^x}{x!} \quad\text{(even terms don't cancel)}\\
+    \\
+    e^{\lambda} - e^{-\lambda} = 2\sum_{x \text{ odd}} \frac{\lambda^x}{x!}\quad\text{(odd terms don't cancel)}\\
+    \\
+    \to \sum_{x \text{ odd}} \frac{\lambda^x}{x!} = \frac{e^{\lambda} - e^{-\lambda}}{2}\\
+    \\
+    P(X \text{ is odd}) = e^{-\lambda} \cdot \frac{e^{\lambda} - e^{-\lambda}}{2} = \frac{1 - e^{-2\lambda}}{2}
+\end{align*}
+
+\newpage
+
+5. Prove that $F(x) := (1 + \exp (-x))^{-1}\quad x \in \mathbb{R}$ is a CDF
+
+Recall that a CDF must satisfy these requirements:
+
+\begin{itemize}
+    \item \textbf{Monotonicity:} $F$ is non-decreasing (i.e. $x_1 \leq x_2 \to F(x_1) \leq F(x_2)$)
+    \item \textbf{Right-continuity:} $F$ is right-continuous at every point
+    \item \textbf{Limit conditions:} 
+    \begin{itemize}
+        \item $\lim_{x \to -\infty} F(x) = 0$
+        \item $\lim_{x \to \infty} F(x) = 1$
+    \end{itemize}
+\end{itemize}
+
+\textbf{Limit conditions:} It is trivial that the function satisfies these two conditions.
+
+\textbf{Monotonicity:} We prove that $F'(x) \geq 0$:
+\begin{align*}
+    F'(x) = \frac{\exp(-x)}{\big(1 + \exp(-x)\big)^2} \quad\forall x \in \mathbb{R}
+\end{align*}
+
+\textbf{Right-continuity:} 
+
+Since $F(x)$ is continuous everywhere (as a composition of continuous functions), it is automatically right-continuous
+
+$\therefore F(x)$ is a CDF \qed 
+
+\newpage
+
+6. Show that any CDF $F$, i.e. $F(x) := P(X \leq x)$, can have at most a countable number of discontinuities
+
+The key here is to use the monotonicity of CDFs combined with the fact that rational numbers are countable.
+
+For any CDF $F$, discontinuities can only by ``jump'' discontinuities due to monotonicity. 
+At each discontinuity point $x_0$ we have:
+
+\begin{itemize}
+    \item Left limit: $F(x_0^-) = \lim_{x \to x_0^-}F(x)$ exists
+    \item Right limit: $F(x_0^+) = \lim_{x \to x_0^+} F(x) = F(x_0)\quad$ (right-continuity)
+    \item Jump size: $F(x_0) - F(x_0^-) > 0$
+\end{itemize}
+
+\hfill
+
+Associate each discontinuity with a rational numebr: 
+\begin{itemize}
+    \item Let $D$ be the set of discontinuity points
+    \item For each $x \in D$, the jump size is $F(x) - F(x^-) > 0$
+    \item Between any two consecutive jumps $F(x^-)$ and $F(x)$, there exists a rational number
+    \item Since $F$ is monotonic, these rational intervals are disjoint
+\end{itemize}
+
+\hfill 
+
+Rationals are countable: 
+\begin{itemize}
+    \item Each discontinuity corresponds to a unique rational number in $(F(x^-), F(x)]$
+    \item Since $\mathbb{Q} \cap [0, 1]$ is countable, and all these rationals are distinct
+    \item Therefore $D$ is at most countable
+\end{itemize}
+
+\end{document}

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2025.4.13)  3 SEP 2025 14:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2025.4.13)  3 SEP 2025 16:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/lecture_notes/lec3/lec3.tex
-(/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/lecture_notes/lec3/lec3.tex
+**/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/exercises/1_probability/1.tex
+(/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/exercises/1_probability/1.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/article.cls
@@ -365,8 +365,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count310
 \l__pdf_internal_box=\box106
-) (lec3.aux)
-\openout1 = `lec3.aux'.
+) (1.aux)
+\openout1 = `1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
@@ -441,9 +441,9 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package hyperref Info: Link coloring OFF on input line 16.
- (lec3.out) (lec3.out)
+ (1.out) (1.out)
 \@outlinefile=\write3
-\openout3 = `lec3.out'.
+\openout3 = `1.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
  (/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
@@ -452,9 +452,9 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
  (/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (lec3.toc)
+) (1.toc)
 \tf@toc=\write4
-\openout4 = `lec3.toc'.
+\openout4 = `1.toc'.
 
 
 
@@ -464,200 +464,58 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 [2]
 
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 61.
+
+
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 72.
+
+
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 74.
+
+
+
 [3]
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 143.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 107.
 
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 143.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 124.
 
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 143.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 124.
 
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 143.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 124.
 
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 161.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 161.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 161.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 161.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 161.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 161.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 124.
 
 
 
 [4]
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 169.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 187.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 187.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 187.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 187.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 203.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 211.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 211.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 211.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 211.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 211.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 211.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 211.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 211.
-
-
-
 [5]
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 227.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 227.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 227.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 227.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 227.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 227.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 227.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 227.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 229.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 229.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 233.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 233.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 233.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 233.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 233.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 233.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 233.
-
-
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 233.
-
-
-
-[6] (lec3.aux)
+[6] (1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `lec3.out' has not changed.
-(rerunfilecheck)             Checksum: B0434DE32964B8D1EFE1BB7DCE36C369;239.
+Package rerunfilecheck Info: File `1.out' has not changed.
+(rerunfilecheck)             Checksum: EA58079057D30A5A12E0C1ABF79E0089;204.
  ) 
 Here is how much of TeX's memory you used:
- 11429 strings out of 473530
- 188799 string characters out of 5697419
- 594775 words of memory out of 5000000
- 34487 multiletter control sequences out of 15000+600000
- 566499 words of font info for 67 fonts, out of 8000000 for 9000
+ 11427 strings out of 473530
+ 188687 string characters out of 5697419
+ 592760 words of memory out of 5000000
+ 34485 multiletter control sequences out of 15000+600000
+ 566834 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,15n,93p,629b,448s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on lec3.pdf (6 pages, 191094 bytes).
+ 84i,13n,93p,631b,437s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb></Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on 1.pdf (6 pages, 184190 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 10 named destinations out of 1000 (max. 500000)
- 17 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 120 PDF objects out of 1000 (max. 8388607)
+ 9 named destinations out of 1000 (max. 500000)
+ 9 words of extra memory for PDF output out of 10000 (max. 10000000)
 
