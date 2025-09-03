@@ -1,0 +1,238 @@
+\documentclass[10pt]{article}
+
+\usepackage{parskip}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{href-ul}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Lecture 1}
+\author{Jakob Sverre Alexandersen\\
+GRA4153 Advanced Statistics}
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Moments}
+
+\textbf{Central moment:}
+\begin{align*}
+    \mathbb{E}(x-\mathbb{E}x)^k \quad\text{($k^{\text{th}}$ central moment)}\\
+    z = x - \mathbb{E}x \\
+    \mathbb{E}z = \mathbb{E}x - \mathbb{E}(\mathbb{E}x) = 0 \\
+    \mathbb{E}(x - \mathbb{E}x)^2 = \text{Var} (x)
+\end{align*}
+
+First moment is the mean, second is the variance 
+
+\hfill
+
+\textbf{Properties of variance:}
+
+If $a$ and $b$ are constants, then 
+
+\begin{align*}
+    \text{Var}(ax + b) = a^2 \text{Var}(x)
+\end{align*}
+
+\textbf{Indicator functions ($\mathbb{1}(x)$)}
+
+\[
+\mathbb{1}_A(x) = 
+\begin{cases}
+    1 \quad\text{if } x \in A \\
+    0 \quad\text{if } x \notin A
+\end{cases}
+\]
+
+\begin{align*}
+    \mathbb{1} \{x \in A\} \\
+    \text{A, B are r.v. }x: \\
+    i) \quad \mathbb{1}_A \mathbb{1}_B = \mathbb{1}_{AB} \\
+    ii) \quad P(x \in A) = \mathbb{E}[\mathbb{1}_A(x)] = \mathbb{E}[\mathbb{1}\{x \in A\}] \\
+    iii) \quad P(x \in A)(1 - P(x \in A)) = \text{Var}(\mathbb{1}_A(x))
+\end{align*}
+
+$x$ = value $g$ a fair die 
+
+\hfill 
+
+\begin{align*}
+    \mathbb{E}x = \sum_{i = 1}^{6}P(x = i) = \frac{1}{6} \sum_{i = 1}^{6}i = \frac{7}{2} \\
+    \text{Var}(x) = \sum_{i = 1}^{6}\Big(i - \frac{7}{2}\Big)^2 P(x = i) \\
+    = \mathbb{E}(x^2) - \big(\mathbb{E}(x)\big)^2 \\ 
+    = \frac{1}{6} \sum_{i = 1}^{6}i^2 - \big(\mathbb{E}(x)\big)^2 = \frac{91}{6} - \Big(\frac{7}{2}\Big)^2 = \frac{35}{12}
+\end{align*}
+
+
+\begin{align*}
+    X \sim N(\mu, \sigma^2) \\
+    \hfill \\ 
+    f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}\exp \Big(-\frac{(x - \mu)^2}{2\sigma^2}\Big) \\
+    \hfill \\ 
+    \mathbb{E}x = \mu \\ 
+    \text{Var}(x) = \sigma^2 \\
+    z = \frac{(x - \mu)}{\sigma} \sim N(0, 1)
+\end{align*}
+
+\begin{align*}
+    z \sim N(0, 1) \\
+    \mathbb{E}z = 0 \\
+    \text{Var}(z) = 1 \\
+    x = \sigma z + \mu
+\end{align*}
+
+\begin{align*}
+    P(Z \leq z) \quad\text{(show that this is a normal dist(??))} \\ 
+    P(Z \leq z) = P\Big(\frac{(x - \mu)}{\sigma} \leq z\Big) \\
+    P(x \leq \sigma^2 + \mu) \\ 
+    =\int_{-\infty}^{\sigma^2 + \mu} \frac{1}{\sqrt{2\pi \sigma^2}}\exp \Big(-\frac{(x - \mu)^2}{2\sigma^2}\Big) dx \\
+    t = \frac{x - \mu}{\sigma}\quad\text{integration by substitution} \\ 
+    = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{2} \exp (-t^2 / z) dx \\
+    \to z \sim N(0, 1)
+\end{align*}
+
+\begin{align*}
+    \mathbb{E}Z= \int z f(z) dz = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} 2 \exp \Big(-\frac{2^2}{2}\Big) dz\\
+    = 0
+\end{align*}
+
+\newpage
+
+For the second moment, the same method is applied, only with $x^2$ (i.e. the variance):
+
+\begin{align*}
+    \mathbb{E}z^2 = \int z^2 f(z) dz \\ 
+    = 1 \quad\text{due to it being a pdf (the prob across the entire range must be 1)}\\ 
+    \text{OR} \\
+    \mathbb{E}X^2 = \text{Var}(x) + \big(\mathbb{E}(x)\big)^2
+\end{align*}
+
+\section{Conditional probability}
+
+\textbf{BAYES WOHOOOO LETS GO CHAT}
+
+\begin{align*}
+    P(A | B) = \frac{P(A\cap B)}{P(B)} \quad P(B) < 0 \\
+    \\ 
+    P(A\cap B) = P(A | B)P(B) = P(B | A)P(A) \\
+    P(A | B) = P(B | A)\frac{P(A)}{P(B)} \quad\text{(bayes' thm)}
+\end{align*}
+
+\hfill 
+
+A and B are independent iff.:
+
+\begin{align*}
+    P(A\cap B) = P(A)P(B)
+\end{align*}
+
+\begin{align*}
+    A_1, …, A_n \text{ for a subcolecction } A_k, …, A_{k_k} \\ 
+    P(\prod_{j = 1}^{k})A_{k_j} = \prod_{j = 1}^{k}P(A_{k_j})
+\end{align*}
+
+\hfill 
+
+Random vectors:
+
+\begin{align*}
+    X \in \mathbb{R}^k\\
+    X = 
+    \begin{pmatrix}
+        X_1 \\
+        X_2 \\
+        \vdots \\
+        X_k
+    \end{pmatrix} \\ 
+    X: S \to \mathbb{R}^k \\ 
+    F_X(x) = P(X_1 \leq x_1, …, x_k \leq X_k), \quad x \in \mathbb{R}^k = P\big(\{X_1 \in (-\infty, x_1]\} \cap, …, \cap X_k \in (-\infty, x_k]\}\big) \\
+    F_{X_1}(x_1) \times, …, \times F_{X_K}(x_K)
+\end{align*}
+
+\newpage
+
+Marginal $g \quad X_k : $ distribution of $X_k$ is a random variable
+
+\hfill 
+
+$X_1, …, X_k$ are independent if: 
+
+\begin{align*}
+    P(\prod_{i = 1}^{K}\{x_i \in A_i\}) = \prod_{i = 1}^{K}P(X_i \in A_i)
+\end{align*}
+
+
+\begin{align*}
+    X = 
+    \begin{pmatrix}
+        X_1 \\
+        X_2 \\
+        \vdots \\
+        X_k
+    \end{pmatrix} \\ 
+    \text{pmf: } f: \mathbb{R}^k \to \mathbb{R} \\ 
+    f(x) = P(X_1 = x_1, …, X_K = x_K) \\ 
+    P(X \in A) = \sum_{x \in A}f(x) = \sum_{x \in A} P(X_1 = x_1, …, X_K = x_K)
+\end{align*}
+
+\textbf{Marginal pmf: }
+
+\begin{align*}
+    f_{X_1}(x_1) = P(X_1 = x_1)
+\end{align*}
+
+\textbf{Conditional pmf: }
+
+\begin{align*}
+    f_{x_{k + 1}, …, x_K | x_1, …, x_k} \\
+    = P(X_{k + 1} = x_{k + 1}, …, X_K = x_K | X_1 = x_1, …, X_k = x_k) \\ 
+    =\frac{f_X(x)}{f_{X_1 : X_k}(x_1, …, x_k)} \\ 
+    \\
+    = \frac{P(X_1 = x_1, …, X_K = x_K)}{P(X_1 = x_1, …, X_k = x_k)}
+\end{align*}
+
+Marginal pdfs can be recovered from joint pdfs: 
+
+\begin{align*}
+    f_{\vec{X}}(\vec{x}) \\ 
+    \\
+    f_{X_1, …, X_k}(x_1, …, x_k) = \sum_{x_{k + 1}, …, x_K \in \mathbb{R}^{K - k}}f_X(x_1, …, x_k)
+\end{align*}
+
+\newpage
+
+If $x$ is a continuous random vector (i.e. its dcf is continuous) it has a joint pdf if there
+is a (non-negative) function $f : \mathbb{R}^K \to \mathbb{R}$ such that for any event $A \subset \mathbb{R}^K$:
+
+\begin{align*}
+    P(X \in A) = \int_A f(x)dx
+\end{align*}
+
+, therefore: 
+
+\begin{align*}
+    P((X_1, …, X_k) \in A) = P(X \in B) \\ 
+    = \int_A f_{X_1, …, x_k}(x_1, …, x_k)d(x_1, …, x_k)
+\end{align*}
+
+Suppose that $X = (X_1, …, X_K)$ is continuous. Then the marginal pdf of $X_1, …, X_k$ is given by:
+
+\begin{align*}
+    f_{X_1, …, x_k}(x_1, …, x_k) = \int_{\mathbb{R}^{K - k}}f_X(x_1, …, x_K)d(x_{k + 1}, …, x_K)
+\end{align*}
+
+
+
+
+\end{document}
