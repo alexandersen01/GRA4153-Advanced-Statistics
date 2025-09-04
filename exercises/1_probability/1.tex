@@ -15,7 +15,7 @@
 
 \begin{document}
  
-\title{Promblems 1}
+\title{Problems 1}
 \author{Jakob Sverre Alexandersen\\
 GRA4153 Advanced Statistics}
 \maketitle
@@ -28,11 +28,11 @@ GRA4153 Advanced Statistics}
 1. A fair die is thrown until a 6 appears. What is the probability that 
 it must be thrown at least $k$ times?
 
-\begin{align*}
+\begin{gather*}
     P(\text{at least $k$ throws}) = 1 - P(\text{fewer than $k$ throws}) \\
     P(\text{fewer than $k$ throws}) = P(\text{success in first $k-1$ throws}) \\
     P(\text{success in first $k-1$ throws}) = 1 - \Big(\frac{5}{6}\Big)^{k - 1}
-\end{align*}
+\end{gather*}
 
 \hfill 
 
@@ -41,20 +41,20 @@ is this a pdf? i.e. when is $f(x) \geq 0$ and such that its integral is equal to
 
 \textbf{Non-negativity: } $f_\theta(x) \geq 0$
 
-\begin{align*}
+\begin{gather*}
     h(x) \geq 0 \quad\forall x \text{ in the support}\\
     \exp(\eta(\theta)'T(x) - A(\theta)) \geq 0
-\end{align*}
+\end{gather*}
 
 \textbf{Integrating to 1: }
 
 This is where the log-partition function $A(\theta)$ plays a crucial role:
 
-\begin{align*}
+\begin{gather*}
     \int f_\theta(x) dx = \int h(x) \exp (\eta(\theta)'T(x) - A(\theta)) dx = 1\\
     = \exp(-A(\theta)) \int h(x) \exp(\eta(\theta)'T(x)) dx = 1 \\
     \therefore A(\theta) = \log \int h(x) \exp(\eta(\theta)'T(x)) dx
-\end{align*}
+\end{gather*}
 
 \newpage
 
@@ -73,9 +73,9 @@ Since each $f_i(x)$ is a valid pdf/pmf, we have $f_i(x) \geq 0 \quad\forall x \l
 
 Additionally, we have given that $w_i \geq 0 \quad\forall i = 1, …, K$
 
-\begin{align*}
+\begin{gather*}
     \therefore f(x) = \sum_{i = 1}^{K} w_i f_i(x) \geq 0
-\end{align*}
+\end{gather*}
 
 Since we are summing non-negative terms ($w_i \geq 0 \land f_i \geq 0$)
 
@@ -85,28 +85,28 @@ Since we are summing non-negative terms ($w_i \geq 0 \land f_i \geq 0$)
 
 \textbf{Case 1: pdf}
 
-\begin{align*}
+\begin{gather*}
     \int_{-\infty}^{\infty} f(x) dx = \int_{-\infty}^{\infty} \sum_{i = 1}^{K} w_i f_i(x) dx \\
     = \sum_{i = 1}^{K} w_i \int_{-\infty}^{\infty} f_i(x) dx \quad\text{(linearity of integration)}\\
     = \sum_{i = 1}^{K} w_i \times 1 \quad\text{(since each $f_i$ is a valid pdf)} \\
     = \sum_{i = 1}^{K} w_i \\
     = 1 \quad\text{(given the constraint $\sum_{i = 1}^{K}w_i = 1$)}
-\end{align*}
+\end{gather*}
 
 \textbf{Case 2: pmf}
-\begin{align*}
+\begin{gather*}
     \sum_{x} f(x) = \sum_x \sum_{i = 1}^{K} w_i f_i(x) \\
     = \sum_{i = 1}^{K} w_i \sum_x f_i(x) \quad\text{(linearity of summation)}\\
     = \sum_{i = 1}^{K} w_i \times 1 \quad\text{(since each $f_i$ is a valid pmf)}\\
     = \sum_{i = 1}^{K} w_i\\
     = 1 \quad\text{(given constraint )}
-\end{align*}
+\end{gather*}
 
 \newpage
 
 4. Let $X$ be a Poisson r.v. with mass function $f(x) = \lambda^x\exp(-\lambda) / x!, \quad x = 0, 1, …$ for $\lambda > 0$. Find the probability that X is odd
 
-\begin{align*}
+\begin{gather*}
     \exp (\lambda) = \sum_{x = 0}^{\infty} \frac{\lambda^x}{x!} = 1 + \frac{\lambda}{1!} + \frac{\lambda^2}{2!} + … + \frac{\lambda^n}{n!}\\
     \exp (-\lambda) = \sum_{x = 0}^{\infty} \frac{-\lambda^x}{x!} = 1 + \frac{-\lambda}{1!} + \frac{-\lambda^2}{2!} + … + \frac{-\lambda^n}{n!}\\
     P(X \text{ is odd}) = \sum_{x \text{ odd}} \frac{\lambda^x e^{-\lambda}}{x!} = e^{-\lambda} \sum_{x \text{ odd}} \frac{\lambda^x}{x!}\\
@@ -121,7 +121,7 @@ Since we are summing non-negative terms ($w_i \geq 0 \land f_i \geq 0$)
     \to \sum_{x \text{ odd}} \frac{\lambda^x}{x!} = \frac{e^{\lambda} - e^{-\lambda}}{2}\\
     \\
     P(X \text{ is odd}) = e^{-\lambda} \cdot \frac{e^{\lambda} - e^{-\lambda}}{2} = \frac{1 - e^{-2\lambda}}{2}
-\end{align*}
+\end{gather*}
 
 \newpage
 
@@ -142,9 +142,9 @@ Recall that a CDF must satisfy these requirements:
 \textbf{Limit conditions:} It is trivial that the function satisfies these two conditions.
 
 \textbf{Monotonicity:} We prove that $F'(x) \geq 0$:
-\begin{align*}
+\begin{gather*}
     F'(x) = \frac{\exp(-x)}{\big(1 + \exp(-x)\big)^2} \quad\forall x \in \mathbb{R}
-\end{align*}
+\end{gather*}
 
 \textbf{Right-continuity:} 
 
@@ -185,5 +185,477 @@ Rationals are countable:
     \item Since $\mathbb{Q} \cap [0, 1]$ is countable, and all these rationals are distinct
     \item Therefore $D$ is at most countable
 \end{itemize}
+
+\newpage
+
+\section{Expectations}
+
+1. Show that $\mathbb{E}[\alpha] = \alpha$ for any non-random $\alpha$
+
+By the definition of the expected value (and the fact that all pdfs integrate to one):
+
+\begin{gather*}
+    \mathbb{E}[c] = \int_{-\infty}^{\infty}cf(x) dx = c \int_{-\infty}^{\infty}f(x) dx = c \cdot 1 = c
+\end{gather*}
+
+\hfill
+
+2. Let $X$ be the sum of two rolls of a fair die. What is the mean and variance of $X$?
+
+$X$ itself is defined as $X = X_1 + X_2$, where $X_1, X_2 \sim \text{Uniform}\{1, …, 6\}$, independent.
+
+This means that: 
+
+\begin{gather*}
+    \mathbb{E}[X] = \mathbb{E}[X_1 + X_2] = \mathbb{E}[X_1] + \mathbb{E}[X_2]
+\end{gather*}
+
+Since the die are identical, $\mathbb{E}[X_1] = \mathbb{E}[X_2]$, and thus:
+
+\begin{gather*}
+    \mathbb{E}[X_1] = \sum_{i = 1}^{6} P(x = i) = \frac{1}{6} \sum_{i = 1}^{6}i = \frac{7}{2} \\
+    \\
+    \mathbb{E}[X] = \mathbb{E}[X_1 + X_2] = \mathbb{E}[X_1] + \mathbb{E}[X_2] = \frac{7}{2} + \frac{7}{2} = 7
+\end{gather*}
+
+Since the die are independent, we only need to compute the one variance:
+
+\begin{gather*}
+    \text{Var}(X) = \mathbb{E}[X^2] - \big(\mathbb{E}[X]\big)^2 \\
+    \mathbb{E}[X_1^2] = \frac{1}{6} \sum_{i = 1}^{6}i^2 = \frac{91}{6} \\
+    \text{Variance of one die: }\frac{91}{6} - \Big(\frac{7}{2}\Big)^2 = \frac{35}{12}\\
+    \\
+    \text{Var}(X) = \text{Var}(X_1) + \text{Var}(X_2) = 2 \cdot \frac{35}{12} = \frac{35}{6} = 5.8\bar{3}
+\end{gather*}
+
+\newpage
+
+3. $X$ is uniformly distributed on $[a, b]$ if its density is $f(x) = \frac{1}{b - a}$. Compute the mean and variance of $X$.
+
+Recall that $\mathbb{E}[x] = \int_{-\infty}^{\infty}xf(x) dx$
+
+\begin{gather*}
+    \mathbb{E}[X] = \int_{a}^{b} x \cdot \frac{1}{b - a} dx = \frac{1}{b - a}\cdot \int_{a}^{b} x dx \\
+    \\
+    = \frac{1}{b - a}\cdot \frac{x^2}{2} = \frac{x^2}{2(b - a)} \Big|_a^b = \frac{b^2 - a^2}{2(b - a)} \\
+    \\
+    = \frac{b + a}{2}
+    \end{gather*}    
+
+Nice. Also recall that $\text{Var}(X) = \mathbb{E}[X^2] - \big(\mathbb{E}[X]\big)^2$:
+
+\begin{gather*}
+    \mathbb{E}[X^2] = \int_{a}^{b} x^2 \cdot \frac{1}{b - a} dx = \frac{1}{b - a}\cdot \int_{a}^{b} x^2 dx \\
+    \\
+    = \frac{1}{b - a} \cdot \frac{x^3}{3} = \frac{x^3}{3(b-a)} \Big|_a^b = \frac{b^3 - a^3}{3(b-a)} = \frac{b^2 + ab + a^2}{3}
+    \end{gather*}
+
+Thus: 
+
+\begin{gather*}
+    \text{Var}[X] = \frac{b^2 + ab + a^2}{3} - \Big(\frac{b + a}{2}\Big)^2 = \frac{b^2 + ab + a^2}{3} - \frac{b^2 + 2ab + a^2}{4} \\
+    \\
+    = \frac{(b - a)^2}{12}
+\end{gather*}    
+
+\newpage
+
+4. Calculate the mean of $X \sim t(v)$. Are restrictions on $v$ required for the mean to exist?
+
+First we should define the student's $t$-distribution:
+
+\begin{gather*}
+    f(t) = \frac{\Gamma \big(\frac{v + 1}{2}\big)}{\sqrt{\pi v}\Gamma \big(\frac{v}{2}\big)}\Big(1 + \frac{t^2}{v}\Big)^{\frac{-(v+1)}{2}}
+\end{gather*}
+
+By symmetry the integrand $xf(x)$ is an odd function, so if the expectation integral converges, then 
+
+\begin{gather*}
+    \mathbb{E}[X] = \int_{-\infty}^{\infty}xf(x) dx = 0
+\end{gather*}
+
+Existence: for large $|x|$, the density behaves like a constant times $|x|^{-(v+1)}$. Hence: 
+
+\begin{gather*}
+    \mathbb{E}[|X|] \asymp \int_{1}^{\infty}x \cdot x^{-(v + 1)} dx = \int_{1}^{\infty}x^{-v} dx
+\end{gather*}
+
+Which converges iff $v > 1$
+
+\newpage
+
+5. Prove Proposition 2.6 for the discrete case.
+
+\textbf{Prop. 6: }
+
+\textit{Let $X$ be a random variable, $\alpha$ a constant and $g_1$ and $g_2$ such that $\mathbb{E}g_1(X)$ and $\mathbb{E}g_2(X)$ exist. Then}
+
+\begin{gather*}
+    i)\quad \mathbb{E}[\alpha g_1(X)] = \alpha\mathbb{E}g_1(X) \textit{ and } \mathbb{E}[g_1(X) + g_2(X)] = \mathbb{E}g_1(X) + \mathbb{E}g_2(X);\\
+    ii) \quad \textit{If $g_1(x) > 0 \quad\forall x$ with $f(x) > 0$, then $\mathbb{E}g_1(X) \geq 0$}
+\end{gather*}
+
+Let $X$ be a discrete r.v. with pmf $P(X = x)$, where $x$ ranges over the support of $X$
+
+Part $i)$: linearity of expectation 
+
+\textbf{For scalar multiplication:}
+\begin{gather*}
+    \mathbb{E}[\alpha g_1(X)] = \sum_{x \in \mathcal{X}}\alpha g_1(x) P(X = x) = \alpha \sum_{x \in \mathcal{X}}g_1 P(X = x) = \alpha\mathbb{E}[g_1(X)]
+\end{gather*}
+
+\textbf{For addition:}
+\begin{gather*}
+    \mathbb{E}[g_1(X) + g_2(X)] = \sum_{x \in \mathcal{X}}[g_1(x) + g_2(x)]P(X = x) \\
+    \\
+    = \sum_{x \in \mathcal{X}}g_1 P(X = x) + \sum_{x \in \mathcal{X}}g_2 P(X = x) \\
+    \\
+    = \mathbb{E}[g_1(X)] + \mathbb{E}[g_2(X)]
+\end{gather*}
+
+Part $ii)$: non-negative property: 
+
+If $g_1(x) \geq 0 \quad\forall x$ with $P(X = x)$, then: 
+
+\begin{gather*}
+    \mathbb{E}[g_q(X)] = \sum_{x \in \mathcal{X}}g_1 P(X = x)
+\end{gather*}
+
+Since each term $g_1(x)P(X = x) \geq 0$ (because $g_1(x) \geq 0$ and $P(X = x) \geq 0$), we have:
+
+\begin{gather*}
+    \mathbb{E}[g_1(X)] = \sum_{x \in \mathcal{X}} g_1(x) P(X = x) \geq 0
+\end{gather*}
+
+\newpage
+
+6. Prove Lemma 2.1:
+
+It states that \textit{If }$\text{Var}(X)$\textit{ exists, then for any constants a, b}
+
+\begin{gather*}
+    \text{Var}(aX + b) = a^2\text{Var}(X)
+\end{gather*}
+
+Recall that $\text{Var}(X) = \mathbb{E}[X^2] - \big(\mathbb{E}[X]\big)^2$. Therefore, 
+
+\begin{gather*}
+    \mathbb{E}[(aX+b)^2] - \big(\mathbb{E}[(aX+b)]\big)^2 = \mathbb{E}\big[(aX+b) - \mathbb{E}[(aX+b)]^2\big] \\
+    = \mathbb{E}\big[(aX - a\mathbb{E}[X])^2\big] = a^2\mathbb{E}\big[(X - \mathbb{E}[X])^2\big] \\ 
+    = a^2\text{Var}(X)
+\end{gather*}
+\qed
+
+7. Prove Lemma 2.2: 
+
+It states that [Properties of indicators]: \textit{If A, B are events and X an r.v.:}
+
+\begin{gather*}
+    (i)\quad\mathbb{1}_A\mathbb{1}_B = \mathbb{1}_{A\cap B}\\
+    (ii)\quad P(X \in A) = \mathbb{E}[\mathbb{1}_A(X)]\\
+    (iii)\quad P(X \in A)[1 - P(X \in A)] = \text{Var}(\mathbb{1}_A(X))
+\end{gather*}
+
+For an event $E$, its indicator $\mathbb{1}_E$ takes value 1 on $E$ and 0 on $E^c$. If $X$ is an r.v. and $A$ is a measurable set 
+in the state space of $X$, then $\mathbb{1}_A(X)$ means the indicator of the event $\{\omega: X(\omega) \in A\}$, i.e. $\mathbb{1}_{X \in A}$
+
+\begin{gather*}
+    (i)\quad\mathbb{1}_A\mathbb{1}_B = \mathbb{1}_{A\cap B}
+\end{gather*}
+Pointwise check: for any $\omega$, the left side is $1$ iff. $\omega \in A \land \omega \in B$, otherwise it is $0$. That is exactly the indicator 
+of $A \cap B$ \qed
+
+\begin{gather*}
+    (ii)\quad P(X \in A) = \mathbb{E}[\mathbb{1}_A(X)]
+\end{gather*}
+Let $E = \{\omega: X(\omega) \in A\} = X^{-1}(A)$. Then $\mathbb{1}_A(X) = \mathbb{1}_E$
+
+For any event $E$, $\mathbb{E}[\mathbb{1}_E] = \int \mathbb{1}_E dP = P(E)$. Hence $\mathbb{E}[\mathbb{1}_A(X)] = P(X \in A)$ \qed
+
+\begin{gather*}
+    (iii)\quad P(X \in A)[1 - P(X \in A)] = \text{Var}(\mathbb{1}_A(X))
+\end{gather*}
+Set $Y = \mathbb{1}_A(X)$. Then $Y \in \{0, 1\}$ and $\mathbb{E}[Y] = P(X \in A) =: p$
+
+Since $Y^2 = Y, \text{Var}(Y) = \mathbb{E}[Y^2] - (\mathbb{E}[Y])^2 = p - p^2 = p(1 - p)$
+
+$\therefore \text{Var}\big(\mathbb{1}_A(X)\big) = P(X \in A)\big[1 - P(X \in A)\big]$ \qed
+
+\newpage
+
+8. Let $X$ and $Y$ be r.v.s with $\mathbb{E}|X| < \infty, \mathbb{E}|Y| < \infty$ and let $X\land Y:= \min \{X, Y\}$ and $X\lor Y := \max \{X, Y\}$. 
+Show that $\mathbb{E}[X \lor Y] = \mathbb{E}[X] + \mathbb{E}[Y] - \mathbb{E}[X \land Y]$ [Hint: What is $(X \lor Y) + (X\land Y)?$]
+
+Consider what happens when we add the max and min of two numbers: $\min \{a, b\} + \max \{a, b\} = a + b$
+
+$\therefore(X \lor Y) + (X\land Y) = X + Y$
+
+Since $(X \lor Y) + (X\land Y) = X + Y$, we can carry expectation operations: 
+
+\begin{gather*}
+    \mathbb{E}[(X \lor Y) + (X\land Y)] = \mathbb{E}[X + Y]
+\end{gather*}
+
+We can use linearity of expectation since $\mathbb{E}|X|, \mathbb{E}|Y| < \infty$:
+
+\begin{gather*}
+    \mathbb{E}[X \lor Y] + \mathbb{E}[X \land Y] = \mathbb{E}[X] + \mathbb{E}[Y]\\
+    \\
+    = \mathbb{E}[X \lor Y] = \mathbb{E}[X] + \mathbb{E}[Y] - \mathbb{E}[X \land Y]
+\end{gather*}
+\qed
+
+\newpage
+
+\section{Conditioning \& independence}
+
+1. If $P$ is a probability and $B$ an event with $P(B) > 0$, show that $P(\cdot|B)$ is also a probability
+
+$P(\cdot|B)$ must satisfy the three axioms of probability.
+
+\hfill  
+
+\textbf{Definition: }For an event $A$, we have $P(A|B) = \frac{P(A\cap B)}{P(B)}$ where $P(B) > 0$
+
+\textbf{Axiom 1: }Non-negativity: For any event $A$, we need $P(A|B) \geq 0$.
+
+Since $P$ is a probability measure:
+
+\begin{gather*}
+    P(A \cap B) \geq 0 \quad\text{(by non-negativity of $P$)}\\
+    P(B) > 0\quad\text{(given condition)} \\
+    \therefore P(A|B) = \frac{P(A\cap B)}{P(B)} \geq 0
+\end{gather*}
+
+\textbf{Axiom 2: }Normalization: we need $P(\Omega | B) = 1$, where $\Omega$ is the sample space.
+
+\begin{gather*}
+    P(\Omega|B) = \frac{P(\Omega\cap B)}{P(B)} = \frac{P(B)}{P(B)} = 1 \quad\text{(since $\Omega \cap B = B$)}
+\end{gather*}
+
+\textbf{Axiom 3: }Countable additivity: For countably many disjoints events $A_1, …, A_n$, we need:
+
+\begin{gather*}
+    P\Bigg(\bigcup_{i = 1}^\infty A_i \bigg|B \Bigg) = \sum_{i = 1}^{\infty}P(A_i | B) \\
+    \\
+    P\Bigg(\bigcup_{i = 1}^\infty A_i \bigg|B \Bigg) = \frac{P\big((\bigcup_{i = 1}^\infty A_i) \cap B\big)}{P(B)}\\
+    \\
+    = \frac{P\big(\bigcup_{i = 1}^\infty(A_i \cap B)\big)}{P(B)} \quad\text{(using the distributive property of intersection over union)} \\
+    \\ = \sum_{i = 1}^{\infty} \frac{P(A_i \cap B)}{P(B)} = \sum_{i = 1}^{\infty}P(A_i | B)
+\end{gather*}
+
+Since the $A_i$ are disjoint, the events $A_i \cap B$ are also disjoint. Therefore, by cointable additivity of $P$:
+
+Since $P(\cdot | B)$ satisfies all three axioms of probability, it is indeed a probability measure \qed
+
+\newpage
+
+2. If $P(B \cap C) > 0$ show that $P(A \cap B \cap C) = P(A | B \cap C)P(B | C)P(C)$
+
+We know that $P(A \cap B) = P(A|B)P(B)$
+
+Let $B_c = B \cap C \quad\therefore P(A \cap B_c) = P(A | B\cap C)P(B\cap C)$
+
+By the definition: $P(B\cap C) = P(B | C)P(C)$
+
+Subsitute back in: $P(A \cap B \cap C) = P(A | B \cap C)P(B | C)P(C)$ \qed
+
+\hfill 
+
+3. Prove Lemma 2.3
+
+It states that \textit{If $X = (X_1, …, X_K)$ is a random vector and} $\text{Var}(X)$ \textit{exists then for any (constant) vector $\vec{b} \in \mathbb{R}^K$ and any (constant) matrix $A \in \mathbb{R}^{m \times K}$,}
+
+\begin{gather*}
+    \text{Var}(AX + b) = A\text{Var}(X)A'
+\end{gather*}
+
+Fix dimensions: $X \in \mathbb{R}^K$ and $A \in \mathbb{R}^{m \times K} \to AX \in \mathbb{R}^m$
+
+Let $Y = AX + b$, where $X \in \mathbb{R}^K, A \in \mathbb{R}^{m \times K}$, and $b \in \mathbb{R}^m$ (note that the dimensions of $b$ must match $AX$)
+
+Thus, 
+
+\begin{gather*}
+    \mathbb{E}[YY'] = \mathbb{E}[(AX + b)(AX + b)']\\
+    = \mathbb{E}[AXX'A' + AX'b + bX'A' + bb']\\
+    = A\mathbb{E}[XX']A' + A\mathbb{E}[X]b' + b\mathbb{E}[X]'A' + bb'
+\end{gather*}
+
+Also, 
+\begin{gather*}
+    \mathbb{E}[Y]\mathbb{E}[Y]' = (A\mathbb{E}[X] + b)(A\mathbb{E}[X] + b)'\\
+    = A\mathbb{E}[X]\mathbb{E}[X]'A' + A\mathbb{E}[X]b' + b\mathbb{E}[X]'A' + bb'\\
+    \\
+    \therefore \text{Var}(AX + b) = \mathbb{E}[Y]\mathbb{E}[Y]' \\
+    = A(\mathbb{E}[XX'] - \mathbb{E}[X]\mathbb{E}[X]')A'\\
+    = A\text{Var}(X)A'
+\end{gather*}
+
+\newpage
+
+4. Prove Lemma 2.4
+
+Lemma 2.4: \textit{If X, Z and Y are random vectors in $\mathbb{R}^K, \mathbb{R}^K$ and $\mathbb{R}^L$, respectively, $a \in \mathbb{R}^K, b \in \mathbb{R}^L$ are constant vectors and A and B are constant matrices with K and L columns respectively,}
+
+\begin{gather*}
+    \text{Cov}(X + Z, Y) = \text{Cov}(X, Y) + \text{Cov}(Z, Y)\\
+    \textit{and}\\
+    \text{Cov}(AX + a, BY + b) = A\text{Cov}(X, Y)B'
+\end{gather*}
+
+Recall that the matrix covariance of random vectors $X \in \mathbb{R}^K$ and $Y \in \mathbb{R}^L$ is 
+
+Cov$(X, Y) = \mathbb{E}[(X - \mathbb{E}X)(Y - \mathbb{E}Y)']$
+
+Additivity in the first argument:
+
+Let $\mu_X = \mathbb{E}X, \quad\mu_Z = \mathbb{E}Z, \quad\mu_Y = \mathbb{E}Y$, then:
+
+\begin{gather*}
+    \text{Cov}(X + Z, Y) \\
+    = \mathbb{E}[(X + Z - \mu_X - \mu_Z)(Y - \mu_Y)']\\
+    = \mathbb{E}[(X - \mu_X)(Y - \mu_Y)' + (Z - \mu_Z)(Y - \mu_Y)'] \\
+    = \text{Cov}(X, Y) + \text{Cov}(Z, Y)
+\end{gather*}
+\qed
+
+\textbf{Affine equivariance: }
+
+Let $U = AX + a$ and $V = BY + b$. Then $\mathbb{E}U = A \mathbb{E}X+ a$ and $\mathbb{E}V = B \mathbb{E}Y + b$, so 
+
+\begin{gather*}
+    \text{Cov}(U, V) \\
+    = \mathbb{E}[(U - \mathbb{E}U)(V - \mathbb{E}V)']\\
+    = \mathbb{E}[(AX + a - (A\mathbb{E}X + a))(BY + b - (B\mathbb{E}Y + b))']\\
+    = \mathbb{E}[(A(X - \mathbb{E}X))(B(Y - \mathbb{E}Y))']\\
+    = \mathbb{E}[A(X - \mathbb{E}X)(Y - \mathbb{E}Y)'B']\\
+    = A\mathbb{E}[(X - \mathbb{E}X)(Y - \mathbb{E}Y)']B'\\
+    = A\text{Cov}(X, Y)B'
+\end{gather*}
+\qed
+
+\newpage
+
+5. Prove Lemma 2.5
+
+\textit{If X, Z and Y are r.vs. then}
+
+\begin{gather*}
+    \text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y) + 2\text{Cov}(X, Y)
+\end{gather*}
+
+\textit{If X and Y are random vectors of the same dimension then}
+
+\begin{gather*}
+    \text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y) + \text{Cov}(X, Y) + \text{Cov}(X, Y)'
+\end{gather*}
+
+Key identity: $\text{Var}(Z) = \text{Cov}(Z, Z)$, and for any r.v./vectors $U, V, W$,
+
+\begin{gather*}
+    \text{Cov}(U + V, W) = \text{Cov}(U, W) + \text{Cov}(V, W)\\
+    \text{Cov}(U, V + W) = \text{Cov}(U, V) + \text{Cov}(U, W)
+\end{gather*}
+
+\textbf{Scalar case (real-valued $X, Y$):}
+\begin{gather*}
+    \text{Var}(X + Y) = \text{Cov}(X + Y, X + Y)\\
+    = \text{Cov}(X, X) + \text{Cov}(X, Y) + \text{Cov}(Y, X) + \text{Cov}(Y, Y)\\
+    = \text{Var}(X) + \text{Cov}(X, Y) + \text{Cov}(X, Y) + \text{Var}(Y)\\
+    = \text{Var}(X) + \text{Var}(Y) + 2\text{Cov}(X, Y)
+\end{gather*}
+
+\textbf{Vector case ($X, Y \in \mathbb{R}^d$):}
+
+Use $\text{Cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}X)(Y - \mathbb{E}Y)']$ (a $d \times d$ matrix) so $\text{Cov}(Y, X) = \text{Cov}(X, Y)'$:
+
+\begin{gather*}
+    \text{Var}(X + Y) = \text{Cov}(X + Y, X + Y) \\
+    = \text{Cov}(X, X) + \text{Cov}(X, Y) + \text{Cov}(Y, X) + \text{Cov}(Y, Y)\\
+    = \text{Var}(X) + \text{Var} + \text{Cov}(X, Y) + \text{Cov}(X, Y)'
+\end{gather*}
+\qed
+
+\newpage
+
+6. Prove Corollary 2.1
+
+\textit{If X and Y are independent, then} $\text{Cov} = 0$
+
+\begin{gather*}
+    \text{Cov}(X, Y) = \mathbb{E}\big[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])\big] = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+\end{gather*}
+
+Using conditional expectation,
+
+\begin{gather*}
+    \mathbb{E}[XY] = \mathbb{E}\big[\mathbb{E}[XY | X]\big] = \mathbb{E}\big[X \mathbb{E}[Y | X]\big]
+\end{gather*}
+
+If $X$ and $Y$ are independent, then $\mathbb{E}[Y | X] = \mathbb{E}[Y]$. Hence $\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y]$, and therefore Cov$(X, Y) = 0$ 
+
+\qed
+
+7. Prove Proposition 2.10
+
+\textit{Let X and Y be random vectors, $\alpha$ a constant and $g_1$ and $g_2$ such that $\mathbb{E}g_1(X)$ and $\mathbb{E}g_2(X)$ exist. Then}
+
+\begin{gather*}
+    (i)\quad \mathbb{E}[\alpha g_1(X) | Y] = \alpha \mathbb{E}[g_1(X) | Y] \textit{ and } \mathbb{E}[g_1(X) + g_2(X) | Y] = \mathbb{E}[g_1(X) | Y] + \mathbb{E}[g_2(X) | Y]; \\
+    (ii)\quad \textit{If } g_1 \geq 0\quad \forall x \textit{ with } f(x|y) > 0, \textit{ then } \mathbb{E}[g_1(X)|Y] \geq 0
+\end{gather*}
+
+Let $Z_1 := g_1(X)$ and $Z_2 := g_2(X)$, and let $\mathcal{G} := \sigma(Y)$. Recall the defining property of conditional expectation: For any integrable $Z$, a version 
+of $\mathbb{E}[Z|\mathcal{G}]$ is the $\mathcal{G}$-measurable $W$ s.t. for every $A \in \mathcal{G}$, $\mathbb{E}[Z \mathbf{1}_A] = \mathbb{E}[W \mathbf{1}_A]$
+
+Such $W$ is unique a.s.
+
+\textbf{(i) Linearity:}
+
+Scalar multiple: for any $A \in \mathcal{G},$
+
+\begin{gather*}
+    \mathbb{E}[(\alpha Z_1)\mathbf{1}_A] = \alpha \mathbb{E}[Z_1 \mathbf{1}_A] = \alpha \mathbb{E}\big[\mathbb{E}[Z_1|\mathcal{G}]\mathbf{1}_A\big] = \mathbb{E}\big[\alpha \mathbb{E}[Z_1 | \mathcal{G}]\mathbf{1}_A\big]
+\end{gather*}
+
+Both $\mathbb{E}[\alpha Z_1|\mathcal{G}]$ and $\alpha \mathbb{E}[Z_1]\mathcal{G}$ are $\mathcal{G}$-measurable and satisfy the same defining identity, hence 
+
+\begin{gather*}
+    \mathbb{E}[\alpha Z_1|\mathcal{G}] = \alpha \mathbb{E}[Z_1|\mathcal{G}] \quad\text{a.s.}
+\end{gather*}
+
+Replacing $Z_1$ by $g_1(X)$ and $\mathcal{G}$ by $\sigma(Y)$ gives $\mathbb{E}[\alpha g_1(X)|Y] = \alpha \mathbb{E}[g_1(X)|Y]$ a.s.
+
+Sum: For any $A \in \mathcal{G}$,
+
+\begin{gather*}
+    \mathbb{E}[(Z_1 + Z_2)\mathbf{1}_A] = \mathbb{E}[Z_1 \mathbf{1}_A] + \mathbb{E}[Z_2 \mathbf{1}_A] = \mathbb{E}\big[\mathbb{E}[Z_1|\mathcal{G}]\mathbf{1}_A\big] +\mathbb{E}\big[\mathbb{E}[Z_2|\mathcal{G}]\mathbf{1}_A\big] = \mathbb{E}\big[(\mathbb{E}[Z_1|\mathcal{G}] + \mathbb{E}[Z_2|\mathcal{G}])\mathbf{1}_A\big]
+\end{gather*}
+
+By the same uniqueness argument, 
+
+\begin{gather*}
+    \mathbb{E}[Z_1 + Z_2|\mathcal{G}] = \mathbb{E}[Z_1|\mathcal{G}] + \mathbb{E}[Z_2|\mathcal{G}]\quad \text{a.s.}
+\end{gather*}
+
+Substituting $Z_i = g_i(X)$ and $\mathcal{G} = \sigma(Y)$ gives the desired result \qed
+
+\newpage
+
+\textbf{(ii) Positivity:}
+
+Assume $g_1(X) \geq 0$ a.s. Let $W := \mathbb{E}[g_1(X)|\mathcal{G}]$. For any $A \in \mathcal{G}$,
+
+\begin{gather*}
+    \mathbb{E}[W \mathbf{1}_A] = \mathbb{E}[g_1(X)\mathbf{1}_A] \geq 0
+\end{gather*}
+
+If $\mathbb{P}(W < 0) > 0$, take $A = \{ W < 0\} \in \mathcal{G}$; then $\mathbb{E}[W \mathbf{1}_A] < 0$, a contradiction. Hence $\mathbb{P}(W \geq 0) = 1$, i.e.
+
+\begin{gather*}
+    \mathbb{E}[g_1(X)|Y] \geq 0 \quad\text{a.s.}
+\end{gather*}
+\qed
 
 \end{document}
