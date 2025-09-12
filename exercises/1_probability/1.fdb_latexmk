@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1757002405.4287 "/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/exercises/1_probability/1.tex" "1.pdf" "1" 1757002406.00647 0
-  "/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/exercises/1_probability/1.tex" 1757002405.31237 24222 49b7fa17e530470523727948ece9815a ""
+["pdflatex"] 1757599123.3999 "/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/exercises/1_probability/1.tex" "1.pdf" "1" 1757599124.02014 0
+  "/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/exercises/1_probability/1.tex" 1757599122.59067 44393 1c0dcb61efe9e87b020f5925e12239db ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/pdftex.map" 1756289767.20429 83041 e1da5837fb95786b4d5fcf602ca250d4 ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1744540813.57998 11548 0b94a34568be8fa29753d7fc570ea10e ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1744540792.33739 12053120 514daef0bf02ba4323c4635a48e46f13 ""
@@ -48,6 +48,7 @@
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1744540084.64262 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1744540084.7454 31764 459c573c03a4949a528c2cc7f557e217 ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1744540084.75331 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
+  "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm7.pfb" 1744540084.75893 35309 940e81a5b9e04201a07e8b33a3ae6e64 ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp-pdf.mkii" 1744540130.85452 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/generic/atbegshi/atbegshi.sty" 1744540087.50874 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/generic/bigintcalc/bigintcalc.sty" 1744540769.84004 40635 c40361e206be584d448876bba8a64a3b ""
@@ -111,10 +112,10 @@
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/multicol.sty" 1744540117.9938 32879 f4cfa2226c995da5b04a89ee47abf182 ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/ulem/ulem.sty" 1747721892.52795 15682 94f55b803e160cf7fb6e4d77d07cfe1d ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/url/url.sty" 1744540147.5008 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "1.aux" 1757002405.86379 526 0403d0fa7c86218e7f58225e6fb8e51c "pdflatex"
-  "1.out" 1757002405.87901 494 ec8c4bf4ac40e04d31e91255d1241649 "pdflatex"
-  "1.tex" 1757002405.31237 24222 49b7fa17e530470523727948ece9815a ""
-  "1.toc" 1757002405.88124 240 372ef1e0457d902e42b9b99c58f2fdea "pdflatex"
+  "1.aux" 1757599123.89036 755 f3f627f2006aa7ea1bfc2178475be650 "pdflatex"
+  "1.out" 1757599123.89272 751 9a6bc5bf684f3dc2ffc71602cf4c2365 "pdflatex"
+  "1.tex" 1757599122.59067 44393 1c0dcb61efe9e87b020f5925e12239db ""
+  "1.toc" 1757599123.89434 387 353ee658e55f6b1926424303aa1529bc "pdflatex"
   (generated)
   "1.aux"
   "1.log"

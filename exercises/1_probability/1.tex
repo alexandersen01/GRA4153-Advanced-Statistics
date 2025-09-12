@@ -658,4 +658,407 @@ If $\mathbb{P}(W < 0) > 0$, take $A = \{ W < 0\} \in \mathcal{G}$; then $\mathbb
 \end{gather*}
 \qed
 
+7. Prove the ``law of total variance'': if Var$(X) < \infty$ then Var$(X) = \mathbb{E}[\text{Var}(X|Y)] + \text{Var}(\mathbb{E}[X|Y])$ 
+[Hint: Var$(X|Y) = \mathbb{E}\big[(X - \mathbb{E}[Y|Y])^2\big]$].
+
+Recall the definition of variance in terms of $\mathbb{E}$:
+
+\begin{gather*}
+    \text{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2 \\
+    \to \mathbb{E}[X^2] = \text{Var}(X) + (\mathbb{E}[X])^2 \\
+    \to \mathbb{E}[X^2] = \mathbb{E}\big[\text{Var}(X|Y) + \mathbb{E}[X|Y]^2\big] \quad\text{(applying the law of total expectation)} \\
+    \to \mathbb{E}[X^2] - (\mathbb{E}[X])^2 = \mathbb{E}\big[\text{Var}(X|Y) + \mathbb{E}[X|Y]^2\big] - (\mathbb{E}[X])^2 \\ 
+    \to \mathbb{E}[X^2] - (\mathbb{E}[X])^2 = \mathbb{E}\big[\text{Var}(X|Y) + \mathbb{E}[X|Y]^2\big] - \mathbb{E}\big[\mathbb{E}[X|Y]\big]^2\quad\text{(applying the law of total expectation)} \\
+    \to \mathbb{E}[X^2] - (\mathbb{E}[X])^2 = \mathbb{E}[\text{Var}(X|Y)] + \Big(\mathbb{E}\big[\mathbb{E}[X|Y]^2\big] - \mathbb{E}\big[\mathbb{E}[X|Y]\big]^2\Big) \\
+    \text{Var}(X) = \mathbb{E}[\text{Var}(X|Y)] + \text{Var}(\mathbb{E}[X|Y])
+\end{gather*}
+\qed
+
+\newpage
+
+\section{Key results}
+
+1. Prove Corollary 2.2:
+
+\textit{If t $>$ 0 then}
+
+\begin{gather*}
+    P(||X|| > t) \leq t^{-p}\mathbb{E}||X||^{p}
+\end{gather*}
+
+This is Markov's inequality applied to the nonnegative r.v. $||X||^{p}$
+
+Let $Z:=||X||^{p} \geq 0$ and assume $\mathbb{E}||X||^{p} < \infty$
+
+For any $a > 0$: 
+
+\begin{gather*}
+    \mathbb{P}(Z > a) \leq \frac{\mathbb{E}Z}{a}
+\end{gather*}
+
+Taking $a = t^{p}$ with $t > 0$,
+
+\begin{gather*}
+    \mathbb{P}(||X|| > t) = \mathbb{P}(||X||^{p} > t^{p}) = \mathbb{P}(Z > t^{p}) \leq \frac{\mathbb{E}Z}{t^{p}} = t^{-p}\mathbb{E}||X||^{p}
+\end{gather*}
+\qed
+
+2. Let $X$ be a random vector. Prove that its characteristic function exists:
+
+Proposition: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space and $X : \Omega \to \mathbb{R}^{d}$ a random vector. For each $t \in \mathbb{R}^{d}$
+\begin{gather*}
+    \varphi_X(t) := \mathbb{E}\big[e^{i\langle t, X\rangle}\big]
+\end{gather*}
+exists.
+
+Fix $t \in \mathbb{R}^{d}$. The map $g_{t} : \mathbb{R}^{d}\to \mathbb{C}, g_{t}(x) = e^{i\langle t, X\rangle}$, is continuous, hence Borel 
+measurable, and bounded with $|g_t(x)| = 1 \quad\forall x$.
+
+Since $X$ is Borel measurable, the composition $c_t\circ X : \Omega \to \mathbb{C}$ is $\mathcal{F}$-measurable. Moreover,
+
+\begin{gather*}
+    \Big|g_t\big(X(\omega)\big)\Big| = 1 \quad\forall \omega \in \Omega
+\end{gather*}
+
+so $g_t \circ X$ is bounded and therefore integrable. Consequently, the expectation
+
+\begin{gather*}
+    \varphi_X(t) = \mathbb{E}[g_t(X)] = \int_\Omega e^{i\langle t, X(\omega)\rangle} d \mathbb{P}(\omega)
+\end{gather*}
+is well-defined. Equivalently, if $\mu_X = \mathbb{P} \circ X^{-1}$ denotes the law of $X$, then
+
+\begin{gather*}
+    \varphi_X(t) = \int_{\mathbb{R}^{d}}e^{i\langle t, X\rangle}\mu_X(dx),
+\end{gather*}
+which exists because the integrand is bounded by $1$ and $\mu_X$ is a probability measure \qed
+
+\newpage
+
+3. Complete the proof of Proposition 2.13
+
+It states that \textit{For any random vector X its characteristic function $\psi$ has the following properties:}
+
+\begin{gather*}
+    (i)\quad \psi(0) = 1; \\
+    (ii)\quad \psi(-t) = \overline{\psi(t)};\\
+    (iii)\quad |\psi(t)| \leq \mathbb{E}|\exp (it'X)| = 1;\\
+    (iv)\quad |\psi(t + h) - \psi(t)| \leq \mathbb{E}| \exp (ih'X) - 1|;\\
+    (v)\quad \mathbb{E}\exp (it'[AX + b]) = \exp (it'b)\psi(A't).
+\end{gather*}
+
+\textit{(i)} Let $\psi_X(t) = \mathbb{E}\big[e^{i\langle t, X\rangle}\big]$. By definition the \textbf{dot product} of $t=0$ and any vector $\vec{X}$ is $0$.
+
+Thus, $\mathbb{E}[e^0] = \mathbb{E}[1] = 1$ \qed
+
+\hfill 
+
+\textit{(ii)} $\phi(-t) = \mathbb{E}\big[e^{-i\langle t, X\rangle}\big] = \mathbb{E}\big[\overline{e^{i\langle t, X\rangle}}\big] = \overline{\psi(t)}$. (conjugation passes through the expectation) \qed
+
+\hfill 
+
+\textit{(iii)} Let $Z = \exp(i\langle t, X \rangle)$. Then $\psi(t) = \mathbb{E}[Z]$. 
+
+Thus, $|\psi(t)| = |\mathbb{E}[Z]| \leq \mathbb{E}[|Z|]$
+
+But $|Z| = |\exp(i\theta)| = 1 \quad\forall \theta$, hence $\mathbb{E}[|Z|] = 1, \quad\therefore |\psi(t)| \leq 1$ \qed
+
+\hfill
+
+\textit{(iv)}  Let $X$ be a random vector in $\mathbb{R}^d$ and let $\psi_X(t) = \mathbb{E}\big[e^{i\langle t, X\rangle}\big]$ for $t, h \in \mathbb{R}^d$
+
+Using linearity, $|\mathbb{E}Z| \leq \mathbb{E}|Z|$ and $|e^{i\theta}| = 1$
+
+\begin{gather*}
+    |\psi_X(t + h) - \psi_X(t)| = \Big|\mathbb{E}\big[e^{1\langle t + h, X\rangle} - e^{i\langle t, X\rangle}\big]\Big| \\
+    = \Big|\mathbb{E}\big[e^{1\langle t + h, X\rangle} \big(e^{i\langle h, X\rangle} - 1\big)\big]\Big| \\
+    \leq \mathbb{E}\big[|e^{i\langle t, X\rangle}| |e^{i\langle h, X\rangle} - 1|\big]\\
+    = \mathbb{E}\big[|e^{i\langle h, X\rangle} - 1|\big]
+\end{gather*}
+\qed
+
+\hfill 
+
+\textit{(v)} With $A: d \times d$ matrix and $b \in \mathbb{R}^d$, let $Y = AX + b$. Then, using $e^{i(a + b)} = e^{ia}e^{ib}$ and $\langle t, AX \rangle = \langle A't, X \rangle$:
+
+\begin{gather*}
+    \mathbb{E}[e^{i\langle t, Y \rangle}] = \mathbb{E}[e^{i\langle t, AX + b \rangle}] = \mathbb{E}[e^{i\langle t, b \rangle}e^{i\langle t, AX \rangle}] \\
+    = e^{i\langle t, b \rangle}\mathbb{E}[e^{i\langle A't, X \rangle}] = e^{i\langle t, b \rangle}\psi_X(A't)
+\end{gather*}
+
+Thus,
+\begin{gather*}
+    \mathbb{E} \exp (it'[AX + b]) = \exp(it'b)\psi_X(A't)
+\end{gather*}
+
+\newpage
+
+4. Let $\psi$ be a characteristic function. Prove that $\psi$ is uniformly continuous on $\mathbb{R}$. [Hint: use prop 2.13]
+
+Let $\psi(t) = \mathbb{E}\big[e^{i\langle t, X\rangle}\big], \quad t \in \mathbb{R}^d$
+
+By property \textit{(iv)} in prop 2.13, $\forall t, h \in \mathbb{R}^d$,
+
+\begin{gather*}
+    |\psi(t + h) - \psi(t)| \leq \mathbb{E}| \exp (ih'X) - 1|
+\end{gather*}
+
+RHS depends only on $h$, not on $t$. We claim that 
+
+\begin{gather*}
+    \mathbb{E}|e^{i\langle, h, X \rangle} - 1| \xrightarrow[h \to 0]{} 0
+\end{gather*}
+
+For each outcome $\omega$, 
+
+\begin{gather*}
+    |e^{i\langle, h, X(\omega) \rangle} - 1|\xrightarrow[h \to 0]{} 0
+\end{gather*}
+
+by continuity of $z \mapsto e^{iz}$, and 
+
+\begin{gather*}
+    0 \leq |e^{i \langle h, X\rangle} - 1| \leq 2 \quad\text{a.s.}
+\end{gather*}
+
+Hence, by the dominated convergence thm., 
+
+\begin{gather*}
+    \lim_{h \to 0}\mathbb{E}|e^{i \langle h, X\rangle} - 1| = 0
+\end{gather*}
+
+Therefore, for every $\epsilon > 0$ there exists $\delta > 0$ s.t. $||h|| < \delta$ implies
+
+\begin{gather*}
+    \mathbb{E}|e^{i \langle h, X\rangle} - 1| < \epsilon
+\end{gather*}
+
+Combining with property \textit{(iv)}, we get $\forall t \in \mathbb{R}^d$ and all $||h|| < \delta$,
+
+\begin{gather*}
+    |\psi(t + h) - \psi(t)| \leq \mathbb{E}|e^{i \langle h, X \rangle} - 1| < \epsilon.
+\end{gather*}
+
+This shows that $\psi$ is uniformly continuous on $\mathbb{R}^d$ \qed
+
+\newpage
+
+5. Given that (i) if $Z \sim  \mathcal{N}(\mu, \Sigma), Z = AX + \mu$ for $X \sim \mathcal{N}(0, I)$ and $\Sigma = AA'$ and (ii) 
+the characteristic function of a standard normal r.v. is $\exp(-t^2/2)$, compute the characteristic function of $Z \sim  \mathcal{N}(\mu, \Sigma)$
+
+Let $Z \sim \mathcal{N}(\mu, \Sigma)$ in $\mathbb{R}^d$. By (i), $\exists A$ with $\Sigma = AA'$ and 
+
+\begin{gather*}
+    Z = \mu + AX, \quad X \sim \mathcal{N}(0, I_d)
+\end{gather*}
+
+For any $t \in \mathbb{R}^d$, the characteristic function of $Z$ is 
+
+\begin{gather*}
+    \varphi_Z(t) = \mathbb{E}[e^{it'Z}] = \mathbb{E}[e^{it'(\mu + AX)}] = e^{it'\mu}\mathbb{E}[e^{it'AX}] = e^{it'\mu}\mathbb{E}[e^{i(A't)'X}]
+\end{gather*}
+
+Set $s: = A't$. Since $X \sim \mathcal{N}(0, I_d)$, the scalar $s'X$ is univariate normal with mean 0 and variance 
+
+\begin{gather*}
+    \text{Var}(s'X) = s' \text{Cov}(X)s = s'Is = ||s||^2 \\
+    (\text{see }||s||^2 = s's)
+\end{gather*}
+
+By (ii), the characteristic function of a univariate $\mathcal{N}(0, ||s||^2)$ variable is $\exp(- \frac{1}{2}t'AA't) = \exp(-\frac{1}{2}t'\Sigma t)$. Hence, 
+
+\begin{gather*}
+    \mathbb{E}[e^{is'X}] = \exp (- \frac{1}{2}||s||^2) = \exp(- \frac{1}{2}t'AA't) = \exp (- \frac{1}{2}t'\Sigma t)\\
+    \therefore \varphi_Z(t) = \exp(it'\mu - \frac{1}{2}t'\Sigma t), \quad t \in \mathbb{R}^d
+\end{gather*}
+
+\newpage
+
+\section{Stochastic convergence}
+
+1. Prove Lemma 2.7
+
+\textit{Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random vectors and X a random vector. For $\epsilon > 0$, let $E_{n, \epsilon}:=\{||X_n - X|| > \epsilon\}$. Then $X_n \xrightarrow[]{a.s.} X$ iff. for each $\epsilon > 0$}
+
+\begin{gather*}
+    P(\limsup_{n \to \infty}E_{n, \epsilon}) = 0 \quad\text{(limit superior – limiting upper bounds of sequence)}
+\end{gather*}
+
+For $\epsilon > 0$ set $E_{n, \epsilon}:=\{||X_n - X|| > \epsilon\}$. Then $X_n \xrightarrow{a.s.} X \iff \forall\epsilon > 0, \mathbb{P}\Big(\limsup_{n \to \infty}E_{n, \epsilon}\Big) = 0$
+
+\begin{gather*}
+    \text{where} \limsup_{n \to \infty}E_{n, \epsilon}:= \bigcap_{m = 1}^\infty \bigcup_{n \geq m}E_{n, \epsilon} = \{\omega: \omega \in E_{n, \epsilon} \text{i.o.}\}
+\end{gather*}
+
+$(\Rightarrow)$ Assume $X_n \to X$ a.s. Then $\exists N_\epsilon(\omega)$ s.t. $\forall n \geq N_\epsilon(\omega), ||X_n(\omega) - X(\omega)||$
+
+Hence $E_{n, \epsilon}(\omega)$ happens only finitely often, i.e., $\omega \notin \limsup_n E_{n, \epsilon}$. $\therefore \mathbb{P}\limsup_{n} E_{n, \epsilon} = 0$
+
+\begin{gather*}
+    (\Leftarrow) \text{Assume }\forall\epsilon > 0, \mathbb{P}\limsup_n E_{n, \epsilon} = 0. \text{ Set } A := \bigcup_{k = 1}^\infty \limsup_n E_{n, 1/k}, \\
+    \text{so }\exists N_k(\omega) \text{s.t. } n \geq N_k(\omega) \implies ||X_n(\omega) - X(\omega)|| < \delta, \\
+    \text{hence }||X_n(\omega) - X(\omega)|| \to 0. \text{ Since } \mathbb{P}(A^c) = 1 \text{, we have }X_n \to X \text{ a.s.} \qed
+\end{gather*}
+
+\newpage
+
+2. Fill in the missing details in the proof of thm. 2.8:
+
+Thm: \textit{Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random vectors and X a random vector. The following are equivalent: }
+
+\begin{enumerate}[label=(\roman*)]
+    \item $\quad X_n \xrightarrow{D} X,$
+    \item $\quad \lim_{n \to \infty} \mathbb{E}f(X_n) = \mathbb{E}f(X)$,
+    \item $\quad \limsup_{n \to \infty}P(X_n \in F) \leq P(X \in F)$ for all closed sets $F$,
+    \item $\quad \liminf_{n \to \infty} P(X_n \in G) \geq P(X \in G)$ for all open sets $G$,
+    \item $\quad \lim_{n \to \infty} P(X-n \in A) = P(X \in A)$ for all $X$-continuity sets $A$,
+    \item $\quad$ \textit{if $F_n$ is the CDF of $X_n$ and F that of X, $F_n(X) \to F(x)$ for all x at which F is continuous}
+\end{enumerate}
+
+\textbf{Proof: }
+
+\begin{enumerate}[label=\textit{(\roman*)}]
+    \item $ \Longrightarrow (ii):$ obvious since every Lipschitz-continuous function is continuous.
+    \item $ \Longrightarrow (iii): $ let $F$ be a closed set, $F^\epsilon := \{x : \rho(x, F) < \epsilon\}$ and define $f(x) := \max\{1 - \rho(x, F) / \epsilon, 0\}$. We note that $\mathbb{1}_F(x) \leq \mathbb{1}_{F^\epsilon}(x)$ and $f$ is (Lipschitz) continuous [Exercise].
+    
+    Then by (i) or (ii)
+
+    \begin{gather*}
+        P(X_n \in F) = \mathbb{E}\mathbb{1}_F(X_n) \leq \mathbb{E}f(X_n) \to \mathbb{E}f(X) \leq \mathbb{E}\mathbb{1}_{F^\epsilon}(X) = P(X \in F^\epsilon)
+    \end{gather*}
+    As $F$ is closed, taking the limit as $\epsilon \downarrow 0$ yields the required inequality [Exercise].
+
+    \item $\Longrightarrow (iv): $ Take complements [Exercise]
+
+    \item \& $(iv)\Longrightarrow (v):$ Combining (iii) and (iv):
+
+    \begin{gather*}
+        P(X \in \text{cl }A) \geq \limsup_{n \to \infty}P(X_n \in \text{cl }A) \geq \limsup_{n \to \infty}P(X_n \in A) \\
+        \geq \liminf P(X_n \in A) \geq \liminf_{n \to \infty}P(X_n \in \text{int }A) \geq P(X \in \text{int }A)
+    \end{gather*}
+
+    If $P(X \in \delta A) = 0$, i.e. $A$ is an $X$-continuity set the left and right hand side terms coincide (both are equal to $P(X \in A)$), which implies (v)
+
+    \item $\Longrightarrow (vi):$ Let $x$ be a continuity point of $F$ and set $A = (-\infty, x]$. Then $A$ is an $X$-continuity set as $\delta A = \{x\}$ and $P(X = x) = 0$ [Exercise]. Then by (v) $F_n(x) = P(X_n \in A) \to P(X \in A) = F(x)$
+
+    $(v) \Longrightarrow (i):$ It is enough to consider the case that $0 \leq f \leq 1$ [Exercise]. Then 
+
+    \begin{gather*}
+        \mathbb{E}f(X) = \int_{0}^{1}P\big(f(X) > t\big) dt, \quad \mathbb{E}f(X_n) = \int_{0}^{1}P\big(f(X_n) > t\big) dt,
+    \end{gather*}
+    by e.g. Lemma 2.2.13 in [5] Since $f$ is continuous, $\delta\{x : f(x) > t\} \subset \{x : f(x) = t\}$ and so $\{x : f(x) > t\}$ is an $X$-continuity set except for at countably many $t$ [Exercise]. By (v) and the bounded convergence thm 
+
+    \begin{gather*}
+        \mathbb{E}f(X_n) = \int_{0}^{1}P\big(f(X_n) > t\big) dt \to \int_{0}^{1}P\big(f(X) > t\big) dt = \mathbb{E}f(X)
+    \end{gather*}
+
+    \newpage
+    \item $\Longrightarrow (iv):$ Define $D^i := \{x : P(X \in H_c^i) > 0\}$ for $H_c^i := \{x : x_i = c\}$. Note that $D^i$ is at most countable. Let $A$ be a rectangle $A = \Pi_{i = 1}^K (a_i, b_i]$ with $a_i, b_i \notin D^i$ for each i. By $F_n(x) \to F(x)$, for any such $A, P(X_n \in A) \to P(X \in A)$ and therefore for any finite collection of disjoint such rectangles $A_1, …, A_k$, their union $B_k$ also satisfies $P(X_n \in B_k) \to P(X \in B_k)$. As any open set $G \in \mathbb{R}^K$ can be written as the increasing limit of such a disjoint union of rectangles with $a_i, b_i \notin D^i$,
+    \begin{gather*}
+        \liminf_{n \to \infty}P(X_n \in G) \geq \liminf_{n \to \infty}P(X_n \in B_k) = P(X \in B_k)
+    \end{gather*}
+
+    Taking $B_k \uparrow G$ completes the proof. \qed
+
+\end{enumerate}
+
+\textbf{Answers: }
+
+\begin{enumerate}[label=\textit{(\roman*)}]
+    \item $\Longrightarrow (ii):$ This is immediate: convergence in distribution means $\mathbb{E}g(X_n) \to \mathbb{E}(X)$ for every bounded continuous $g$. Every Lipschitz function is bounded and continuous on $\mathbb{R}^k$ \qed
+    \item $\Longrightarrow (iii):$ Let $F \subset \mathbb{R}^k$ be closed. For $\epsilon > 0$ define the open $\epsilon$-neighborhood $F^\epsilon = \{x : \rho(x, F) < \epsilon\}$ and the function 
+    \begin{gather*}
+        f_\epsilon(x) = \max \{1 - \rho(x, F) / \epsilon, 0\}
+    \end{gather*}
+    Properties of $f_\epsilon$:
+    \begin{itemize}
+        \item $f_\epsilon$ is continuous (indeed Lipschitz with constant $1 / \epsilon$)
+        \item $f_\epsilon(x) = 1 \quad\forall x \in F$
+        \item $f_\epsilon(x) = 0 \quad\forall x \notin F^\epsilon$\\
+        Hence $\mathbb{1}_F \leq f_\epsilon \leq 1_{F^\epsilon}$
+    \end{itemize}
+    Now apply (ii): 
+    \begin{gather*}
+        P(X_n \in F) = \mathbb{E}\mathbb{1}_F(X_n) \leq \mathbb{E}f_\epsilon(X_n) \xrightarrow[n \to \infty]{} \mathbb{E}f_\epsilon(X)
+    \end{gather*}
+    But $\mathbb{E}f_\epsilon(X) \leq \mathbb{E}\mathbb{1}_{F^\epsilon}(X) = P(X \in F^\epsilon)$. So 
+    \begin{gather*}
+        \limsup_{n \to \infty}P(X_n \in F) \leq P(X \in F^\epsilon)
+    \end{gather*}
+    Finally let $\epsilon \downarrow 0$. Because $F$ is closed the sets $F^\epsilon$ decrease to $F$, so by continuity from above of probability measures,
+    \begin{gather*}
+        \lim_{\epsilon\downarrow0}P(X \in F^\epsilon) = P\Big(\bigcap_{\epsilon > 0}F^\epsilon\Big) = P(F)
+    \end{gather*}
+    Thus, $\limsup_n P(X_n \in F) \leq P(X \in F)$, proving (iii) \qed
+
+    \newpage
+
+    \item $\Longrightarrow (iv):$ Take complements. if $G$ is open then $G^c$ is closed, so by (iii):
+    \begin{gather*}
+        \limsup_nP(X_n\in G^c)\leq P(X\in G^c)
+    \end{gather*}
+    But $P(X_n \in G^c) = 1 - P(X_n \in G)$ and similarly for $X$. Rearranging gives 
+    \begin{gather*}
+        \liminf_nP(X_n \in G) \geq P(X \in G)
+    \end{gather*}
+    which is (iv)\qed
+    \setcounter{enumi}{4}
+    \item $\Longrightarrow (vi):$ Take a real $x$ at which the (univariate) distribution function $F$ of $X$ is continuous. Set $A = (-\infty, x]$. Then $\delta A = \{x\}$, and since $F$ is continuous at $x$ we have $P(X = x) = 0$. Hence $A$ is an $X$-continuity set. By (v),
+    \begin{gather*}
+        F_n(x) = P(X_n \leq x) = P(X_n \in A) \xrightarrow[n \to \infty]{}P(X \in A) = F(x),
+    \end{gather*}
+    so $F_n(x) \to F(x)$ at every continuity point $x$ of $F$. This is (vi) \qed
+    \item $\Longrightarrow (iv):$ We now show that convergence of CDFs at continuity points (componentwise) implies (iv) for multivariate open sets.
+    
+    \textbf{The countability fact:} For each coordinate $i$, define 
+    \begin{gather*}
+        D^i = \{c \in \mathbb{R}: P(X_i) = c>0\}
+    \end{gather*}
+    Each $D^i$ is at most countable because $\sum_{c \in D^i}P(X_i = c) \leq 1$ and only countably many positive numbers can sum to $\leq1$
+
+    \textbf{Rectanges:} Let $A = \Pi_{i = 1}^k (a_i, b_i]$ be a rectangle with $a_i, b_i \notin D^i$ for all $i$. Then each enpoint is a continuity point of the univariate marginal CDFs, so by (vi) every joint CDF evaluation at the $2^k$ corner points of the rectangle converges to the corresponding value for $X$. The probability of the rectangle can be written by the inclusion-exclusion formula as a finite alternating sum of the joint CDF values at the corners. Since each corner CDF converges, the finite sum converges: 
+    \begin{gather*}
+        P(X_n \in A) \xrightarrow[n \to \infty]{}P(X \in A) 
+    \end{gather*}
+
+    \textbf{Finite unions:} If $A_1, …, A_m$ are disjoint such rectangles then the same is true for the union $B = \bigsqcup_{j = 1}^m A_j:$ one adds the limits, so $P(X_n \in B) \to P(X \in B)$
+
+    \textbf{Approximation of open sets:} Any open $G \subset \mathbb{R}^k$ can be written as an increasing union of countably many disjoint rectangles with rational endpoints (standard fact using a grid with rational coordinates). Because the sets $D^i$ are countable we can choose rational endpoints that avoid $D^i$ (rationals are dense and uncountable choices exist). Hence one can construct an increasing sequence of finite unions $B_1 \subset B_2 \subset … \subset B_k$ of disjoint rectangles (each rectangle having endpoints not in $D^i$) with $B_m \uparrow G$. For each $m$,
+    \begin{gather*}
+        P(X_n \in B_m) \xrightarrow[n \to \infty]{}P(X \in B_m)
+    \end{gather*}
+    Thus 
+    \begin{gather*}
+        \liminf_{n \to \infty}P(X_n \in G) \geq \liminf_{n \to \infty}P(X_n \in B_m) = P(X \in B_m)
+    \end{gather*}
+    Let $m \to \infty$ and use monotone convergence of Probabilities $(B_m \uparrow G)$ to get 
+    \begin{gather*}
+        \liminf_{n \to \infty}P(X_n \in G) \geq P(X \in G)
+    \end{gather*}
+    This is exactly (iv) \qed
+
+    \newpage
+
+    \setcounter{enumi}{4}
+    \item $\Longrightarrow (i):$ \textbf{Detail of the layer-cake argument:} We now sketch the standard argument that (v) implies convergence in distribution, i.e. $\mathbb{E}f(X_n) \to \mathbb{E}f(X)$ for every bounded continuous $f$. It suffices to check this for $0 \leq f \leq 1$ (any bounded $f$ is an affine transform of such a functino and linearity handles the rest)
+    
+    Use the identity (layer-cake representation)
+    \begin{gather*}
+        \mathbb{E}f(X) = \int_{0}^{1}P\big(f(X) > t\big) dt,
+    \end{gather*}
+    and similarly for $X_n$. For each fixed $t$ the level set $A_t :) \{x : f(x) > t\}$ is open. Its boundary $\delta A_t$ is contained in $\{x : f(x) = 1\}$. The set of $t$ for which $P\big(f(X) = t\big) > 0$ is at most countable because $\sum_{t\in \mathbb{R}}P\big(f(X) = t \big) \leq 1$. Hence for all $t$ except a countable set, $A_t$ is an $X$-continuity set. for such $t$, by (v),
+    \begin{gather*}
+        P\big(f(X_n) > t \big) = P(X_n \in A) \xrightarrow[n \to \infty]{} P(X \in A_t) = P\big(f(X) > t \big)
+    \end{gather*}
+    Dominated convergence (the integrands are bounded by 1) gives 
+    \begin{gather*}
+        \mathbb{E}f(X_n) = \int_{0}^{1}P\big(f(X_n) > t \big) dt \xrightarrow[n\to\infty]{}\int_{0}^{1}P\big(f(X) > t \big) dt = \mathbb{E}f(X)
+    \end{gather*}
+    Thus we obtain convergence of expectations for every bounded continuous $f$, i.e. convergence in distribution (i) \qed
+\end{enumerate}
+
+also please explain X-continuity set
+
+
+
+
 \end{document}
