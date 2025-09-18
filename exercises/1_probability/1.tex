@@ -1056,9 +1056,622 @@ Thm: \textit{Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random vectors and 
     Thus we obtain convergence of expectations for every bounded continuous $f$, i.e. convergence in distribution (i) \qed
 \end{enumerate}
 
-also please explain X-continuity set
+\hfill
 
+3. Complete the proof of thm. 2.9
 
+Theorem 2.9:
+
+\textit{Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random vectors, X a random vector and c a constant vector. We have the following relationships between the methods of convergence:}
+
+\begin{enumerate}[label=\textit{(\roman*)}]
+    \item $X_n \xrightarrow{a.s.} X \Longrightarrow X_n \xrightarrow{P} X$,
+    \item $X_n \xrightarrow{P} X$ \textit{ iff. every subsequence of $(X_n)$ has a futher subsequence which converges to X a.s.},
+    \item \textit{For } $X \in L_p, X_n \xrightarrow{L_p} X \Longrightarrow X_n \xrightarrow{P} X$,
+    \item $X_n \xrightarrow{P} X \Longrightarrow X_n \xrightarrow{D} X$,
+    \item $X_n \xrightarrow{D} c \Longrightarrow X_n \xrightarrow{P} c$
+\end{enumerate}
+
+Proof: 
+
+\begin{enumerate}[label=\textit{(\roman*)}]
+    \item Let $\epsilon > 0$. Since $X_n \xrightarrow{a.s.} X$, we have $P\big(\limsup_{n \to \infty}\{|X_n - X| > \epsilon\}\big) = 0$
+    
+    By definition of $\limsup$:
+
+    $\big(\limsup_{n \to \infty}\{|X_n - X| > \epsilon\}\big) = \bigcap_{n = 1}^\infty\bigcup_{k = 1}^\infty\{|X_k - X| > \epsilon\}$
+
+    Since this set has probability 0, and $\{|X_n - X| > \epsilon\} \subseteq \bigcup_{k = n}^\infty\{|X_k - X| > \epsilon\}$ we have: 
+
+    $P(|X_n - X| > \epsilon) \leq P\big(\bigcup_{k = n}^\infty\{|X_k - X| > \epsilon\}\big) \to 0$ as $n \to \infty$
+
+    $\therefore X_n \xrightarrow{P} X$ \qed
+    \setcounter{enumi}{2}
+    \newpage
+    \item Let $\epsilon > 0$. By Markov's inequality:
+    
+    $P(|X_n - X| > \epsilon) = P(|X_n - X|^p > \epsilon^p) \leq \frac{\mathbb{E}[|X_n - X|^p]}{\epsilon^p}$
+
+    Since $X_n \xrightarrow{L_p} X$, we have $\mathbb{E}[|X_n - X|^p] \to 0$ as $n \to \infty$
+
+    $\therefore \lim_{n \to \infty} P(|X_n - X| > \epsilon) \leq \lim_{n \to\infty}\frac{\mathbb{E}[|X_n - X|^p]}{\epsilon^p} = 0$ 
+
+    Hence, $X_n \xrightarrow{P} X$ \qed
+
+    \item Let $x$ be a continuity point of $F_x$ and $\epsilon > 0$. We have: 
+    \begin{gather*}
+        F_{X_n}(x) = P(X_n \leq x) \\
+        = P(X_n \leq x, |X_n - X| \leq \epsilon) + P(X_n \leq x, |X_n - X| > \epsilon) \\
+        \leq P(X \leq x + \epsilon) + P(|X_n - X| > \epsilon) \\
+        = F_X(x + \epsilon) + P(|X_n - X| > \epsilon)
+    \end{gather*}
+
+    Similarly: 
+    
+    $F_{X_n}(x) \geq P(X \leq x - \epsilon) - P(|X_n - X| > \epsilon) = F_X(x - \epsilon) - P(|X_n - X| > \epsilon)$
+
+    Since $X_n \xrightarrow{P} X$, letting $n\to\infty$:
+
+    $F_X(x - \epsilon) \leq \liminf_{n\to\infty}F_{X_n}(x) \leq \limsup_{n\to\infty}F_{X_n}(x) \leq F_X(x + \epsilon)$
+
+    Since $x$ is a continuity point of $F_X$, letting $\epsilon\to 0$ gives $F_{X_n}(x) \to F_X(x)$ \qed
+    \item Let $\epsilon > 0$. The distribution function of the constant $c$ is:
+    
+    \[
+    \begin{cases}
+        1 \quad\text{if } x < c \\
+        0 \quad\text{if } x \geq c
+    \end{cases}
+    \]
+
+    Since $X_n \xrightarrow{D} c$, we have $F_{X_n} \to F_c(x)$ at continuity points of $F_c$.
+
+    For any $\epsilon > 0$, both $c - \epsilon$ and $c + \epsilon$ are continuity points of $F_c$. Therefore:
+
+    \begin{itemize}
+        \item $F_{X_n}(c - \epsilon)\to F_c (c-\epsilon) = 0$
+        \item $F_{X_n}(c + \epsilon)\to F_c (c+\epsilon) = 1$
+    \end{itemize}
+
+    Now:
+
+    $P(|X_n - c| > \epsilon) = P(X_n < c - \epsilon) + P(X_n > c + \epsilon) = F_{X_n}(c - \epsilon) + \big(1 -F_{X_n}(x + \epsilon)\big) \to 0 + (1-1) = 0$
+
+    $\therefore X_n \xrightarrow{P} c$ \qed
+\end{enumerate}
+
+\newpage
+
+4. Let $(x_n)_{n \in \mathbb{N}}$ be a sequence in $\mathbb{R}$. Prove $x_n \to x$ iff. each subsequence $(x_{n_m})_{m\in \mathbb{N}}$ has a further subsequence which converges to $x$. Note: this is true much more generally: if $(x_n)_{n \in \mathbb{N}}$ is a squence in a topological space this remains true.
+
+($\Rightarrow$) If $x_n \to x$, then every subsequence $(x_{n_m})$ also convergences to $x$. Hence it (trivially) has a further subsequence converging to $x$ (itself)
+
+($\Leftarrow$) Suppose every subsequence has a further subsequence converging to $x$, but $x_n \nrightarrow x$. Then there exists an open neighborhood $U$ of $x$ s.t. for every $N$ there is $n \geq N$ with $x_n \notin U$. By recursion choose $n_1 < n_2 < … n_k$ with $x_{n_k} \notin U \quad\forall k$. Then ($x_{n_k}$) is a subsequence none of whose terms lie in $U$. Any further subsequence of ($x_{n_k}$) still has all its terms outside of $U$, hence cannot converge to $x$ (convergence to $x$ would force eventual inclusion in every neighborhood of $x$, in particular in $U$). This contradicts the assumption. Therefore $x_n \to x$.
+
+In the metric case $X = \mathbb{R}$, one can take $U = B_\epsilon(x)$ for some $\epsilon > 0$ \qed
+
+5. Prove lemma 2.8:
+
+\textit{Let $(X_n)_{n \in \mathbb{N}}, (Y_n)_{n \in \mathbb{N}}$ be a squence of random vectors and $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}}$ sequences of non-negative numbers. Then,}
+
+\begin{enumerate}[label=\textit{(\roman*)}]
+    \item \textit{If $X_n = o_P(a_n)$, then $X_n = O_P(a_n)$,}
+    \item \textit{If $X_n = O_P(a_n), Y_n = o_P(b_n)$ then for any k $\in \mathbb{R}, kX_n = O_P(a_n)$ and $kY_n = o_P(b_n)$,}
+    \item \textit{If $X_n = O_P(a_n), Y_n = O_P(b_n)$, then $X_n + Y_n = O_P(a_n + b_n)$ and $X_nY_n = O_P(a_nb_n)$,}
+    \item \textit{If $X_n = o_P(a_n), Y_n = o_P(b_n)$, then $X_n + Y_n = o_P(a_n + b_n)$ and $X_nY_n = o_P(a_nb_n)$,}
+    \item \textit{If $X_n = O_P(a_n), Y_n = o_P(b_n)$, then $X_n + Y_n = O_P(a_n + b_n)$ and $X_nY_n = o_P(a_nb_n)$,}
+    \item \textit{If $X_n = O_P(a_n)$ and $a_n \to 0$ then $X_n = o_P(1)$}
+\end{enumerate}
+
+Proof: 
+
+Recall that 
+
+\begin{gather*}
+    X_n = o_P(a_n) \text{ means: for every } \epsilon > 0, P(|X_n| > \epsilon a_n) \to 0 \\
+    X_n = O_P(a_n) \text{ means: for every }\delta > 0, \exists M < \infty \text{ and } N \text{ s.t. } \forall n \geq N, P(|X_n| > M a_n) \leq \delta\\
+    \\
+    \{|X + Y| > t(a+b)\} \subseteq \{|X| > t a\} \cup \{|Y| > t b\}\\
+    \{|X Y| > tab\} \subseteq \{|X| > \sqrt{t} a\} \cup \{|Y| > \sqrt{t} b\}
+\end{gather*}
+
+Proofs:
+
+\begin{enumerate}[label=\textit{(\roman*)}]
+    \item If $X_n = o_P(a_n)$, then for any fixed $M > 0$ we have $P(|X_n| > M a_n) \to 0$; hence given $\delta > 0$ choose $N$ with $P(|X_n| > M a_n) \leq \delta$ for $n \geq N$. Thus $X_n = O_P(a_n)$ \qed
+    \item Let $k \in \mathbb{R}$
+    \begin{itemize}
+        \item If $X_n = O_P(a_n)$, then for any $\delta > 0$ pick $M, N$ with $P(|X_n| > M a_n) \leq \delta (n \geq N)$. Then for $n \geq N, P\big(|kX_n| > (|k|M)a_n\big) = P(|X_n|> M a_n) \leq \delta$, so $kX_n = O_P(a_n)$. For $k = 0$ this is trivial.
+        \item If $Y_n = o_P(b_n)$, the for any $\epsilon > 0, P(|kY_n| > \epsilon b_n) = P\big(|Y_n| > (\epsilon / |k|) b_n\big) \to 0$ (and if $k = 0$ the probability is identically 0). Hence $kY_n = o_P(b_n)$ \qed
+    \end{itemize}
+    \newpage
+    \item If $X_n = O_P(a_n), Y_n = O_P(b_n)$
+    \begin{itemize}
+        \item Sum: For $t > 0, P\big(|X_n + Y_n| > t(a_n + b_n)\big) \leq P(|X_n| > t a_n) + P(|Y_n| > t b_n)$ Given $\delta > 0$ choose $M_X, M_Y$ and $N$ so that $P(|X_n| > M_X a_n) \leq \delta / 2$ and $P(|Y_n| > M_Y b_n) \leq \delta / 2$ for $n \geq N$. With $t := \max(M_X, M_Y)$ the RHS $\leq \delta$ for $n \geq N$. Hence $X_n + Y_n = O_P(a_n + b_n)$
+        \item Product: For $t > 0, P(|X_nY_n| > t a_nb_n) \leq P(|X_n| > \sqrt{t}a_n) + P(|Y_n| > \sqrt{t}b_n)$. Choose $M_X, M_Y$ and $N$ so that $P(|X_n| > M_X a_n) \leq \delta / 2$ and $P(|Y_n| > M_Y b_n) \leq \delta / 2$ for $n \geq N$; with $t := \max (M_X^2M_Y^2)$ we get $X_nY_n = O_P(a_nb_n)$ \qed
+    \end{itemize}
+    \item If $X_n = o_P(a_n), Y_n = o_P(b_n)$
+    \begin{itemize}
+        \item Sum: For any $\epsilon > 0, P\big(|X_n + Y_n| > \epsilon(a_n + b_n)\big) \leq P(|X_n| > \epsilon a_n) + P(|Y_n| > \epsilon b_n) \to 0$
+        \item Product: For any $\epsilon > 0, P(|X_nY_n| > \epsilon a_nb_n) \leq P(|X_n| > \sqrt{\epsilon}a_n) + P(|Y_n| > \sqrt{\epsilon}b_n) \to 0$. So $X_n + Y_n = o_P(a_n + b_n)$ and $X_nY_n=o_P(a_nb_n)$ \qed
+    \end{itemize}
+    \item If $X_n = O_P(a_n), Y_n = o_P(b_n)$
+    \begin{itemize}
+        \item Sum: For $t > 0, P\big(|X_n + Y_n| > t(a_n+b_n)\big) \leq P(|X_n| > t a_n) + P(|Y_n| > t b_n)$. Given $\delta > 0$ pick $M, N_1$ with $P(|X_n| > M a_n) \leq \delta / 2$ for $n \geq N_1$. With this fixed $t:=M$, use $Y_n = o_P(b_n)$ to get $N_2$ s.t. $P(|Y_n| > t b_n) \leq \delta / 2$ for $n \geq N_2$. Hence $X_n + Y_n = O_P(a_n + b_n)$
+        \item Product: For $\epsilon > 0$ and any $M > 0, P(|X_nY_n| > \epsilon a_nb_n) \leq P(|X_n| > M a_n) + P\big(|Y_n| > (\epsilon/M) b_n\big)$ Given $\delta > 0$ choose $M, N_1$ with $P(|X_n| > M a_n) \leq \delta / 2$ for $n \geq N_1$. With this $M$ fixed, $Y_n = o_P(b_n)$ yields $N_2$ s.t. $P(|Y_n| > (\epsilon / M)b_n) \leq \delta / 2$ for $n \geq N_2$. Hence $X_nY_n = o_P(a_nb_n)$ \qed
+    \end{itemize}
+    \item If $X_n = O_P(a_n)$ and $a_n \to 0$, then $X_n = o_P(1)$
+    
+    Indeed, given $\epsilon, \delta > 0$ choose $M, N_1$ with $P(|X_n| > Ma_n) \leq \delta$ for $n \geq N_1$. Since $a_n \to 0$, choose $N_2$ s.t. $M a_n \leq \epsilon$ for $n \geq N_2$. Then for $n \geq N := \max (N_1, N_2)$,
+    \begin{gather*}
+        P(|X_n| > \epsilon) \leq P(|X_n| > Ma_n) \leq \delta
+    \end{gather*}
+
+    Thus, $P(|X_n| > \epsilon) \to 0$, i.e., $X_n \to 0$ in probability. \qed
+\end{enumerate}
+
+\newpage
+
+6. Show: $\quad$ (i) if $Z_n \xrightarrow{D} Z$ then $Z_n = O_P(1)$; $\quad$ (ii) if $Z_n = O_P(1)$ then $o(||Z_n||) = o_P(1)$ and $o_P(||Z_n||) = o_P(1)$
+
+Definitions: For random elements $X_n$ taking values in a normed space:
+
+\begin{itemize}
+    \item $X:n = O_P(1)$ means the sequence is bounded in probability: for every $\epsilon > 0$ there exists $M < \infty$ and $N$ s.t. for all $n \geq N, P(||X_n|| > M) \leq \epsilon$
+    \item $X_n = o_P(1)$ means $X_n \to 0$ in probability
+    \item For random $Y_n, X_n = o_P(Y_n)$ means $X_n / Y_n \to 0$ in probability (with the convention $|x| / 0 = \infty^+$ for $x \neq 0$). If $X_n / Y_n \to 0$ almost surely we write $X_n = o(Y_n)$
+\end{itemize}
+
+\begin{enumerate}[label=\textit{(\roman*)}]
+    \item Convergence in distribution implies $O_P(1)$. Suppose $Z_n \Rightarrow Z$. For any $M > 0$ let $F_M = \{x : ||x|| \geq M\}$, a closed set. By Portmanteau,
+    \begin{gather*}
+        \limsup_{n \to \infty} P(||Z_n|| \geq M) = \limsup_{n \to\infty}P(Z_n \in F_M) \leq P(Z \in F_M) 
+    \end{gather*}
+
+    Choose $M$ so large that $P(||Z|| \geq M) \leq \epsilon$. Then $\limsup_n P(||Z_n|| \geq M) \leq \epsilon$, hence for all large $n$, $P(||Z_n|| > M) \leq \epsilon$. Thus $Z_n = O_P(1)$
+    \item If $Z_n = O_P(1)$, then $o(||Z_n||) = o_P(1)$ and $o_P(||Z_n||) = o_P(1)$. More precisely:
+    
+    Lemma: If $Y_n = O_P(1)$ and $X_n/Y_n \to 0$ in probability (resp. a.s.), then $X_n \to 0$ in probability.
+
+    Proof: Fix $\epsilon > 0$ and $M > 0$. Using the convention $|x| / 0 = \infty^+$
+
+    \begin{gather*}
+        P(|X_n| > \epsilon) \leq P(|Y_n| > M) + P(|X_n| > \epsilon, |Y_n| \leq M) + P(|X_n| / |Y_n| > \epsilon / M)
+    \end{gather*}
+
+    Since $Y_n = O_P(1)$, choose $M$ so that $\sup_{n \geq N} P(|Y_n| > M) \leq \delta$ for som small $\delta > 0$ and all $n \geq N$. Because $|X_n| / |Y_n| \to 0$ in probability, the second term tends to 0 as $n \to \infty$. Hence $\limsup_{n \to \infty} P(|X_n| > \epsilon) \leq \delta$; letting $\delta \downarrow 0$ gives $X_n = o_P(1)$
+
+    Applying the lemma with $Y_n = ||Z_n||$ yields:
+
+    \begin{itemize}
+        \item If $X_n = o(||Z_n||)$ (i.e., $X_n / ||Z_n|| \to 0$ a.s.), then $X_n = o_P(1)$.
+        \item If $X_n = O_P(||Z_n||)$ (i.e., $X_n / ||Z_n|| \to 0$ in probability), then $X_n = o_P(1)$ \qed
+    \end{itemize}
+\end{enumerate}
+
+\hfill 
+
+7. Show that $X_n$ defined in example 2.13 satisfies $X_n \xrightarrow{P} 0$ 
+
+Example 2.13 states: Let $X_n$ be an r.v. with $P(X_n = n) = 1 / n$ and $P(X_n = 0) = 1 - 1/n$. Then $X_n \xrightarrow{P} 0$ (hence also weakly) but $ \mathbb{E}X_n = n \times 1/ n = 1$ for each $n$.
+
+Proof: 
+
+Let $\epsilon > 0$ be fixed. Then 
+
+\begin{itemize}
+    \item if $n \leq \epsilon$, we have $|X_n| \leq n \leq \epsilon$ a.s., so $P(|X_n| > \epsilon) = 0$;
+    \item if $n > \epsilon$, the event $\{|X_n| > \epsilon\}$ is exactly $\{X_n = n\}$, hence $P(|X_n| > \epsilon) = P(X_n = n) = 1/ n$
+\end{itemize}
+
+Therefore, for all sufficiently large $n$ (namely $n > \epsilon)$, $P(|X_n| > \epsilon) = 1 / n \to 0$. Since this holds for every $\epsilon > 0$, we conclude $X_n \xrightarrow{P} 0$.
+
+Moreover, for each $n$,
+
+\begin{gather*}
+    \mathbb{E}[X_n] = n \cdot \frac{1}{n} + 0 \cdot \Big(1 - \frac{1}{n}\Big) = 1
+\end{gather*}
+So the expectations do not converge to 0 even though $X_n \xrightarrow{P} 0$ \qed
+
+\newpage
+
+8. Show that if $(X_n)_{n \in \mathbb{N}}$ is uniformly integrable then $\sup_{n \in \mathbb{N}}\mathbb{E}||X_n|| < \infty$
+
+Using the standard tail characterization of uniform integrability: 
+
+\begin{gather*}
+    \lim_{K \to\infty}\sup_{n \in \mathbb{N}}\mathbb{E}\big[||X_n||\mathbb{1}_{\{||X_n|| > K\}}\big] = 0
+\end{gather*}
+
+Fix, for instance, $\epsilon = 1$. Then $\exists K > 0$ s.t.
+\begin{gather*}
+    \sup_n \mathbb{E}\big[||X_n||\mathbb{1}_{\{||X_n|| > K\}}\big] \leq 1
+\end{gather*}
+
+For any $n$,
+\begin{gather*}
+    \mathbb{E}||X_n|| = \mathbb{E}\big[||X_n||\mathbb{1}_{\{||X_n|| \leq K\}}\big] + \mathbb{E}\big[||X_n||\mathbb{1}_{\{||X_n|| > K\}}\big] \leq K + \mathbb{E}\big[||X_n||\mathbb{1}_{\{||X_n|| > K\}}\big] \leq K + 1
+\end{gather*}
+
+Taking the supremum over $n$ yields 
+
+\begin{gather*}
+    \sup_{n\in \mathbb{N}}\mathbb{E}||X_n|| \leq K + 1 < \infty
+\end{gather*}
+
+Hence a uniformly integrable family is bounded in $L^1$\qed
+
+\hfill 
+
+\newpage
+
+9. Fill in the details for the general case of thm 2.14. Hint: an r.v. $X$ may be written as $X = Y + Z$ with $Y = X \mathbb{1}\{X \geq 0\}$ and $Z = X \mathbb{1}\{X < 0\}$
+
+Thm 2.14 states: \textit{Suppose that $X_n \xrightarrow{D} X$ and $(X_n)_{n \in \mathbb{N}}$ is uniformly integrable. Then X is integrable and $\mathbb{E}X_n \to \mathbb{E}X$}
+
+\textit{Proof}: That $X$ is integrable follows from thm 2.13 since $\sup_{n \in \mathbb{N}} \mathbb{E} ||X_n|| < \infty$. [Exercise]. We give the proof for the case where $X_n$ is a non-negative r.v., leaving the extension to the general case as an exercise. We have for $M \in (0, \infty)$,
+
+\begin{gather*}
+    |\mathbb{E}X_n - \mathbb{E}X| \leq |\mathbb{E}X_n - \mathbb{E}[X_n \land M]| + |\mathbb{E}[X_n \land M] - E[X \land M] - \mathbb{E}X|,
+\end{gather*}
+where $a \land b := \min\{a, b\}$. The function $x \mapsto x \land M$ is a bounded continuous function, so the middle right hand side term converges to zero by $X_n \xrightarrow{D} X$. Since $X_n$ is non-negative, the first right hand side term is upper bounded by $\sup_{n \in \mathbb{N}}\mathbb{E}[||X_n||\mathbb{1}\{||X_n|| > M\}]$ which can be made arbitrarily small by taking $M$ large enough given the uniform integrability. The third term can also be made arbitrarily small by increasing $M$ by either the monotone convergence theorem or the dominated convergence theorem. \qed
+
+\textbf{Proof: }
+
+Let $X_n \xrightarrow{D} X$ and assume that the family $(X_n)$ is uniformly integrable. Write the positive and negative parts as:
+
+\begin{gather*}
+    X_n^+ := X_n \mathbb{1}_{\{X_n \ge 0\}}\quad X_n^- := (-X_n)\mathbb{1}_{\{X_n < 0\}}, \quad\text{s.t.}\\
+    X_n = X_n^+ - X_n^- \text{ and } |X_n| = X_n^+ + X_n^-
+\end{gather*}
+And similarly for $X$.
+
+Uniform integrability passes to these parts. Indeed, for any $K > 0$,
+\begin{gather*}
+    \mathbb{E}[X_n^+\mathbb{1}_{\{X_n^+ > K\}}] \le \mathbb{E}[|X_n|\mathbb{1}_{\{|X_n| > K\}}],
+\end{gather*}
+Hence $(X_n^+)$ is uniformly integrable; likewise $(X_n^-)$ is uniformly integrable because $X_n^- = (-X_n)^+$.
+
+By the continuous mapping theorem applied to the continuous maps $x \mapsto x^+$ and $x \mapsto x^-$,
+
+\begin{gather*}
+    X_n^+ \xrightarrow{D}X^+, \qquad X_n^- \xrightarrow{D}X^-
+\end{gather*}
+
+By the already proved nonnegative case of the theorem, for each of these sequences, 
+
+\begin{gather*}
+    \mathbb{E}[X_n^+] \to \mathbb{E}[X^+], \qquad \mathbb{E}[X_n^-] \to \mathbb{E}[X^-]
+\end{gather*}
+In particular $X^+$ and $X^-$ are integrable, so $X$ is integrable and 
+\begin{gather*}
+    \mathbb{E}[X_n] = \mathbb{E}[X_n^+] - \mathbb{E}[X_n^-] \longrightarrow \mathbb{E}[X^+] - \mathbb{E}[X^-] = \mathbb{E}[X]
+\end{gather*}
+\qed 
+\newpage
+10. Prove lemma 2.10
+
+It states that \textit{If $(X_n)_{n \in \mathbb{N}}$ converges to X weakly and $f : \mathcal{X} \to \mathbb{R}$ is a bounded, continuous function, $\mathbb{E}f(X_n) \to \mathbb{E}f(X)$}
+
+\textbf{Proof:}
+
+To solve this, we can apply Skorokhods theorem: there exists a probability space $(\Omega, \mathcal{F}, \mathcal{P})$ supporting r.vs $Y_n$ and $Y$ s.t.:
+\begin{itemize}
+    \item $Y_n$ has the same distribution as $X_n$ for each $n$,
+    \item $Y$ has the same distribution as $X$,
+    \item $Y_n \xrightarrow{a.s.} Y$
+\end{itemize}
+
+Since $f$ is continuous, $f(Y_n) \xrightarrow{a.s.} f(Y)$. Moreover, since $f$ is bounded (say $|f| \le M$), the sequence\\ $|f(Y_n)| \le M$ is dominated by the integrable constant $M$.
+
+By the dominated convergence theorem,
+\begin{gather*}
+    \mathbb{E}[f(Y_n)] \to \mathbb{E}[f(Y)],
+\end{gather*}
+As $Y_n$ and $X_n$ are equal in distribution, $\mathbb{E}[f(Y_n)] = \mathbb{E}[f(X_n)]$. Similarly $\mathbb{E}[f(Y)] = \mathbb{E}[f(X)]$. Thus,
+\begin{gather*}
+    \mathbb{E}[f(X_n)] \to \mathbb{E}[f(X)]
+\end{gather*}
+\qed 
+
+11. Prove lemma 2.11
+
+It states that \textit{If $(X_n)_{n \in \mathbb{N}}$ is a sequence of random vectors which converges to X in $L_{p}$, then for any \\ $1 \le q \le p, \mathbb{E}||X_n||^q \to \mathbb{E}||X||^q$}
+
+\textbf{Proof:}
+
+Let $Y_n = ||X_n||$ and $Y = ||X||$. These are non-negative r.vs. By the reverse triangle inequality, \\$|Y_n - Y| \le ||X_n - X||$. Let $Z_n = ||X_n - X||$, so $Z_n \to 0$ in $L_p$ (i.e., $\mathbb{E}Z_n^p \to 0$).
+
+Since we are on a probability space and $1 \le q \le p, L_p$-convergence implies $L_q$-convergence: specifically, $\mathbb{E}|W|^q \le (\mathbb{E}|W|^p)^{q/p}$ by Hölder's inequality, so $||W||_q \le ||W||_p$. Thus, $|Y_n - Y| \le Z_n$ implies \\$||Y_n - Y|| \le ||Z_n||_q \le ||Z_n||_p \to 0$, so $Y_n \to Y$ in $L_q$.
+
+\begin{itemize}
+    \item Case $q = p$: Then $\mathbb{E}||X_n||^p \to \mathbb{E}||X||^p$ because $|| ||X_n|| ||_p = ||X_n||_p \to ||X||_p = || ||X|| ||_p$ by the triangle inequality for $L_p$-norms.
+    \item Case $1 \le q \le p$: The family $\{||X_n||^q\}$ is bounded in $L_{p/q}$ with $p/q > 1$, since $\mathbb{E}(||X_n^q||^{p/q}) = \mathbb{E}||X_n||^p$ and $\sup_n \mathbb{E}||X_n||^p < \infty$ (as $||X_n||_p \to ||X||_p < \infty$). A family bounded in $L_r$ for $r > 1$ is uniformly integrable.
+\end{itemize}
+
+Since $Y_n \to Y$ in $L_q$, there exists a subsequence $Y_{n_k} \xrightarrow{a.s.} Y$, so $||X_{n_k}||^q \xrightarrow{a.s.}||X||^q$. By uniform integrability, $\mathbb{E}||X_{n_k}||^q \to \mathbb{E}||X||^q$.
+
+For the full sequence, suppose $\mathbb{E}||X_n||^q \not \to \mathbb{E}||X||^q$. Then there exists $\epsilon > 0$ and a subsequence where $|\mathbb{E}||X_{n_m}||^q - \mathbb{E}||X||^q| \ge \epsilon$. But $X_{n_m} \to X$ in $L_p$, so applying the above yields a subsubsequence contradicting the assumption. Thus $\mathbb{E}||X_n||^q \to \mathbb{E}||X||^q$ \qed
+
+\newpage
+
+12. Prove lemma 2.12
+
+It states: \textit{Suppose there is a uniformly integrable sequence $(Y_n)_{n \in \mathbb{N}}$ s.t. $||X_n|| \le ||Y_n||$ a.s. for each $n \in \mathbb{N}$. Then $(X_n)_{n \in \mathbb{N}}$ is uniformly integrable.}
+
+\textbf{Proof:}
+
+Here it suffices to show that $\sup_n \mathbb{E}[||X_n||] < \infty$ and that for every $\epsilon > 0$, there exists $\delta > 0$ s.t. if $A$ is any event with $\mathbb{P}(A) < \delta$, then $\sup_n \mathbb{E}[||X_n||\mathbb{1}_A] < \epsilon$.
+
+Since $||X_n|| \le ||Y_n||$ a.s., we have 
+
+\begin{gather*}
+    \mathbb{E}[||X_n||] \le \mathbb{E}[||Y_n||] \le \sup_m \mathbb{E}[||Y_m||] < \infty,
+\end{gather*}
+where the finiteness follows from the uniform integrability of $(Y_n)$. Thus $\sup_n \mathbb{E}[||X_n||] < \infty$.
+
+Now fix $\epsilon > 0$. Since $(Y_n)$ is uniformly integrable, there exists $\delta > 0$ s.t. if $\mathbb{P}(A) < \delta$, then \\$\sup_n \mathbb{E}[||Y_n||\mathbb{1}_A] < \epsilon$.
+
+For this $\delta$, if $\mathbb{P}(A) < \delta$, then 
+
+\begin{gather*}
+    \mathbb{E}[||X_n||\mathbb{1}_A] \le \mathbb{E}[||Y_n||\mathbb{1}_A] \le \sup_m \mathbb{E}[||Y_m||\mathbb{1}_A] < \epsilon
+\end{gather*}
+for every $n$, where the first inequality holds because $||X_n|| \le ||Y_n||$ a.s. Thus, $\sup_n \mathbb{E}[||X_n||\mathbb{1}_A] < \epsilon$. \qed
+
+\hfill 
+
+13. Prove lemma 2.13
+
+It states: \textit{Suppose that $(X_n)_{n \in \mathbb{N}}$ and $(Y_n)_{n \in \mathbb{N}}$ are uniformly integrable. Then $(X_n + Y_n)_{n \in \mathbb{N}}$ is uniformly integrable.}
+
+\textbf{Proof:}
+
+Recall the definition of uniform integrability: a family $(Z_n)$ is uniformly integrable if for every $\epsilon > 0$ there exists $\delta > 0$ s.t. for all measurable $A$ with $\mathbb{P}(A) < \delta$,
+\begin{gather*}
+    \sup_n \mathbb{E}[|Z_n| \mathbb{1}_A] < \epsilon
+\end{gather*}
+Assume $(X_n)$ and $(Y_n)$ are uniformly integrable. Let $\epsilon > 0$. Then there exist $\delta_1, \delta_2 > 0$ s.t. for all $A$ with $\mathbb{P}(A) < \delta_1$,
+\begin{gather*}
+    \sup_n \mathbb{E}[|X_n| \mathbb{1}_A] < \epsilon_2,
+\end{gather*}
+and for all $A$ with $\mathbb{P}(A) < \delta_2$,
+\begin{gather*}
+    \sup_n \mathbb{E}[|Y_n| \mathbb{1}_A] < \epsilon_2
+\end{gather*}
+
+Set $\delta := \min\{\delta_1, \delta_2\}$. If $\mathbb{P}(A) < \delta$, then for every $n$,
+\begin{gather*}
+    \mathbb{E}[|X_n + Y_n|\mathbb{1}_A] \le \mathbb{E}[(|X_n| + |Y_n|)\mathbb{1}_A] = \mathbb{E}[|X_n|\mathbb{1}_A] + \mathbb{E}[|Y_n|\mathbb{1}_A]
+\end{gather*}
+Taking sup over $n$ and using $\sup_n (a_n + b_n) \le \sup_n a_n + \sup_n b_n$ yields
+\begin{gather*}
+    \sup_n \mathbb{E}[|X_n + Y_n|\mathbb{1}_A] \le \sup_n \mathbb{E}[|X_n|\mathbb{1}_A] + \mathbb{E}[|Y_n|\mathbb{1}_A] < \epsilon / 2 + \epsilon / 2 = \epsilon
+\end{gather*}
+Hence $(X_n + Y_n)$ is uniformly integrable. \qed
+
+\newpage
+
+14. Prove lemma 2.14
+
+It states that \textit{Let $1 < p, q < \infty$ with $1/p + 1/q = 1$ and suppose that $(||X_n||^p)_{n \in \mathbb{N}}$ and $(||Y_n||^q)_{n \in \mathbb{N}}$ are uniformly integrable. Then $(X_nY_n)_{n \in \mathbb{N}}$ is uniformly integrable.}
+
+\textbf{Proof:}
+
+Recall that a family $\mathcal{F} \subset L^1$ is uniformly integrable (UI) iff 
+\begin{gather*}
+    \lim_{M \to \infty}\sup_{Z \in \mathcal{F}}\mathbb{E}[|Z|\mathbb{1}_{\{|Z| > M\}}] = 0
+\end{gather*}
+In particular, if $\mathcal{F}$ is UI, then $\sup_{Z \in \mathcal{F}}\mathbb{E}|Z| < \infty$ (take $M = 1$).
+
+Set $U_n := |X_n|^p$ and $V_n := |Y_n|^q$. By hypothesis, $(U_n)$ and $(V_n)$ are UI. Hence 
+\begin{gather*}
+    \sup_n \mathbb{E}[U_n] < \infty, \quad \sup_n \mathbb{E}[V_n] < \infty
+\end{gather*}
+By uniform integrability, choose $K > 0$ so large that 
+\begin{gather*}
+    \sup_n \mathbb{E}[U_n \mathbb{1}_{\{U_n > K\}}] < \epsilon^p, \quad \sup_n \mathbb{E}[V_n \mathbb{1}_{\{V_n > K\}}] < \epsilon^q
+\end{gather*}
+Let
+\begin{gather*}
+    M := \frac{K}{p} + \frac{K}{q}
+\end{gather*}
+By Young's inequality, for all $a, b \ge 0$,
+\begin{gather*}
+    ab \le \frac{a^p}{p} + \frac{b^q}{q}
+\end{gather*}
+Applying this with $a = |X_n|, b = |Y_n|$ gives 
+\begin{gather*}
+    |X_nY_n| \le \frac{U_n}{p} + \frac{V_n}{q}
+\end{gather*}
+Therefore, on the event $\{U_n \le K\} \cap \{V_n \le K\}$ we have $|X_nY_n| \le M$. Hence 
+\begin{gather*}
+    \{|X_nY_n| > M\} \subset \{U_n > K\} \cup \{V_n > K\}
+\end{gather*}
+It follows that 
+\begin{gather*}
+    \mathbb{E}[|X_nY_n|\mathbb{1}_{\{U_n > K\}}] \le \big(\mathbb{E}[U_n \mathbb{1}_{\{U_n > K\}}]\big)^{1/p}\big(\mathbb{E}[V_n]\big)^{1/q}
+\end{gather*}
+And similarly:
+\begin{gather*}
+    \mathbb{E}[|X_nY_n|\mathbb{1}_{\{V_n > K\}}] \le \big(\mathbb{E}[U_n]\big)^{1/p}\big(\mathbb{E}[V_n \mathbb{1}_{\{V_n > K\}}]\big)^{1/q}
+\end{gather*}
+Taking suprema over $n$ and using the bounds chosen for $K$, we get
+\begin{gather*}
+    \sup_n \mathbb{E}[|X_nY_n|\mathbb{1}_{\{|X_nY_n| > M\}}] \le \big(\sup_n \mathbb{E}[V_n]\big)^{1/q}\epsilon + \big(\sup_n \mathbb{E}[U_n]\big)^{1/p}\epsilon
+\end{gather*}
+Since $\epsilon > 0$ was arbitrary and $M = K/p + K/q \to \infty$ as $K \to \infty$, this shows 
+\begin{gather*}
+    \lim_{M \to \infty}\sup_{n}\mathbb{E}[|X_nY_n|\mathbb{1}_{\{X_nY_n > M\}}] = 0
+\end{gather*}
+i.e., $(X_nY_n)_{n \in \mathbb{N}}$ is uniformly integrable \qed
+
+\newpage
+
+15. Prove lemma 2.16
+
+It states: \textit{Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random vectors and $X$ a random vector. Then for \\$m \in \{a.s., P, L_p\}, X_n \xrightarrow{m} X \iff X_{n, k}\xrightarrow{m} X_k$}
+
+\textbf{Proof:}
+
+We fix the Euclidean norm $||\cdot||$ on $\mathbb{R}^d$ (any norm would do by norm-equivalence in finite dimensions), and $p \in [1, \infty)$.
+
+Recall that for $x \in \mathbb{R}^d$:
+\begin{gather*}
+    \text{for each }k, |x_k| \le ||x||\\
+    ||x|| \le \sum_{k = 1}^{d}, \text{ hence for } p \ge 1, ||x||^p \le \left(\sum_{k = 1}^{d}|x_k|\right)^p \le d^{p - 1}\sum_{k = 1}^{d}|x_k|^p
+\end{gather*}
+Vector convergence implies coordinate convergence (all three modes):
+\begin{itemize}
+    \item a.s.: if $X_n \xrightarrow{a.s.} X$, then by continuity of the projections $\pi_k(x) = x_k$, we have \\$X_{n, k} = \pi_k(X_n) \to \pi_k(X) = X_k$ a.s.
+    \item In probability: same by the continuous mapping theorem, or directly from $|X_{n, k} - X_k| \le ||X_n - X||$.
+    \item In $L_p$: $|X_{n, k} - X_k|^p \le ||X_n - X||^p$, so $\mathbb{E}|X_{n, k} - X_k|^p \le \mathbb{E}||X_n - X||^p \to 0$.
+\end{itemize}
+Coordinate convergence implies vector convergence: 
+\begin{itemize}
+    \item a.s.: if $X_{n, k} \xrightarrow{a.s.} X_k \forall k$, then on the intersection of the probability-1 events, for any $\epsilon > 0, \exists N(\omega)$ with $|X_{n, k}(\omega) - X_k(\omega)| < \epsilon/\sqrt{d}\quad\forall k$ and $n \ge N(\omega)$. Hence $||X_n(\omega) - X(\omega)|| \le \sqrt{\sum_k (\epsilon^2 / d)} = \epsilon$, so $X_k \xrightarrow{a.s.}X$.
+    \item In probability: for any $\epsilon > 0$:
+    \begin{gather*}
+        \{||X_n - X|| > \epsilon\} \subset \bigcup_{k = 1}^{d}\{|X_{n, k} - X_k| > \epsilon / \sqrt{d}\},
+    \end{gather*}
+    thus 
+    \begin{gather*}
+        \mathbb{P}(||X_n - X|| > \epsilon) \le \sum_{k = 1}^{d}\mathbb{P}(|X_{n, k} - X_k| > \epsilon / \sqrt{d}) \to 0
+    \end{gather*}
+    \item in $L_p$: by the inequality above:
+    \begin{gather*}
+        \mathbb{E}||X_n - X||^p \le d^{p - 1}\sum_{k = 1}^{d}\mathbb{E}|X_{n, k} - X_k|^p \to 0
+    \end{gather*}
+    $\therefore$ for $m \in \{a.s., P, L_p\}$,
+    \begin{gather*}
+        X_n \xrightarrow{m} X \iff X_{n, k} \xrightarrow{m}X_k \text{ for each }k = 1, …, d
+    \end{gather*}
+    \qed
+\end{itemize}
+
+\newpage
+
+16. Fill in the missing details in the proof of Prop. 2.14:
+
+Proposition 2.14 states that:
+
+\textit{Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of random vectors and X a random vector. Then $X_n \xrightarrow{D}X$ implies that \\$X_{n, k} \xrightarrow{D}X_k$ but $X_{n, k} \xrightarrow{D}$ does not imply that $X_n \xrightarrow{D}X$.}
+
+\textbf{Proof:}
+
+Let $f$ be a bounded continuous function from $\mathbb{R} \to \mathbb{R}$. Then $g := f \circ \pi_k$ is a bounded continuous function from $\mathbb{R}^K \to \mathbb{R}$ where $\pi_k(x) := x_k$. Then $\mathbb{E}f(X_{n, k}) = \mathbb{E}g(X_n) \to Eg(x) = \mathbb{E}f(X_k)$, hence $X_{n, k} \xrightarrow{D}X_k$.
+
+For the converse, let $Z \sim \mathcal{N}(0, 1)$ and set $X_n = (Z, (-1)^nZ)$. Both $X_{n, 1}$ and $X_{n, 2}$ are standard normal for each $n$, and hence weakly converge to $Z$ [Why?]. $X_n$ does not weakly converge to a limit. If it did, then we would have $\mathbb{E}[X_{n, 1}X_{n, 2}] \to \mathbb{E}[X_1X_2]$ where $X $ is the hypothesised weak limit [Why?]. But $\mathbb{E}[X_{n, 1}X_{n, 2}] = (-1)^n \mathbb{E}[Z^2] = (-1)^n $ which does not converge. \qed
+
+\begin{enumerate}
+    \item Why do $X_{n, 1}$ and $X_{n, 2}$ weakly converge to $X $?
+    
+    Here $X_n = (Z, (-1)^nZ)$ with $Z \sim \mathcal{N}(0, 1)$. Thus, $X_{n, 1} = Z \sim \mathcal{N}(0, 1)\quad\forall n $, and $X_{n, 2} = (-1)^nZ \stackrel{d}{=} Z $ because the standard normal law is symmetric. Hence both coordinate laws are identically $\mathcal{N}(0, 1)\quad\forall n $, so the (constant) sequences of distributions trivially converge to $\mathcal{N}(0, 1)$; i.e., $X_{n, 1}\xrightarrow{D}Z $ and \\$X_{n, 2} \xrightarrow{D}Z$.
+    \item Why would $\mathbb{E}[X_{n, 1}X_{n, 2}] \to \mathbb{E}[X_1X_2]$ if $X_n \xrightarrow{D} X $?
+    
+    Let $h : \mathbb{R}^2 \to \mathbb{R}$ be $h(x_1, x_2) = x_1x_2 $, which is continuous. By the Continuous Mapping Theorem, $h(X_n) \xrightarrow{D} h(X)$, that is, $X_{n, 1}X_{n, 2} \xrightarrow{D} X_1X_2 $. In our example, $X_{n, 1}X_{n, 2} = (-1)^nZ^2 $, so \\$|X_{n, 1}X_{n, 2}| = Z^2 \quad\forall n $ and $\mathbb{E}[Z^2] = 1 < \infty $. Therefore the family $\{X_{n, 1}X_{n, 2}\}$ is uniformly integrable. Convergence in distribution together with uniform integrability implies convergence of expectations, hence $\mathbb{E}[X_{n, 1}X_{n, 2}] \to \mathbb{E}[X_1X_2]$
+
+    But here $\mathbb{E}[X_{n, 1}X_{n, 2}] = (-1)^n \mathbb{E}[Z^2] = (-1)^n $, which does not converge, a contradiction. Thus $(X_n)$ does not converge in distribution. \qed
+\end{enumerate}
+
+\newpage
+
+17. Prove Corollary 2.5
+
+It states that \textit{if $\frac{1}{n}\sum_{i = 1}^{n}\mu_i\to\mu $ as $n\to \infty $, then }
+\begin{gather*}
+    \frac{1}{n}\sum_{i = 1}^{n}X_i \xrightarrow{P}\mu
+\end{gather*}
+
+\textbf{Proof:}
+
+The r.vs satisfy Markov's WLLN. Let $S_n = \frac{1}{n}\sum_{i = 1}^{n}X_i $ and $m_n = \sum_{i = 1}^{n}\mu_i $. Then 
+\begin{gather*}
+    P(|S_n - \mu| > \epsilon) \le P(|S_n - m_n| > \epsilon / 2) + \mathbb{1}_{\{|m_n - \mu| > \epsilon / 2\}}
+\end{gather*}
+By assumption $m_n \to \mu $, so the indicator term vanishes for large $n $. For the first term, Chebyshev's inequality gives 
+\begin{gather*}
+    P(|S_n - m_n| > \epsilon /2) \le \frac{4}{\epsilon^2}\text{Var}(S_n)
+\end{gather*}
+Using uncorrelatedness,
+\begin{gather*}
+    \text{Var}(S_n) = \text{Var}\Big(\frac{1}{n}\sum_{i = 1}^{n}(X_i - \mu_i)\Big) = \frac{1}{n^2}\sum_{i = 1}^{n}\text{Var}(X_i)\xrightarrow[n \to \infty]{}0
+\end{gather*}
+Hence $P(|S_n - \mu| > \epsilon) \to 0$, i.e., $\frac{1}{n}\sum_{k = 1}^{n}X_i \xrightarrow{P}\mu $ \qed 
+
+Remark: if $\sup_i \text{Var}(X_i) \le C < \infty $, then $\text{Var}(S_n) \le C / n \to 0 $, which is a common and easy-to-check sufficient condition.
+
+18. Prove the following WLLN: 
+
+\textsc{Theorem [$L_2$ WLLN]}: \textit{If} $(X_n)_{n \in \mathbb{N}} $ \textit{are uncorrelated r.vs with $\mathbb{E}X_i = \mu $ and $\text{Var}(X_i) \le C < \infty $ then $\frac{1}{n}\sum_{i = 1}^{n} $ converges to $\mu $ in $L_2 $ and end in probability.}
+
+\textbf{Proof:}
+
+Let $\bar{X}_n = \frac{1}{n}\sum_{i = 1}^{n}X_i$. Since $\mathbb{E}X_i = \mu $ for all $i $, we have $\mathbb{E}\bar{X}_n = \mu $
+
+Because the $X_i $ are uncorrelated,
+\begin{gather*}
+    \text{Var}(\bar{X}_n) = \text{Var}\left(\frac{1}{n}\sum_{i = 1}^{n}X_i\right) = \frac{1}{n^2}\sum_{i = 1}^{n}\text{Var}(X_i) \le \frac{1}{n^2} \cdot nC = \frac{C}{n}
+\end{gather*}
+Therefore 
+\begin{gather*}
+    \mathbb{E}[(\bar{X}_n - \mu)^2] = \text{Var}(\bar{X}_n) \to 0
+\end{gather*}
+so $\bar{X}_n \to \mu $ in $L_2 $ \qed
+
+\newpage
+
+19. Draw $M = 5000 $ samples of size $n = 400k $ for $k = 1, …, 7 $ from the model: 
+\begin{gather*}
+    X = \mu + \epsilon, \qquad \epsilon \sim t(15), \quad \mu = 1
+\end{gather*}
+
+Let $\hat{\mu}_n := \frac{1}{n}\sum_{i = 1}^{n}X_i $ and calculate (i) the empirical probability that the distance between $\hat{\mu}_n $ and $\mu $ is greater than 0.05: $\frac{1}{n}\sum_{i = 1}^{n}\mathbb{1}_{\{{|\hat{\mu}_{n, i} - \mu| > 0.05\}}}$ and (ii) the (empirical) mean squared error $\frac{1}{n}\sum_{i = 1}^{n}(\hat{\mu}_{n, i} - \mu)^2 $ in our sample. Plot these and comment on how the results relate to Thm. 2.15 and the preceding exercise.
+
+\textsc{Theorem 2.15} [Weak law of large numbers, i.i.d.]: \textit{If $(X_n)_{n\in \mathbb{N}}$ is an i.i.d. sequence of random vectors with $\mathbb{E}||X_1|| < \infty $, then for $\mu := \mathbb{E}X_1 $ as $n \to \infty $,}
+\begin{gather*}
+    \frac{1}{n}\sum_{i = 1}^{n}X_i \xrightarrow{P}\mu
+\end{gather*}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plot1.png}
+    \label{fig:simulation}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{plot2.png}
+    \label{fig:simulation}
+\end{figure}
+As $n $ increases: 
+\begin{itemize}
+    \item $P(|\hat{\mu} - \mu| > 0.05) $ decreases to 0 (convergence in probability)
+    \item MSE($\hat{\mu}$) decreases to 0 (consistent estimator)
+\end{itemize}
+This demonstrates the WLLN
+\begin{itemize}
+    \item The $t(15)$ distribution has finite mean $(\mu = 1)$ and finite variance $(15 / 13 \approxeq 1.154) $
+    \item Since $\mathbb{E}[|X_1|] < \infty $, the conditions of the WLLN are satisified
+    \item The empirical results confirm that $\hat{\mu}_n \to \mu $ as $n \to \infty $
+\end{itemize}
+\newpage
+20. Prove Corollary 2.6 [Multivariate CLT, i.i.d.]
+
+It states that \textit{If $(X_n)_{n\in \mathbb{N}}$ is an i.i.d. sequence of random vectors with $\text{Var}(X_1) = \Sigma (||\Sigma|| < \infty) $, then for $\mu := \mathbb{E}X_1 $, as $n \to \infty $}
+\begin{gather*}
+    \frac{1}{\sqrt{n}}\sum_{i = 1}^{n}(X_i - \mu) \xrightarrow{D}\mathcal{N}(0, \Sigma)
+\end{gather*}
+\textbf{Proof:}
+
+Let $Y_i := X_i - \mu $ and $S_n := \frac{1}{\sqrt{n}}\sum_{i = 1}^{n}Y_i $. Fix $t \in \mathbb{R}^d $. Then the scalar r.vs $t^\top Y_i $ are i.i.d. with mean $0 $ and variance $(t^\top Y_1)=t^\top\Sigma t<\infty$. By the (univariate) central limit theorem,
+\begin{gather*}
+    t^\top S_n = \frac{1}{\sqrt{n}}\sum_{i = 1}^{n}t^\top Y_i \xrightarrow{D} \mathcal{N}(0, t^\top\Sigma t)
+\end{gather*}
+Let $Z \sim \mathcal{N}(0, \Sigma)$. Then for every $t \in \mathbb{R}^d, t^\top Z \sim \mathcal{N}(0, t^\top\Sigma t)$. Hence $t^\top S_n \xrightarrow{D}t^\top Z\quad\forall t $. By the Cramér-Wold device (equivalently, Lévy's continuity theorem), this implies $S_n \xrightarrow{D}Z $. Therefore 
+\begin{gather*}
+    \frac{1}{\sqrt{n}}\sum_{i = 1}^{n}(X_i - \mu) \xrightarrow{D}\mathcal{N}(o, \Sigma)
+\end{gather*}
+This remains true even if $\Sigma $ is singular (the limit is then a degenerate Gaussian on a subspace). \qed
 
 
 \end{document}
