@@ -1,0 +1,321 @@
+\documentclass[10pt]{article}
+\setcounter{secnumdepth}{0}
+
+\usepackage{parskip}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{href-ul}
+\usepackage{dsfont}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green!50!black},
+    showstringspaces=false,
+    numbers=left,
+    % numberstyle=\color{gray},
+    frame=single,
+    breaklines=true,
+    tabsize=4,
+    captionpos=b,
+    title=\lstname,
+    % Add more keywords if needed
+    morekeywords={lambda, with, as, yield, async, await}
+}
+
+
+\usepackage[style=alphabetic, backend=biber]{biblatex}
+\addbibresource{references.bib}  
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Midterm}
+\author{
+GRA4153 Advanced Statistics}
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Question 1}
+
+Let $X $ be a random variable and $\mu := \mathbb{E}[X];$ we are interested in bounds on the function
+
+\begin{gather*}
+    \alpha(t) := P(|X - \mu| > t),
+\end{gather*}
+
+for $t > 0 $
+
+\begin{enumerate}[label=(\roman*)]
+    \item In class we used Markov's inequality to derive a bound on $\alpha (t)$. Derive such a result, under the assumption that X has a finite $p$-th moment (for $p \ge 1 $), i.e. $\mathbb{E}|X|^p < \infty $.
+
+    By Markov's inequality applied to $Y = |X - \mu|^p $, $\quad $ \cite[\textsc{Theorem 2.3}]{notes}
+    \begin{gather*}
+        P(|X - \mu| > t) = P(|X - \mu|^p > t^p) \le \frac{\mathbb{E}|X - \mu|^p}{t^p}.
+    \end{gather*}    
+    \qed
+
+    \item We shall provide a much better bound for the case where $X \sim \mathcal{N}(\mu, \sigma^2) $. In particular we will show that 
+    \begin{gather}
+        \alpha(t) \le \frac{\sigma}{t} \frac{2}{\sqrt{2\pi}}\exp(-t^2 / (2\sigma^2))
+    \end{gather}
+    \begin{enumerate}[label=(\alph*)]
+        \item We consider first the case where $X \sim \mathcal{N}(0, 1) $, Express $\alpha $ as an integral \cite[\textsc{Example 2.6}]{notes}. 
+        \begin{gather*}
+            \alpha(t) = P(|X| > t) = P(X > t) + P(X < -t) = 2P(X > t) = 2 \int_{t}^{\infty}\frac{1}{\sqrt{2\pi}}\exp(-x^2/2) dx
+        \end{gather*}
+        \item Use the change of variables $x = t + y $ to simplify the integral and attain (1) for the standard normal case.
+        
+        We use the substitution $x = t + y $ (so $dx = dy $) to get 
+        \begin{gather*}
+            % \alpha(t) = 2 \int_{0}^{\infty}\frac{1}{\sqrt{2\pi}}\exp\big(-(t + y)^2/2\big) dy = \frac{2}{\sqrt{2\pi}}\exp(-t^2 / 2)\int_{0}^{\infty}\exp(-ty)\exp(-y^2/2) dy
+            \alpha(t) = \frac{2}{\sqrt{2\pi}}\int_{0}^{\infty}\exp\big(-(t + y)^2 / 2\big) dy = \\
+            \frac{2}{\sqrt{2\pi}}\exp(-t^2 / 2)\int_{0}^{\infty}\exp(-ty-y^2 / 2) dy \le \frac{2}{\sqrt{2\pi}}\exp(-t^2 / 2) \int_{0}^{\infty}\exp(-ty) dy = \\
+            \frac{2}{\sqrt{2\pi}}\exp(-t^2 / 2)\cdot \frac{1}{t},\quad t > 0
+        \end{gather*}
+        Thus, for $X \sim \mathcal{N}(0, 1)$,
+        \begin{gather*}
+            \alpha(t) \le \frac{2}{t\sqrt{2\pi}}\exp(-t^2 / 2)
+        \end{gather*}
+        \newpage
+        \item For the general case $X \sim \mathcal{N}(\mu, \sigma^2)$, let $Z = (X - \mu) / \sigma \sim \mathcal{N}(0, 1)$. Then 
+        \begin{gather*}
+            \alpha(t) = P(|X - \mu| > t) = P(|Z| > t / \sigma) \le \frac{2}{(t / \sigma)\sqrt{2\pi}}\exp\left(-\frac{(t / \sigma)^2}{2}\right) = \frac{\sigma}{t}\frac{2}{\sqrt{2\pi}}\exp\left(-\frac{t^2}{2\sigma^2}\right)
+        \end{gather*}
+        Comparison with part $(i)$: The bound in $(i)$ decays polynomially as $t^{-p}$, while the Gaussian bound decays exponentially in $t^2 $, which is dramatically sharper for large $t $.
+    \end{enumerate}
+    \item Now we'll derive a slightly looser exponential bound for the normal distribution using an alternative approach which is more easily generalizable. Specifically, this approach is applicable whenever the MGF exists. In the Gaussian case we get:
+    \begin{gather}
+        \alpha(t) \le 2 \exp\big(-t^2 / (2\sigma^2)\big)
+    \end{gather}
+    \begin{enumerate}[label=(\alph*)]
+        \item We consider first the case where $X \sim \mathcal{N}(0, 1)$. We will use Markov's inequality, but in a clever way: argue that, for $\lambda > 0 $,
+        \begin{gather*}
+            P(X > t) = P\big(\exp(\lambda X) > \exp(\lambda t)\big)
+        \end{gather*}
+        Because the exponential is strictly increasing when $\lambda > 0 $, the events are identical. For any real numbers $x, t, \lambda > 0, \quad x > t \iff \exp(\lambda x) > \exp(\lambda t)$. Therefore, for any random variable $X $ and $t \in \mathbb{R}, P(X > t) = P\big(\exp(\lambda X) > \exp(\lambda t)\big)$
+        \\
+        \item Use Markov's inequality to provide a bound for the preceding display.
+        
+        We apply Markov to the nonnegative r.v. $Y = \exp(\lambda X)$:
+        \begin{gather*}
+            P(X > t) = P\big(\exp(\lambda X) > \exp(\lambda t)\big) \le \frac{\mathbb{E}[\exp(\lambda X)]}{\exp(\lambda t)}
+        \end{gather*}
+        % For $X \sim \mathcal{N}(0, 1)$, $\mathbb{E}[\exp(\lambda X)] = \exp(\lambda^2 / 2)$, so 
+        % \begin{gather*}
+        %     P(X > t) \le \exp\left(\frac{\lambda^2}{2} - \lambda t\right) = \exp\left(\frac{1}{2}(\lambda - t)^2 - \frac{t^2}{2}\right)
+        % \end{gather*}
+        % Minimizing in $\lambda > 0 $ gives $\lambda = t $ (for $t \ge 0 $), yielding 
+        % \begin{gather*}
+        %     P(X > t) \le \exp(-t^2 / 2)
+        % \end{gather*}
+        % By symmetry, for $t \ge 0 $,
+        % \begin{gather*}
+        %     \alpha(t) = P(|X| \ge t) \le 2\exp(-t^2 / 2).
+        % \end{gather*}
+        % For $X \sim \mathcal{N}(0, \sigma^2)$, apply the bound to $X / \sigma $ to get 
+        % \begin{gather*}
+        %     \alpha(t) \le 2\exp\big(-t^2 / (2\sigma^2)\big)
+        % \end{gather*}
+        \item Choose the best possible $\lambda > 0 $ and use this to provide a bound for $\alpha(t)$
+        
+        Here we need to optimize over $\lambda > 0$, i.e. we need to derive $f(\lambda) = -\lambda t + \frac{\lambda^2}{2} \to f'(\lambda) = -t + \lambda = 0 $; the exponent $-\lambda t + \lambda^2 / 2 $ is minimized at $\lambda = t $, giving
+        \begin{gather*}
+            P(X > t) \le \exp(-t^2 / 2) \quad\Rightarrow\quad\alpha(t) = 2P(X > t) \le 2\exp(-t^2 / 2)
+        \end{gather*}
+        % The Markov bound with $p = 2 $ gives $\alpha(t) \le \frac{\sigma^2}{t^2} $, while the normal bound gives exponential decay, which is much tighter for large $t $.
+
+        \item Use the bound for the case $\mathcal{N}(0, 1)$ to derive a bound for the case $\mathcal{N}(\mu, \sigma^2) $
+        
+        Comment on how this approach could be used to bound $\alpha(t) $ for random variables other than $X \sim \mathcal{N}(\mu, \sigma^2)$.
+
+        We have the standard normal from $c $:
+        \begin{gather*}
+            \alpha(t) = 2P(X > t) \le 2\exp(-t^2 / 2)
+        \end{gather*}
+        Then we can plug in the standardized variable:
+        \begin{gather*}
+            Z = \frac{X - \mu}{\sigma} \sim \mathcal{N}(0, 1)
+        \end{gather*}
+
+        Hence, for any $t > 0 $,
+        \begin{gather*}
+            \alpha(t) = P(|X - \mu| > t) = P\left(\left|\frac{X - \mu}{\sigma}\right| > \frac{t}{\sigma} \right) = P(|Z| > t/\sigma) \le 2\exp\big(-\frac{1}{2}(t / \sigma)^2\big) = 2\exp\left(-\frac{t^2}{2\sigma^2}\right)
+        \end{gather*}
+
+
+        % For $X \sim \mathcal{N}(\mu, \sigma^2)$, apply the same to $X - \mu \quad$ (for $t \ge 0 $):
+        % \begin{gather*}
+        %     P(X - \mu > t) \le \exp\left(-\lambda t + \frac{\lambda^2\sigma^2}{2}\right)
+        % \end{gather*}
+        % optimized at $\lambda = t / \sigma^2 $, which gives 
+        % \begin{gather*}
+        %     P(X - \mu > t) \le \exp\left(-\frac{t^2}{2\sigma^2}\right), \quad \alpha(t) \le 2 \exp\left(-\frac{t^2}{2\sigma^2}\right)
+        % \end{gather*}
+        Equivalently, using the Gaussian MGF $M_X(\lambda) = \exp(\lambda\mu + \frac{1}{2}\lambda^2\sigma^2)$ and the shift-scaling property $M_{aX + b}(t) = \exp(bt)M_X(at)$ \cite[Appendix A, \textsc{Lemma 2} and \textsc{Proposition 2}]{appendix}, the same bound follows.
+        
+        Generalization beyond Gaussian: If $X $ has an MGF in a neighborhood of $0 $, Chernoffs method gives, for any $\lambda > 0 $,
+        \begin{gather*}
+            P(X - \mu \ge t) \le \exp\big(\psi(\lambda) - \lambda t\big), \quad\psi(\lambda):=\log \mathbb{E}\big[\exp\big(\lambda(X - \mu)\big)\big],
+        \end{gather*}
+        and the tightest bound is obtained by minimizing the RHS over $\lambda > 0 $. A two-sided bound follows by symmetry or by applying the same argument to $-(X - \mu)$. This is the standard Chernoff bound technique and applies widely to sub-Gaussian and other light-tailed distributions \cite[Chapter 2, sec. 2.3]{Vershynin2018}.
+    \end{enumerate}
+    
+\end{enumerate}
+
+\section{Question 2}
+
+We test $H_0: \theta = \theta_0 $ vs. $H_1 = \theta \in \Theta_1 $, with a continuous statistic $T(X) $ where larger $T $ favors $H_1 $.
+
+\begin{enumerate}[label=(\roman*)]
+    \item Show that $p(x) = P_{\theta_0}\big(T(X) \ge T(x)\big)$ is a valid p-value.
+    
+    Let $F_0 $ be the CDF of $T(X)$ under $\theta_0 $. By continuity, $U := F_0\big(T(X)\big) \sim U(0, 1)$ (probability integral transform \cite[Appendix B, \textsc{Theorem} 1]{appendix}). Let $X'$ be an independent copy of $X $ under $H_0 $. Then 
+    \begin{gather*}
+        p(X) = P_{\theta_0}\big(T(X') \ge T(X) | X\big) = 1 - F_0\big(T(X)\big) = 1 - U
+    \end{gather*}
+    because $T(X') \sim F_0 $ and continuity implies $P\big(T(X')\ge t\big) = 1 - F_0(t)$. Hence, for any $\alpha \in [0, 1]$,
+    \begin{gather*}
+        P_{\theta_0}\big(p(X) \le \alpha\big) = P(1 - U \le \alpha) = P(U \ge 1 - \alpha) = \alpha,
+    \end{gather*}
+    so $p $ is valid.
+
+    \item Show that $\phi(X) = \mathds{1}\{p(X) \le \alpha\}$ is a level $\alpha $ test for $H_0 $ against $H_1 $.
+    
+    Under $H_0$,
+    \begin{gather*}
+        \mathbb{E}_{\theta_0}[\phi(X)] = P_{\theta_0}\big(p(X) \le \alpha\big) = \alpha \quad\text{(since we have continuity in (i))},
+    \end{gather*}
+    so $\phi $ is level $\alpha $.
+
+    \item Consider the special case where $X \sim \mathcal{N}(\theta, 1)$ and we want to test $H_0: \theta = 0 $ against $H_1 : \theta \neq 0 $. Provide an explicit formula for a valid p-value.
+    
+    We take the two-sided statistic $T(X) = |X| $. Under $H_0, Z := X \sim \mathcal{N}(0, 1)$. By the definition $p(x) = P_0\big(T(Z) \ge T(x)\big)$, using $T(X) = |X|$ (and equivalently, $T(X) = X^2 $):
+    \begin{gather*}
+        p(x) = P\big(|Z| \ge |x|) = 2(1 - \Phi(|x|)\big) = 2\Phi(-|x|),
+    \end{gather*}
+    where $\Phi $ is the standard normal CDF.
+
+    Equivalently, using $T(X) = X^2 $ (so $T(Z) \sim \chi^2 $ with 1 degree of freedom): 
+    \begin{gather*}
+        p(x) = P(\chi^2_1 \ge x^2).
+    \end{gather*}
+    Because the null distribution is continuous, this $p$-value is exact, and hence valid.
+
+    \item Suppose that for each $\alpha \in [0, 1]$ a critical value $c_\alpha $ can be chosen s.t. $\psi_\alpha(X) = \mathds{1}\{T(X) \ge c_\alpha\}$ is a size $\alpha $ test of $H_0 $ against $H_1 $. Use this family of tests to show that the p-value defined in (i) is the smallest $\alpha $ level at which we can reject $H_0 $, having observed the statistic $T(x)$.
+    
+    Assume for each $\alpha \in [0, 1] \quad\exists c_\alpha $ with $\psi_\alpha(X) = \mathds{1}\{T(X) \ge c_\alpha\}$ a size-$\alpha $ test. Under continuity, size $\alpha $ means
+    \begin{gather*}
+        P_{\theta_0}\big(T(X) \ge c_\alpha\big) = \alpha \quad\Rightarrow\quad c_\alpha = F_0^{-1}(1 - \alpha).
+    \end{gather*}
+    Then, for observed $T(x)$,
+    \begin{gather*}
+        \psi_\alpha(x) = 1 \iff T(x) \ge c_\alpha \iff F_0\big(T(x)\big) \ge 1 - \alpha \iff \alpha \ge 1 - F_0\big(T(x)\big) = p(x).
+    \end{gather*}
+    Thus the smallest $\alpha $ for which $\psi_\alpha $ rejects is exactly $p(x)$
+\end{enumerate}
+
+\newpage
+
+\section{Question 3}
+
+We observe independent Bernoulli samples $X_1, …, X_{n_1}$ with mean $p_1 $ and $Y_1, …, Y_{n_2} $ with mean $p_2 $, and set 
+\begin{gather*}
+    \hat{p}_1 = \frac{1}{n_1}\sum_{i = 1}^{n_1}X_i, \quad \hat{p}_2 = \frac{1}{n_2}\sum_{i = 1}^{n_2}Y_i, \quad \hat{p} = \frac{1}{n_1 + n_2}\left[\sum_{i = 1}^{n_1}X_i + \sum_{i = 1}^{n_2}Y_i\right]
+\end{gather*}
+Let $s_i^2 := \frac{1}{n_i}\sum_{j = 1}^{n_i}(W_{ij} - \hat{p}_i)^2 $ for $W = X $ for $i = 1 $ and $W = Y $ for $i = 2 $ Define 
+\begin{gather*}
+    \hat{Z}_1 = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}(1 - \hat{p})\Big(\frac{1}{n_1} + \frac{1}{n_2}\Big)}}, \quad \hat{Z}_2 = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\frac{\hat{p}_1(1 - \hat{p}_1)}{n_1} + \frac{\hat{p}_2(1 - \hat{p}_2)}{n_2}}}, \quad \hat{Z}_3 = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+\end{gather*}
+\begin{enumerate}[label=(\roman*)]
+    \item Comment on the difference between the three tests. Ideally you should explain \textit{why} these tests have different forms in the denominator.
+    
+    \begin{itemize}
+        \item $\hat{Z}_1 $ (pooled): Uses the pooled estimator of the common variance under $H_0 $, namely \\$p(1 - p)(1 / n_1 + 1 / n_2)$ with $p $ estimated by the pooled proportion $\hat{p}$. This enforces $H_0 $ in the variance estimate and is the classical two-sample proportion z-test for hypothesis testing, namely because it uses the pooled MLE. The main difference between this estimator and the others mentioned, is that it is more robust under $H_0 $.
+        \item $\hat{Z}_2 $ (unpooled): Uses a plug-in variance that does not impose $H_0 $, so it is natural for confidence intervals on $p_1 - p_2 $. As a test for $H_0 $, it can be slightly conservative or anti-conservative in finite samples, especially when $p $ is near 0 or 1 or the groups are unbalanced. In other words, this estimator aligns with interval estimation for $p_1 - p_2 $.
+        \item $\hat{Z}_3 $ (studentized by sample variance): Here $s_i^2 = \frac{1}{n_i}\sum_{j = 1}^{n_i}(W_{ij} - \hat{p}_i)^2 , \quad W = X \text{ if } i = 1, \\W = Y \text{ if } i = 2$ is the sample second central moment with denominator $n_i $ (not $n_i - 1 $). For Bernoulli data, $s_i^2 = \hat{p}_1(1 - \hat{p}_1)$ exactly, because $W_{ij}^2 = W_{ij}$. \\$\frac{1}{n_i}\sum_{j = 1}^{n_i}(W_{ij} - \hat{p}_i)^2 = \frac{1}{n_i}\sum W_{ij} - \hat{p}_i^2 = \hat{p}_i - \hat{p}_i^2 = \hat{p}_i(1 - \hat{p}_i)$, therefore $Z_3 \equiv Z_2 $, which implies that they will overlap. If one had used the unbiased sample variance with denominator $n_i - 1 $, the difference would vanish asymptotically.
+    \end{itemize}
+    
+    \item Explore the performance of these three tests in a simulation
+    
+    Here we need to fix our $M $ (I'll do 5000 because the question suggests it). Furthermore, we need to simulate $M$ independent datasets for chosen $(p_1, p_2, n_1, n_2)$, and then compute $\hat{Z}_1, \hat{Z}_2, \hat{Z}_3 $ for each, and apply the two-sided rule with critical value $c = z_{1 - \alpha / 2}$, and estimate rejection probabilities by the fraction of rejections. Then we'll repeat over a grid of scenarios to examine size $(p_1 = p_2)$ and power $(p_1 \neq p_2)$, plus the effect of $n_1, n_2 $ and extremeness of $p_1, p_2 $.
+    
+    \newpage
+    
+    % \lstinputlisting[label={lst:python_code}]{task_three.py}
+    \newpage
+    
+    Which outputs
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            $p_1 $ & $p_2 $ & $n_1 $ & $n_2 $ & reject $Z_1 $ & reject $Z_2 $ & reject $Z_3 $\\
+            \hline 
+            0.10 & 0.10 & 50  & 50  & 0.048 & 0.057 & 0.057 \\
+            0.10 & 0.10 & 200 & 200 & 0.048 & 0.051 & 0.051 \\
+            0.10 & 0.10 & 50  & 200 & 0.049 & 0.074 & 0.074 \\
+            0.50 & 0.50 & 50  & 50  & 0.057 & 0.057 & 0.057 \\
+            0.50 & 0.50 & 200 & 200 & 0.050 & 0.050 & 0.050 \\
+            0.50 & 0.50 & 50  & 200 & 0.055 & 0.057 & 0.057 \\
+            0.90 & 0.90 & 50  & 50  & 0.050 & 0.059 & 0.059 \\
+            0.90 & 0.90 & 200 & 200 & 0.047 & 0.051 & 0.051 \\
+            0.90 & 0.90 & 50  & 200 & 0.048 & 0.071 & 0.071 \\
+            0.10 & 0.20 & 50  & 50  & 0.308 & 0.314 & 0.314 \\
+            0.10 & 0.20 & 200 & 200 & 0.815 & 0.815 & 0.815 \\
+            0.10 & 0.20 & 50  & 200 & 0.365 & 0.523 & 0.523 \\
+            0.40 & 0.60 & 50  & 50  & 0.541 & 0.542 & 0.542 \\
+            0.40 & 0.60 & 200 & 200 & 0.980 & 0.980 & 0.980 \\
+            0.40 & 0.60 & 50  & 200 & 0.728 & 0.728 & 0.728 \\
+            0.70 & 0.50 & 50  & 50  & 0.543 & 0.546 & 0.546 \\
+            0.70 & 0.50 & 200 & 200 & 0.984 & 0.984 & 0.984 \\
+            0.70 & 0.50 & 50  & 200 & 0.746 & 0.762 & 0.762 \\
+            \hline 
+        \end{tabular}
+    \end{center}
+
+    What does all this mean?
+
+    In the $H_0 $ cases (nominal $\alpha = 0.05 $):
+    \begin{itemize}
+        \item Balanced, moderate $n$: $p_1 = p_2 = 0.50, n_1 = n_2 = 200 \to \hat{Z}_1 = 0.05, \hat{Z}_2 = 0.05, \hat{Z}_3 = 0.05$. Excellent calibration for all. 
+        \item Balanced, smaller $n$: $p_1 = p_2 = 0.10 $ or $0.90, n1 = n2 = 50 \to \hat{Z}_1 \approx 0.048 - 0.05, \hat{Z}_2 = \hat{Z}_3 \approx 0.057 - 0.059.\quad \hat{Z}_2 / \hat{Z}_3$ a tad liberal.
+        \item Unbalanced, extreme $p $: $p_1 = p_2 = 0.10 $ or $0.90, n_1 = 50, n2 = 200 \to \hat{Z}_1 \approx 0.048 - 0.049 $ (on target), $\hat{Z}_2 = \hat{Z}_3 \approx 0.071 - 0.074 $ (noticeably liberal).
+    \end{itemize}
+
+
+    $H_1 $ cases (power):
+    \begin{itemize}
+        \item Balanced: $p_1 = 0.40, p_2 = 0.60, n_1 = n_2 = 200 \to $ power $\approx 0.98 $ for all
+        \item Smaller $n $: $p_1 = 0.10, p_2 = 0.20 $ or $0.90, n_1 = n_2 = 50 \to $ power $\approx 0.308 - 0.314 $ (very similar).
+        \item Unbalanced and more extreme: $p_1 = 0.10, p_2 = 0.20, n_1 = 50, n_2 = 200 \to \hat{Z}_1 = 0.365 $ vs $\hat{Z}_2 = \hat{Z}_3 = 0.523 $. This big gap mirrors the size inflation $\hat{Z}_2 / \hat{Z}_3 $ showed under $H_0 $ in similar settings; a fair power comparison should account for that miscalibration. 
+    \end{itemize}
+
+    $\hat{Z}_2 \& \hat{Z}_3$ use groupwise plug-in variances. In small or imbalanced samples, and especially when proportions are extreme, these plug-ins can be very small (even zero with all-0 or all-1 groups), shrinking the denominator and making $|\hat{Z}|$ too large, so the test is liberal. $\hat{Z}_1 $ pools counts, smoothing those extremes and stablizing the denominator under $H_0 $, so its size stays closer to nominal.
+
+    Rejection increases with $|p_1 - p_2|$ and with both $n_1 $ and $n_2 $. For fixed total $n_1 + n_2 $, balancing the groups $(n_1 = n_2)$ maximizes power by minimizing $\frac{1}{n_1} + \frac{1}{n_2}$. For fixed $|p_1 - p_2|$ and sample sizes, power is typically higher when the proportions are farther from 0.5 (since $p(1 - p)$ is smaller, standard errors are smaller), though $\hat{Z}_2 \& \hat{Z}_3$ also show more size distortion in these edge cases.
+
+
+\end{enumerate}
+% LINK: https://stats.libretexts.org/Bookshelves/Applied_Statistics/Natural_Resources_Biometrics_(Kiernan)/04%3A_Inferences_about_the_Differences_of_Two_Populations/4.02%3A_Pooled_Two-sampled_t-test_(Assuming_Equal_Variances)
+
+\newpage
+
+
+\newpage
+
+\printbibliography
+
+\end{document}

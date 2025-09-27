@@ -1,0 +1,113 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global/global}
+    \entry{notes}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=1bbfb6670defa6e28a24bf58cf4bb8e6}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{fullhash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{fullhashraw}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{bibnamehash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{authorbibnamehash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{authornamehash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{authorfullhash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{authorfullhashraw}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \field{extraname}{1}
+      \field{labelalpha}{Lee25}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extraalpha}{1}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Advanced Statistics and Alternative Data Types}
+      \field{year}{2025}
+    \endentry
+    \entry{appendix}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=1bbfb6670defa6e28a24bf58cf4bb8e6}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{fullhash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{fullhashraw}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{bibnamehash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{authorbibnamehash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{authornamehash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{authorfullhash}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \strng{authorfullhashraw}{1bbfb6670defa6e28a24bf58cf4bb8e6}
+      \field{extraname}{2}
+      \field{labelalpha}{Lee25}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extraalpha}{2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Appendix A and B}
+      \field{year}{2025}
+    \endentry
+    \entry{Vershynin2018}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=711c5aa2fe76a4ff674a2c6e2c7a2d91}{%
+           family={Vershynin},
+           familyi={V\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cambridge}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{711c5aa2fe76a4ff674a2c6e2c7a2d91}
+      \strng{fullhash}{711c5aa2fe76a4ff674a2c6e2c7a2d91}
+      \strng{fullhashraw}{711c5aa2fe76a4ff674a2c6e2c7a2d91}
+      \strng{bibnamehash}{711c5aa2fe76a4ff674a2c6e2c7a2d91}
+      \strng{authorbibnamehash}{711c5aa2fe76a4ff674a2c6e2c7a2d91}
+      \strng{authornamehash}{711c5aa2fe76a4ff674a2c6e2c7a2d91}
+      \strng{authorfullhash}{711c5aa2fe76a4ff674a2c6e2c7a2d91}
+      \strng{authorfullhashraw}{711c5aa2fe76a4ff674a2c6e2c7a2d91}
+      \field{labelalpha}{Ver18}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781108415194}
+      \field{note}{See Chapter 2 (Chernoff/MGF method and sub-Gaussian tails)}
+      \field{series}{Cambridge Series in Statistical and Probabilistic Mathematics}
+      \field{title}{High-Dimensional Probability: An Introduction with Applications in Data Science}
+      \field{year}{2018}
+      \verb{doi}
+      \verb 10.1017/9781108231596
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
