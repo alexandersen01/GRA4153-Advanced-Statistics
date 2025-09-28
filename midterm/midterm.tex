@@ -112,7 +112,15 @@ for $t > 0 $
         
         We apply Markov to the nonnegative r.v. $Y = \exp(\lambda X)$:
         \begin{gather*}
-            P(X > t) = P\big(\exp(\lambda X) > \exp(\lambda t)\big) \le \frac{\mathbb{E}[\exp(\lambda X)]}{\exp(\lambda t)}
+            P(X > t) = P\big(\exp(\lambda X) > \exp(\lambda t)\big) \le \frac{\mathbb{E}[\exp(\lambda X)]}{\exp(\lambda t)} = M_X(\lambda)\exp(-\lambda t).
+        \end{gather*}
+        The MGF of $\mathcal{N}(0,1)$ \cite[Appendix A, \textsc{Proposition 2}]{appendix} is 
+        \begin{gather*}
+            M_X(\lambda) = \exp(\lambda^2 / 2).
+        \end{gather*}
+        Hence, 
+        \begin{gather*}
+            P(X > t) \le \exp\left(-\lambda t + \frac{\lambda^2}{2}\right)
         \end{gather*}
         % For $X \sim \mathcal{N}(0, 1)$, $\mathbb{E}[\exp(\lambda X)] = \exp(\lambda^2 / 2)$, so 
         % \begin{gather*}
@@ -183,18 +191,26 @@ We test $H_0: \theta = \theta_0 $ vs. $H_1 = \theta \in \Theta_1 $, with a conti
 \begin{enumerate}[label=(\roman*)]
     \item Show that $p(x) = P_{\theta_0}\big(T(X) \ge T(x)\big)$ is a valid p-value.
     
-    Let $F_0 $ be the CDF of $T(X)$ under $\theta_0 $. By continuity, $U := F_0\big(T(X)\big) \sim U(0, 1)$ (probability integral transform \cite[Appendix B, \textsc{Theorem} 1]{appendix}). Let $X'$ be an independent copy of $X $ under $H_0 $. Then 
+    Let $F_0 $ be the CDF of $T(X)$ under $H_0 $. For the observed $x $,
     \begin{gather*}
-        p(X) = P_{\theta_0}\big(T(X') \ge T(X) | X\big) = 1 - F_0\big(T(X)\big) = 1 - U
+        p(x) = P_{\theta_0}\big(T(X) \ge T(x)\big) = 1 - F_0\big(T(x)\big).
     \end{gather*}
-    because $T(X') \sim F_0 $ and continuity implies $P\big(T(X')\ge t\big) = 1 - F_0(t)$. Hence, for any $\alpha \in [0, 1]$,
-    \begin{gather*}
-        P_{\theta_0}\big(p(X) \le \alpha\big) = P(1 - U \le \alpha) = P(U \ge 1 - \alpha) = \alpha,
-    \end{gather*}
-    so $p $ is valid.
+    Thus, $p(x) = 1 - F_0\big(T(X)\big)$. Let $U := F_0 \big(T(X)\big)$. By the probability integral transform \cite[Appendix B, \textsc{Theorem} 1]{appendix}, $U \sim U(0, 1)$, hence $p(X) = 1 - U \sim U(0, 1)$. Therefore \\$P_{\theta_0}\big(p(X) \le \alpha\big) = \alpha \quad\forall\alpha\in[0, 1]$ if $F_0 $ is continuous; without continuity one has $P_{\theta_0}\big(p(X) \le \alpha\big)\le \alpha $, so $p $ is a valid p-value.
 
     \item Show that $\phi(X) = \mathds{1}\{p(X) \le \alpha\}$ is a level $\alpha $ test for $H_0 $ against $H_1 $.
     
+    The definition of the level-$\alpha $ test \cite[3.3.4: Hypothesis testing]{notes} states that a (non-randomized) test is a function 
+    \begin{gather*}
+        \phi: \mathcal{X} \to \{0, 1\}, \qquad \phi(x) = 1 \text{ means reject } H_0.
+    \end{gather*}
+    The size of a test is the greatest probabiolity of rejecting $H_0 $ when $H_0 $ is true:
+    \begin{gather*}
+        \sup_{\theta \in \Theta_0}\mathbb{E}[\phi(X)] = \sup_{\theta\in\Theta_0}P_\theta\{\phi(X) = 1\}.
+    \end{gather*}
+    A test is said to be level $\alpha$ if its size does not exceed $\alpha $. For a simple null hypothesis $H_0 : \theta = \theta_0$, this reduces to:
+    \begin{gather*}
+        P_{\theta_0}\{\phi(X) = 1\} \le \alpha.
+    \end{gather*}
     Under $H_0$,
     \begin{gather*}
         \mathbb{E}_{\theta_0}[\phi(X)] = P_{\theta_0}\big(p(X) \le \alpha\big) = \alpha \quad\text{(since we have continuity in (i))},
@@ -203,7 +219,7 @@ We test $H_0: \theta = \theta_0 $ vs. $H_1 = \theta \in \Theta_1 $, with a conti
 
     \item Consider the special case where $X \sim \mathcal{N}(\theta, 1)$ and we want to test $H_0: \theta = 0 $ against $H_1 : \theta \neq 0 $. Provide an explicit formula for a valid p-value.
     
-    We take the two-sided statistic $T(X) = |X| $. Under $H_0, Z := X \sim \mathcal{N}(0, 1)$. By the definition $p(x) = P_0\big(T(Z) \ge T(x)\big)$, using $T(X) = |X|$ (and equivalently, $T(X) = X^2 $):
+    As emphasized in the notes \cite[p.~81]{notes}, we choose a statistic that is large under $H_1$ and small under $H_0$; by symmetry of $\mathcal{N}(0, 1)$ and the two-sided alternative, $T(X) = |X| $ is the natural choice. Under $H_0, Z := X \sim \mathcal{N}(0, 1)$. By the definition $p(x) = P_0\big(T(Z) \ge T(x)\big)$, using $T(X) = |X|$ (and equivalently, $T(X) = X^2 $):
     \begin{gather*}
         p(x) = P\big(|Z| \ge |x|) = 2(1 - \Phi(|x|)\big) = 2\Phi(-|x|),
     \end{gather*}
@@ -258,7 +274,7 @@ Let $s_i^2 := \frac{1}{n_i}\sum_{j = 1}^{n_i}(W_{ij} - \hat{p}_i)^2 $ for $W = X
     % \lstinputlisting[label={lst:python_code}]{task_three.py}
     \newpage
     
-    Which outputs
+    The python file can be found as a separate document ($\texttt{task\_three.py}$), which outputs
     \begin{center}
         \begin{tabular}{|c|c|c|c|c|c|c|}
             \hline
@@ -285,7 +301,7 @@ Let $s_i^2 := \frac{1}{n_i}\sum_{j = 1}^{n_i}(W_{ij} - \hat{p}_i)^2 $ for $W = X
             \hline 
         \end{tabular}
     \end{center}
-
+    
     What does all this mean?
 
     In the $H_0 $ cases (nominal $\alpha = 0.05 $):

@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber midterm"] 1758972667.22357 "midterm.bcf" "midterm.bbl" "midterm" 1758972774.54826 0
-  "midterm.bcf" 1758972774.39738 108905 3992212fd101cfd75e5f4e5a911ac34c "pdflatex"
+["biber midterm"] 1759071125.8351 "midterm.bcf" "midterm.bbl" "midterm" 1759071268.48805 0
+  "midterm.bcf" 1759071268.34309 109088 5f5291d7cf4bbec1b56bfaaa6b534ab0 "pdflatex"
   "references.bib" 1758892153.04372 651 f8f97eecf210b2b4e94942c801160d6e ""
   (generated)
   "midterm.bbl"
   "midterm.blg"
   (rewritten before read)
-["pdflatex"] 1758972773.6608 "/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/midterm/midterm.tex" "midterm.pdf" "midterm" 1758972774.54861 0
-  "/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/midterm/midterm.tex" 1758972771.96258 19621 05d4ae175b899a94a994ff524ae0204f ""
+["pdflatex"] 1759071267.55645 "/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/midterm/midterm.tex" "midterm.pdf" "midterm" 1759071268.48841 0
+  "/Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/midterm/midterm.tex" 1759071266.83261 20930 c0d20b6b973158cc2ef0af03f613268e ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/pdftex.map" 1758703987.99003 83200 714e5c49571e26c699798bee0bf80c78 ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1744540813.57998 11548 0b94a34568be8fa29753d7fc570ea10e ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1744540792.33739 12053120 514daef0bf02ba4323c4635a48e46f13 ""
@@ -36,6 +36,7 @@
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmsy8.tfm" 1744540101.05633 1120 8b7d695260f3cff42e636090a8002094 ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmti10.tfm" 1744540101.06098 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmtt10.tfm" 1744540101.06356 768 1321e9409b4137d6fb428ac9dc956269 ""
+  "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmtt8.tfm" 1744540101.06441 768 d7b9a2629a0c353102ad947dc9221d49 ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/doublestroke/dsrom10.tfm" 1758703986.99453 452 168d896d9b2ead965bf08c9db69c947f ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/doublestroke/dsrom8.tfm" 1758703986.99544 452 dc44cdd7c88ff2b15557f125edfc277b ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy6.tfm" 1744540117.81525 520 4889cce2180234b97cad636b6039c722 ""
@@ -145,12 +146,12 @@
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/ulem/ulem.sty" 1747721892.52795 15682 94f55b803e160cf7fb6e4d77d07cfe1d ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/url/url.sty" 1744540147.5008 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.sty" 1744540147.6956 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "midterm.aux" 1758972774.39357 1068 2d9a4965daba6f48dc7227c6471aef49 "pdflatex"
-  "midterm.bbl" 1758972676.96075 4201 5b58cc26e9f68e6f607cd16dacc7e4d7 "biber midterm"
-  "midterm.out" 1758972774.39569 291 f0fea49492338e5eea885d167134373e "pdflatex"
-  "midterm.run.xml" 1758972774.39856 2332 02e1ac62b06b03367d8cc67b2c8b915a "pdflatex"
-  "midterm.tex" 1758972771.96258 19621 05d4ae175b899a94a994ff524ae0204f ""
-  "midterm.toc" 1758972774.39867 156 f55af4df840ae1b6593957f6cea7e3b0 "pdflatex"
+  "midterm.aux" 1759071268.34057 1227 944758dac1931499da4234c389e32be3 "pdflatex"
+  "midterm.bbl" 1759071127.33334 4201 5b58cc26e9f68e6f607cd16dacc7e4d7 "biber midterm"
+  "midterm.out" 1759071268.34187 291 f0fea49492338e5eea885d167134373e "pdflatex"
+  "midterm.run.xml" 1759071268.34403 2332 02e1ac62b06b03367d8cc67b2c8b915a "pdflatex"
+  "midterm.tex" 1759071266.83261 20930 c0d20b6b973158cc2ef0af03f613268e ""
+  "midterm.toc" 1759071268.34427 156 ca811163ef33aa551f81ed89e913bd85 "pdflatex"
   (generated)
   "midterm.aux"
   "midterm.bcf"
