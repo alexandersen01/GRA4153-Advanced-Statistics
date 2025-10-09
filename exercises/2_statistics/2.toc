@@ -1,0 +1,3 @@
+\contentsline {section}{\numberline {1}Statistics, Sufficiency, Completeness \& Ancilliarity}{2}{section.1}%
+\contentsline {section}{\numberline {2}Statistical inference and performance criteria}{6}{section.2}%
+\contentsline {section}{\numberline {3}Asymptotic statistics}{13}{section.3}%
