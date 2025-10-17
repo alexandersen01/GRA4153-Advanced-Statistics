@@ -1,0 +1,109 @@
+\documentclass[10pt]{article}
+
+\usepackage{parskip}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{href-ul}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Robot Baseball}
+\author{Jakob Sverre Alexandersen\\
+Jane Street Submission}
+\maketitle
+
+The Artificial Automaton Athletics Association (Quad-A) is at it again, to compete with postseason baseball they are developing a Robot Baseball competition. Games are composed of a series of independent at-bats in which the batter is trying to maximize expected score and the pitcher is trying to minimize expected score.
+
+An at-bat is a series of pitches with a running count of balls and strikes, both starting at zero. For each pitch, the pitcher decides whether to throw a ball or strike, and the batter decides whether to wait or swing; these decisions are made secretly and simultaneously. The results of these choices are as follows.
+
+\begin{itemize}
+    \item If the pitcher throws a ball and the batter waits, the count of balls is incremented by 1.
+    \item If the pitcher throws a strike and the batter waits, the count of strikes is incremented by 1.
+    \item If the pitcher throws a ball and the batter swings, the count of strikes is incremented by 1.
+    \item If the pitcher throws a strike and the batter swings, with probability $p$ the batter hits a home run and with probability $1-p$ the count of strikes is incremented by 1.
+\end{itemize}
+
+An at-bat ends when either:
+
+\begin{itemize}
+    \item The count of balls reaches 4, in which case the batter receives 1 point.
+    \item The count of strikes reaches 3, in which case the batter receives 0 points.
+    \item The batter hits a home run, in which case the batter receives 4 points.
+\end{itemize}
+
+By varying the size of the strike zone, Quad-A can adjust the value $p$, the probability a pitched strike that is swung at results in a home run. They have found that viewers are most excited by at-bats that reach a full count, that is, the at-bats that reach the state of three balls and two strikes. Let $q$ be the probability of at-bats reaching full count; $q$ is dependent on $p$. Assume the batter and pitcher are both using optimal mixed strategies and Quad-A has chosen the $p$ that maximizes $q$. Find this $q$, the maximal probability at-bats reach full count, to ten decimal places.
+
+\newpage
+
+\section{Model and objective}
+
+States are $(b, s)$ with $b \in \{0, 1, 2, 3\}, s \in \{0, 1, 2\}$. Terminals: 
+\begin{itemize}
+    \item If $b = 4 $ (4 balls) the at-bat ends (walk), it did not reach full count unless the state (3, 2) was previously visited; for our forward recursion, transitions into an immediate terminal that is not (3, 2) have value 0 for the indicator ``did we reach (3, 2) at any time?''.
+    \item If $s = 3 $ the at-bat ends (strikeout), value 0
+    \item If we ever reach (3, 2) that counts as ``full count reached'', we treat that state as absorbing with value 1 for the probability $q $ we're computing
+\end{itemize}
+On each pitch, pitcher chooses $P \in \{\text{Ball, Strike}\}$; batter chooses $A \in \{\text{Wait, Swing}\}$. The deterministic transitions:
+\begin{itemize}
+    \item (Ball, Wait) $\to (b + 1, s)$ (or terminal if $b + 1 = 4 $)
+    \item (Strike, Wait) $\to (b, s + 1)$ (or terminal if $s + 1 = 3)$
+    \item (Ball, Swing) $\to (b, s + 1)$ (a swing ball counts as a strike)
+    \item (Strike, Swing) $\to $ with probability $p $ home run (terminal; does not give full count unless we had already been at (3, 2), in our forward recursion treat this outcome as terminal with value 0), and with probability $1 - p $ it becomes $(b, s + 1)$ (or terminal if $s + 1 = 3 $)
+\end{itemize}
+We are computing the probability, under optimal (minimax) play, that the process ever visits (3, 2). This is a zero-sum game: pitcher aims to minimize that probability, batter aims to maximize it. 
+
+\section{Bellman / $2\times 2$ game at each state}
+
+Let $Q_{b, s}$ be the value (probability of reaching full count from state $(b, s)$) under optimal play. For each nonterminal state $(b, s)$ the immediate $2 \times 2 $ payoff matrix (pitcher rows Ball, Strike; batter columns Wait, Swing) has entries equal to the \textit{probability of eventually reaching full count} resulting from that pitch (i.e. the $\mathbb{E}Q $ of the next state):
+
+Denote next-state-vvalue function $\text{next}(b', s') = $ value for that state, but if a transition is to an immediate terminal that is not (3, 2), that entry is 0; if the transition is to (3, 2), that entry is 1.
+
+Concretely (for a nonterminal state $(b, s)$):
+\begin{itemize}
+    \item \[
+M_{B, W} = \text{value after (Ball, Wait)} = 
+\begin{cases}
+    1\quad\text{if }(b + 1, s) = (3, 2)\\
+    0\quad\text{if }b + 1 = 4 \text{ and } (b + 1, s) \neq (3, 2)\\
+    Q_{b + 1, s}\quad\text{otherwise}
+\end{cases}
+\]
+    \item $M_{B, S_w} = $ value after (Ball, Swing) = similarly uses $(b, s + 1)$ (or 0 if $s + 1 = 3 $ and not $(3, 2)$, or 1 if $(b, s + 1) = (3, 2)$)
+    \item $M_{S, W} = $ value after (Strike, Wait) = same as for $(b, s + 1)$
+    \item $M_{S, S_w} = $ value after (Strike, Swing) = $p\cdot 0 + (1 - p)\cdot Q_{b, s + 1} = (1 - p)\cdot Q_{b, s + 1}$, except check terminal conditions if $s + 1 = 3 $ (then that term is 0 or 1 as above).
+\end{itemize}
+Given this $2\times 2 $ matrix $M = \begin{pmatrix}
+    a & b \\
+    c & d
+\end{pmatrix}$ (rows Ball / Strike; cols Wait / Swing), the value $V $ of the zero-sum game (pitcher minimizing the payoff, batter maximizing) is the standard matrix-game value. Algo to compute $V $ robustly: 
+
+\newpage 
+
+\begin{enumerate}
+    \item Compute pure-strategy values: row minima and column maxima.
+    \item If a pure saffle exists (maxmin = minimax), $V $ is that value.
+    \item Otherwise the unique interior mixed strategy exists: let batter mix with probability $x $ on Wait and $1 - x $ on Swing to make the pitcher indifferent. Solve
+    \begin{gather*}
+        a \cdot a + (1 - x) \cdot b = x \cdot c + (1 - x) \cdot d,
+    \end{gather*}
+\end{enumerate}
+solve for $x\in [0, 1]$. Then plug back to get $V = x\cdot a + (1 - x)\cdot b $. (Alternatively mix the pitcher, either way is equivalent.)
+
+Because the state graph is acyclic (balls and strikes only increase), we can compute values by backward recursion: evaluate $Q_{b, s}$ in decreasing order of $(b + s) $ (i.e., compute states that lead only to terminals or already-computed states).
+
+\section{Numerical procedure and reproducible code}
+
+Run the code in \verb|main.py| to compute $q(p) = Q_{0, 0}$ for a given $p $ and to find the $p $ maximizing $q $. It uses exact backward recursion over the $4 \times 3 $ grid of states and solces the $2 \times 2 $ game by checking pure strategies first and otherwise solving the interior-mix equality.
+
+$q_{\text{opt}} = 0.2959679934 $
+
+
+\end{document}

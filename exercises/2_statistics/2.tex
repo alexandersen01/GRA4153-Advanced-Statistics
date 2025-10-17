@@ -4,6 +4,7 @@
 \usepackage[margin=1in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
 \usepackage{enumitem}
+\usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{href-ul}
  
@@ -548,5 +549,456 @@ Cauchy case: The running mean does not settle down; instead it exhibits occasion
     \includegraphics[width=1\textwidth]{image.png}
 \end{center}
 
+\newpage 
+
+4. In Example 3.18 show that $s_n^2\xrightarrow{P}\sigma^2 $
+
+Example 3.18 [Standard error of the mean] states: 
+
+Let $V = \sigma^2 $. Whilst this is unknown, we can estimate it. If $\hat{\mu}_n := \frac{1}{n}\sum_{i = i}^{n}X_i $, then $s^2_n = \frac{1}{n}\sum_{i = i}^{n}(X_i - \hat{\mu}_n)^2 \xrightarrow{P}\sigma^2 $
+
+Assume $X_1, …, X_n $ are i.i.d. with $\mathbb{E}X_1 = \mu $ and Var$(X_1) = \sigma^2 < \infty $, and let $\bar{X}_n = \frac{1}{n}\sum_{i = i}^{n}X_i $ and $ s_n^2 = \frac{1}{n}\sum_{i = i}^{n}(X_i - \bar{X}_n)^2 $
+
+Key identity: 
+\begin{gather*}
+    s_n^2 = \frac{1}{n}\sum_{i = i}^{n}(X_i - \mu)^2 - (\bar{X}_n - \mu)^2
+\end{gather*}
+This follow by expanding $(X_i - \bar{X}_n)^2 = \big(X_i - \mu - (\bar{X}_n - \mu)\big)^2 $ and simplifying the cross term using $\frac{1}{n}\sum_{i = i}^{n}(X_i - \mu) = \bar{X}_n - \mu $
+
+By the WLLN, $\frac{1}{n}\sum_{i = i}^{n}(X_i - \mu)^2 \xrightarrow{P} \mathbb{E}(X_1 - \mu)^2 = \sigma^2 $, also by the WLLN, $\bar{X}_n \xrightarrow{P}\mu $, hence by the Continuous Mapping Theorem, $(\bar{X}_n - \mu)^2 \xrightarrow{P}0 $
+
+Therefore, by Slutsky's Theorem 
+
+\begin{gather*}
+    s_n^2 = \left(\frac{1}{n}\sum_{i = i}^{n}(X_i - \mu)^2\right) - (\bar{X}_n - \mu)^2 \xrightarrow{P}\sigma^2 - 0 = \sigma^2
+\end{gather*}
+\qed 
+
+\hfill 
+
+5. Compare the (asymptotic) $t $-test defined in (27) to the test developed in Example 3.14:
+
+The test in (27) is described as: 
+
+We compare $|t_n|$ to the $1 - \alpha / 2 $ quantile, $c = \Phi^{-1}(1 - \alpha / 2)$, of the standard normal distribution: we reject if 
+\begin{gather*}
+    |t_n| > c
+\end{gather*}
+
+The test developed in Example 3.14 is described as: 
+
+Suppose we observe $X \sim \mathcal{N}(\mu, \sigma^2)$ where $\sigma $ is known and we want to test $H_0: \mu = a $. Let's design a test of level $\alpha $ and compute its power. 
+
+Let $T = (X - a)^2 / \sigma^2 $. We will set our test equal to $\phi(X) = \mathbf{1}\{T > k_\alpha\}$ for a \textit{critical value }$k_\alpha $ chosen such that the test is of level $\alpha $
+
+Using properties of the normal distribution, we have that, under $H_0 $ (i.e. if $\mu = a $) then 
+\begin{gather*}
+    T^{1 / 2} = (X - a) / \sigma \sim \mathcal{N}(0, 1)
+\end{gather*}
+Hence $T \sim\chi_1^2 $. We will take $k_\alpha $ equal to the $1 - \alpha $ quantile of the $\chi_1^2 $ distribution. This is exactly the number such that $P(T > k_\alpha) = \alpha $ if $T \sim\chi_1^2 $
+
+In the normal, known-$\sigma $ case, the two tests are the same test in different disguises. Writing $t = (X - a) / \sigma $, Example 3.14 uses $T = t^2 $ and rejects when $T > k_\alpha $ with $k_\alpha = \chi_{1, 1-\alpha}^2 = \big(\Phi^{-1}(1 - \alpha / 2)\big)^2 = c^2 $, which is equivalent to rejecting when $|t| > c $, exactly the rejection rule in (27). The difference is that the example is an exact finite-sample test (indeed the LRT), whereas (27) is an asymptotic test meant for general estimators and estimated standard errors. 
+
+\newpage 
+
+6. Fill in the missing details in the proof of Proposition 3.5
+
+\textsc{Proposition 3.5}: \textit{Suppose that (23) holds and g is continuously differentiable with full row rank Jacobian G. Then, under the null $H_0 : g(\theta) = 0 $,}
+
+
+\begin{gather*}
+    (23): \Bigg[ \sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{D}\mathcal{N}(0, V), \quad \hat{V}_n\xrightarrow{P}V\Bigg]
+\end{gather*}
+
+\begin{gather*}
+    W_n\xrightarrow{D}\chi_p^2,
+\end{gather*}
+\textit{and the sequence of tests which reject when $W_n > k_\alpha $ for $k_\alpha $ the $1 - \alpha $ quantile of the $\chi_p^2 $ distribution has asymptotic size $\alpha $:}
+
+\begin{gather*}
+    \lim_{n\to\infty}P(W_n > k_\alpha) = \alpha
+\end{gather*}
+\textit{Under any fixed alternative, $H_1 : g(\theta) = \mathfrak{g}\neq 0 $, the test is consistent:}
+\begin{gather*}
+    \lim_{n\to\infty}P(W_n > k_\alpha) = 1
+\end{gather*}
+
+\textbf{Proof:} By (23), the Delta method, continuity of $G(\theta)$, the continuous mapping theorem, and Slutsky's theorem, (29) holds.
+
+\begin{gather*}
+    (29):\Bigg[W_n \xrightarrow{D}\chi_p^2\Bigg]
+\end{gather*}
+Since $G(\theta)$ has full row rank and $V $ is full rank, it follows that $G(\theta)VG(\theta)' $ is full rank [Exercise] and hence invertible. Therefore, by the continuous mapping theorem and Slutsky's theorem we have 
+\begin{gather*}
+    \left[G(\hat{\theta}_n)\hat{V}_nG(\hat{\theta}_n)'\right]^{-1/ 2}\sqrt{n}\big(g(\hat{\theta}_n) - g(\theta)\big) \xrightarrow{D}Z\sim \mathcal{N}(0, I_p).
+\end{gather*}
+First we handle the case under the null $g(\theta) = 0 $. This condition implies that \\$Z_n := \sqrt{n}\big[G(\hat{\theta}_n)\hat{V}_nG(\hat{\theta}_n)'\big]^{-1 / 2}g(\hat{\theta}) \xrightarrow{D}Z $. As $x \mapsto x'x $ is continuous, applying the continuous mapping theorem we obtain [Exercise]
+\begin{gather*}
+    W_n = Z_n'Z_n\xrightarrow{D}Z'Z\sim\chi_p^2
+\end{gather*}
+Moreover, since $W_n $ is an r.v., weak convergence is equivalent to convergence of its CDF at all continuity points of the limiting CDF. Here the limit is $\chi_p^2 $ which has a continuous CDF on $\mathbb{R} $. Therefore, by the definition of $k_\alpha $,
+\begin{gather*}
+    P(W_n > k_\alpha) = 1 - P(W_n \le k_\alpha) \to 1 - P(Z'Z \le k_\alpha) = 1 - (1 - \alpha) = \alpha
+\end{gather*}
+\newpage
+It remains to consider the case under the fixed alternative $g(\theta) = \mathfrak{g} \neq 0 $. Here we note that letting $M_n := G(\hat{\theta}_n)\hat{V}_nG(\hat{\theta}_n)'$ we have
+\begin{gather*}
+    W_n = ||M_n^{-1 / 2}\sqrt{n}\big(g(\hat{\theta}_n) - \mathfrak{g}\big) + M_n^{-1 / 2}\sqrt{n}\mathfrak{g}||^2
+\end{gather*}
+Let $Z_n := M_n^{-1 / 2}\sqrt{n}\big(g(\hat{\theta}_n) - \mathfrak{g}\big) \xrightarrow{D}\mathcal{N}(0, I)$. Since $Z_n \xrightarrow{D}\mathcal{N}(0, I)$, for any $\epsilon > 0 $ there are some $0 < K < \infty $ s.t. $P(||Z_n|| \le K) \ge 1 - \epsilon $ for each $n \in \mathbb{N}$ [Exercise]. By the spectral decomposition, $||M_n^{-1 / 2}v|| \ge \lambda_{\min}(M_n^{-1 / 2})||v|| $ for any $v \in \mathbb{R}^K $ [Exercise]. Since $M_n^{-1 / 2} \xrightarrow{P} M^{-1 / 2} $ which is positive definite, it follows that for some $\delta > 0, P(||M_n^{-1 / 2}\sqrt{n}\mathfrak{g}|| \ge \delta\sqrt{n}||\mathfrak{g}||)\to 1 $.
+
+Using these two observations with the reverse triangle inequality, it follows that 
+\begin{gather*}
+    M_n^{-1 / 2} = ||Z_n + M_n^{-1 / 2}\sqrt{n}|| \ge \left|||M_n^{-1 / 2}\sqrt{n}\mathfrak{g}|| - ||Z_n||\right|,
+\end{gather*}
+and so $W_n\xrightarrow{P}\infty $ in the sense that for any $K > 0 $
+\begin{gather*}
+    \lim_{n \to\infty}P(W_n > K) = 1
+\end{gather*}
+Taking $K = k_\alpha $ completes the proof \qed
+
+\textbf{Missing details:}
+
+\begin{enumerate}
+    \item $G(\theta)VG(\theta)'$ is full rank:
+    
+    $G(\theta)$ has full row rank $p $, so $\ker\big(G(\theta)'\big) = \{0\}$, $V $ is full rank (symmetric positive definite). For any $a \in \mathbb{R}^p \setminus \{0\}, a'Ma = a'G(\theta)VG(\theta)'a = \big(G(\theta)'a\big)V\big(G(\theta)'a\big) > 0$, because $G(\theta)'a \neq = 0 $ and $V $ is positive definite. Hence $M $ is positive definite and invertible.
+    \item Standardization to $\mathcal{N}(0, I_p)$ and $\chi^2 $ limit
+    
+    From step 1, under $H_0 : g(\theta) = 0, Z_n := M_n^{-1 / 2}\sqrt{n}\{g(\hat{\theta}_n) - g(\theta)\} = M_n^{-1 / 2}\sqrt{n}\mathfrak{g}(\hat{\theta}_n) \xrightarrow{D}Z\sim \mathcal{N}(0, I_p)$, by Slutsky's theorem.
+
+    The function $x \mapsto x'x $ is continuous on $\mathbb{R}^p $. By the continuous mapping theorem, $W_n = Z_n'Z_n\xrightarrow{D} Z'Z\sim \chi_p^2 $
+    \item Asymptotic size $\alpha $
+    
+    The $\chi_p^2 $ distribution has a continuous CDF on $\mathbb{R}$. Therefore convergence in distribution implies convergence of the CDF at $k_\alpha : P(W_n > k_\alpha) = 1 - P(W_n \le k_\alpha) \to P(Z'Z \le k_\alpha) = \alpha $
+    \item Consistency under a fixed alternative $g(\theta) = \mathfrak{g} \neq = 0 $: Write $W_n = ||M_n^{-1 / 2}\sqrt{n}\{g(\hat{\theta}_n) - \mathfrak{g}\} + M_n^{-1 / 2}\sqrt{n}\mathfrak{g}||^2 $. Set $Z_n := M_n^{-1 / 2}\sqrt{n}\{g(\hat{\theta}_n) - \mathfrak{g}\},\quad Y_n := M_n^{-1 / 2}\sqrt{n}\mathfrak{g}$, so $W_n = ||Z_n + Y_n||^2 $.\qed
+\end{enumerate}
+
+\newpage 
+
+7. Compare the (asymptotic) confidence interval $S_n $ in Example 3.22 with that developed in Example 3.15
+
+Example 3.22 [CI for $\theta_k $]: Suppose that $g(\theta) := \theta_k $ and we have 
+\begin{gather*}
+    \sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{D} \mathcal{N}(0, V),
+\end{gather*}
+and $V_n\xrightarrow{P} V $. Then, the Wald statistic for $h_\gamma(\theta) := \theta_k - \gamma = 0 $ against $h_\gamma(\theta) \neq 0 $ has the form
+\begin{gather*}
+    W_n^\gamma = \frac{n(\hat{\theta}_{n, k} - \gamma)^2}{\hat{V}_{n, kk}}
+\end{gather*}
+Then $W_n^\gamma \le k_\alpha $ iff $|\hat{\theta}_{n, k} - \gamma| \le \sqrt{k_\alpha}\hat{V}_{n, kk}^{1 / 2} / \sqrt{n}$ iff $\gamma \le \hat{\theta}_{n, k} + \sqrt{k_\alpha}\hat{V}_{n, kk}^{1 / 2} / \sqrt{n}$ or $\gamma \ge \hat{\theta}_{n, k} - \sqrt{k_\alpha}\hat{V}_{n, kk}^{1 / 2} / \sqrt{n}$. This is usually written as the confidence interval:
+
+
+\begin{gather*}
+    S_n = \left[\hat{\theta}_{n, k} - \sqrt{k_\alpha}\hat{V}_{n, kk}^{1 / 2} / \sqrt{n}, \hat{\theta}_{n, k} + \sqrt{k_\alpha}\hat{V}_{n, kk}^{1 / 2} / \sqrt{n}\right]
+\end{gather*}
+
+Example 3.15: Suppose we are interested in the mean of $X \sim \mathcal{N}(\mu, \sigma^2)$ with known $\sigma^2 $. In particular, let's suppose we want to construct a $1 - \alpha $ confidence set for $\mu $. The set $S(X) = \{a : \phi_a (X) = 0\}$ is a $1 - \alpha $ confidence set for $\mu $. Let's describe this set in a more straightforward way. Note that 
+\begin{gather*}
+    \phi_a(X) = 0 \iff T \le k_\alpha \iff T^{1 / 2} \le k_\alpha^{1 / 2} \text{ or } -T^{1 / 2} \le k_\alpha^{1 / 2}
+\end{gather*}
+Here we note that $c_\alpha := k_\alpha^{1 / 2}$ is the $1 - \alpha / 2 $ quantile of a standard normal r.v. Since $T^{1 / 2} = \frac{(X - a)}{\sigma}$ this gives our set as 
+\begin{gather*}
+    S(X) = [X - \sigma c_\alpha, X + \sigma c_\alpha]
+\end{gather*}
+
+\textbf{Comparison: }22 has a multivariate parameter $\theta $, focusing on component $\theta_k $, while 15 has a univariate parameter $\mu $ in normal model with known $\sigma^2 $. 
+
+22 uses the Wald statistic $W_n^\gamma = \frac{n(\hat{\theta}_{n, k} - \gamma)^2}{\hat{V}_{n, kk}} $, whereas 15 uses $T = \frac{(X - a)^2}{\sigma^2}$. Both are on the form $\frac{\text{(estimate - hypothesized value)}^2}{\text{estimated value}}$.
+
+22 is asymptotic because $W_n^\gamma \xrightarrow{D}\chi_1^2 $, while 15 is exact: $T \sim\chi_1^2 $ since $X \sim \mathcal{N}(\mu, \sigma^2)$.
+
+15 can be viewed as a special case of the general Wald approach in 22 where the parameter is scalar $(k = 1)$, the variance is known exactly $(V_{11} = \sigma^2$, no estimation needed) and the distribution is exactly normal (not just asymptotically).
+
+\newpage 
+
+% 8. Fill in the missing details in the proof of Proposition 3.5
+
+% \textsc{Proposition 3.5}: Suppose that (23) holds and $g $ ia continuously differentiable with full row rank Jacobian $G $. Then, under the null $H_0: g(\theta) = 0 $,
+% \begin{gather*}
+%     W_n \xrightarrow{D} \chi_p^2
+% \end{gather*}
+% \begin{gather*}
+%     (23): \Bigg[ \sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{D}\mathcal{N}(0, V), \quad \hat{V}_n\xrightarrow{P}V\Bigg]
+% \end{gather*}
+% and the sequence of test which reject when $W_n > k_\alpha $ for $k_\alpha $ the $1 - \alpha $ quantile of the $\chi_p^2 $ distribution has asymptotic size $\alpha $:
+% \begin{gather*}
+%     \lim_{n\to\infty}P(W_n > k_\alpha) = \alpha
+% \end{gather*}
+% Under any fixed alternative, $H_1: g(\theta) = \mathfrak{g} \neq 0 $, the test is consistent:
+% \begin{gather*}
+%     \lim_{n\to\infty}P(W_n > k_\alpha) = 1
+% \end{gather*}
+
+% \textbf{Proof:}
+
+% By (23), the Delta method, continuity of $G(\theta)$, the continuous mapping theorem and Slutsky's theorem holds. Since $G(\theta)$ has full rank and $V $ is full rank, it follows that $G(\theta)VG(\theta)'$ is full rank [Exercise] and hence invertible. Therefore, by the continuous mappping theorem and Slutsky's theorem we have 
+% \begin{gather*}
+%     \left[G(\hat{\theta}_n)\hat{V}_nG(\hat{\theta}_n)'\right]^{-1/2} \sqrt{n}\big(g(\hat{\theta}_n) - g(\theta)\big)\xrightarrow{D}Z\sim \mathcal{N}(0, I_p)
+% \end{gather*}
+% First we handle the case under the null $g(\theta) = 0 $. This condition implies that \\$Z_n := \sqrt{n}\left[G(\hat{\theta}_n)\hat{V}_nG(\hat{\theta}_n)'\right]^{-1/2}g(\hat{\theta}_n) \xrightarrow{D} Z $. As $x\mapsto x'x $ is continuous, applying the continuous mapping theorem we obtain [Exercise]
+% \begin{gather*}
+%     W_n = Z_n'Z_n\xrightarrow{D}Z'Z\sim\chi_p^2
+% \end{gather*}
+% Moreover, since $W_n $ is a random variable, weak convergence is equivalent to convergence of its CDF at all continuity points of the limiting CDF. Here the limit is $\chi_p^2 $ which has a continuous CDF on $\mathbb{R}$. Therefore, by the definition of $k_\alpha $,
+% \begin{gather*}
+%     P(W_n > k_\alpha) = 1 - P(W_n \le k_\alpha) \to 1 - P(Z'Z\le k_\alpha) = 1 - (1 - \alpha) = \alpha
+% \end{gather*}
+% It remains to consider the case under the fixed alternative $g(\theta) = \mathfrak{g} \neq 0 $. Here we note that letting $M_n := G(\hat{\theta}_n)\hat{V}_nG(\hat{\theta}_n)'$ we have 
+% \begin{gather*}
+%     W_n = ||M_n^{-1/2}\sqrt{n}\big(g(\hat{\theta}_n) - \mathfrak{g}\big) + M_n^{-1/2}\sqrt{n}\mathfrak{g}||^2
+% \end{gather*}
+% Let $ Z_n := M_n^{-1/2}\sqrt{n}\big(g(\hat{\theta}_n) - \mathfrak{g}\big)\xrightarrow{D}\mathcal{N}(0, I)$. Since $Z_n \xrightarrow{D}\mathcal{N}(0, I)$, for any $\epsilon > 0 $ there are some $0 < K < \infty $ s.t. $P(||Z_n|| \le K) \ge 1 - \epsilon $ for each $n \in \mathbb{N}$[Exercise]. By the spectral decomposition, $||M_n^{-1/2}v|| \ge \lambda_{\min}(M_n^{-1/2})||v||$ for any $v \in \mathbb{R}^K $ [Exercise]. Since $M_n^{-1/2} \xrightarrow{P} M^{-1/2}$ which is positive definite, it follows that for some $\delta > 0, P(||M_n^{-1/2}\sqrt{n}\mathfrak{g})\to 1 $. Using these two observations with the reverse triangle inequality, it follows that 
+% \begin{gather*}
+%     W_n^{1/2} = ||Z_n + M_n^{-1/2}\sqrt{n}\mathfrak{g}|| \ge \left|||M_n^{-1/2}\sqrt{n}\mathfrak{g}|| - ||Z_n||\right|,
+% \end{gather*}
+% and so $W_n \xrightarrow{P}\infty $ in the sense that for any $K> 0 $
+% \begin{gather*}
+%     \lim_{n\to\infty}P(W_n > K) = 1
+% \end{gather*}
+% Taking $K = k_\alpha $ completes the proof. \qed
+% \newpage 
+
+% \begin{enumerate}
+%     \item Delta method and continuous mapping / Slutsky steps
+
+%     By (23), $\sqrt{n}(\hat{\theta}_n - \theta) \Rightarrow \mathcal{N}(0, V) $ and $\hat{V}_n \xrightarrow{P}V $. Since $g $ is $C^1 $ with Jacobian $G(\theta)$, the multivariate Delta method gives 
+%     \begin{gather*}
+%         \sqrt{n}\big(g(\hat{\theta}_n) - g(\theta)\big) = G(\theta)\sqrt{n}(\hat{\theta}_n - \theta) + o_p(1) \Rightarrow \mathcal{N}\big(0,,G(\theta)VG(\theta)'\big)
+%     \end{gather*}
+%     By continuity of $G $ and Slutsky, $G(\hat{\theta}_n) \xrightarrow{P}G(\theta)$ and hence $M_n := G(\hat{\theta}_n)\hat{V}_nG(\hat{\theta}_n)' \xrightarrow{P} M:= G(\theta)VG(\theta)' $
+
+%     Full-rank/invertibility of $M $: If $G(\theta)$ has full row rank $p $ and $V $ is positive definite, then for any $a \neq 0 $ in $\mathbb{R}^p $, $a'Ma = \Big(G(\theta)'aV\big(G(\theta)'a\big)\Big) > 0 $ because $G(\theta)'a \neq 0 $. Thus $M $ is symmetric positive definite, hence invertible. 
+
+%     The principal matrix inverse quare root is continuous on the cone of positive definite matrices. Therefore $M_n^{-1/2} \xrightarrow{P}M^{-1/2}$, and by Slutsky $M_n^{-1/2}\sqrt{n}\big(g(\hat{\theta}_n)-g(\theta)\big)\Rightarrow \mathcal{N}(0, I_p)$\qed
+%     \item Under the null $H_0: g(\theta) = 0 $
+    
+%     Define $Z_n := M_n^{-1/2} g(\hat{\theta}_n)\sqrt{n}$. Then $Z_n \Rightarrow Z\sim \mathcal{N}(0, I_p)$ by the step above. Since $x\mapsto x'x $ is continuous, the continuous mapping theorem yields $W_n = Z_n'Z_n \Rightarrow Z'Z \sim\chi_p^2 $. The $\chi_p^2 $ distributino has a continuous CDF on $\mathbb{R}$, so convergence in distribution implies $P(W_n \le t) \to P(\chi_p^2 \le t)\quad\forall t $. With $k_\alpha $ the $(1 - \alpha)$-quantile of $\chi_p^2, P(W_n > k_\alpha) = 1 - (W_n \le k_\alpha)\to 1 - P(\chi_p^2 \le k_\alpha) = \alpha $. Hence the Wald test has asymptotic size $\alpha $. \qed
+%     \item Under the fixed alternative $H_1 :g(\theta) = \mathfrak{g} \neq 0 $
+    
+%     By the same Delta-method / Slutsky argument $Z_n := M_n^{-1/2}\sqrt{n}\big(g(\hat{\theta}_n) - \mathfrak{g}\big)\Rightarrow \mathcal{N}(0, I_p)$. Convergence in distribution implies tightness of $\{Z_n\}$. Thus, for every $\epsilon > 0 \quad\exists K < \infty$ s.t. $\sup_n P(|Z_n| > K) < \epsilon $, equivalently $P(||Z_n|| \le K) \ge 1 - \epsilon $ for all $n $ large enough.
+
+%     Let $b_n := M_n^{-1/2}\sqrt{n}\mathfrak{g}$. Since $M_n^{-1/2} \xrightarrow{P}M^{-1/2}$ and $M^{-1/2}$ is positive definite, the constant $c := |M_n^{-1/2}\mathfrak{g}| > 0 $. Fix $\eta \in (0, c)$. By convergence in probability, $P(||M_n^{-1/2}\mathfrak{g}|| > c - \eta) \to 1 $. Hence $P\big(|b_n| > (c - \eta)\sqrt{n}\big)\to 1 $, so $||b_n|| \to \infty $ in probability at rate $\sqrt{n}$.
+
+%     Using the reverse triangle inequality, $|Z_n + b_n| \ge |b_n| - |Z_n|$. Given any fixed $K_0 > 0 $, choose $K $ as above and then $n $ large so that $(c - \eta)\sqrt{n}-K > \sqrt{K_0}$. With probability at least $1 - 2\epsilon $ (for all large $n $), $|Z_n + b_n| > \sqrt{K_0}\Rightarrow W_n = |Z_n + b_n|^2 > K_0 $. Since $\epsilon $ is arbitrary, $P(W_n > K_0) \to 1 $, i.e. $W_n \xrightarrow{P}\infty $
+
+%     Taking $K_0 = k_\alpha $ gives $P(W_n > k_\alpha) \to 1 $, so the test is consistent. \qed
+%     \item Small auxillary facts used in the argument: For a positive definite matrix $A, |Av|\ge \lambda_{\min} (A)|v|\quad\forall v $, where $\lambda_{\min} (A) > 0 $ is the smallest eigenvalue. This follows from the spectral decomposition and the definition of the operator norm. \qed
+% \end{enumerate}
+
+8. Suppose that $\hat{\theta}_n $ as in (31) exists. Show that the two definitions in (31) and (32) are equivalent. 
+
+\textbf{(31)[MLE]:} The maximum likelihood estimator, $\hat{\theta}_n $, is formed by maximizing $L(\theta)$ over $\Theta $:
+\begin{gather*}
+    \hat{\theta}_n := \text{argmax}_{\theta \in \Theta}L(\theta)
+\end{gather*}
+It is equivalent, but often convenient, to work instead with the log-likelihood function: $l(\theta) := \log L(\theta)$:
+\begin{gather*}
+    \hat{\theta}_n := \text{argmax}_{\theta \in \Theta}l(\theta)
+\end{gather*}
+
+\textbf{Proof:}
+
+Let $L(\theta) \ge 0 $ be the likelihood and $l(\theta) := \log L(\theta)$ the log-likelihood. Since $\log $ is strictly increasing on $(0, \infty)$, it preserves order: for any $\theta, \theta', L(\theta) \le L(\theta') \iff l(\theta) \le l(\theta')$.
+\begin{itemize}
+    \item If $\hat{\theta}_n $ maximizes $L $, then for all $\theta \in\Theta, L(\theta) \le L(\hat{\theta}_n)$, hence $l(\theta) \le l(\hat{\theta}_n)$, so $\hat{\theta}_n $ maximizes $l $.
+    \item Conversely, if $\hat{\theta}_n $ maximizes $l $, then for all $\theta\in\Theta, l(\theta) \le l(\hat{\theta}_n)$, so applying $\exp $ (also strictly increasing) gives $L(\theta) \le L(\hat{\theta}_n)$, and $\hat{\theta}_n $ maximizes $L $.
+\end{itemize}
+Thus $\text{argmax}_{\theta \in \Theta}L(\theta) = \text{argmax}_{\theta \in \Theta}l(\theta)$. In degenerate cases where $L(\theta) = 0 $ for some $\theta $, adopting the usual convention $\log 0 = -\infty $ preserves the same argmax set. This is the standard invariance of argmax under strictly increasing transformations. \qed
+
+\hfill 
+
+9. Let $\{P_\theta : \theta\in\Theta\}$ be a model in which $\theta $ is not identified. That is, there are $\theta_1 \neq\theta_2 $ with $P_{\theta_1} = P_{\theta_2}$. Show that no estimator can be consistent in this model.
+
+\textbf{Proof:}
+
+Let the data be i.i.d. from $P_\theta $ and let $\hat{\theta}_n = \hat{\theta}_n (X_1, …, X_n)$ be any other estimator. Consistency means: for every $\theta\in\Theta $ and every $\epsilon > 0 $,
+\begin{gather*}
+    P_\theta^n\big(d(\hat{\theta}_n, \theta) > \epsilon\big)\to 0 \text{ as } n\to\infty,
+\end{gather*}
+where $d $ is any metric on $\Theta $.
+
+Suppose the model is not identified: $\exists\theta_1\neq\theta_2 $ with $P_{\theta_1} = P_{\theta_2}$. Then for every $n $, the joint laws coincide: $P_{\theta_1}^n = P_{\theta_2}^n $. Hence the distribution og $\hat{\theta}_n $ under $\theta_1 $ and $\theta_2 $ are identical:
+
+For every Borel $B, P_{\theta_1}^n(\hat{\theta}_n\in B) = P_{\theta_2}^n(\hat{\theta}_n\in B)$.
+
+If $\hat{\theta}_n $ were consistent, then under $\theta_1 $,
+\begin{gather*}
+    P_{\theta_1}^n\big(d(\hat{\theta}_n, \theta_1) > \epsilon\big)\to 0
+\end{gather*}
+By equality of laws, the same holds under $\theta_2 $:
+\begin{gather*}
+    P_{\theta_2}^n\big(d(\hat{\theta}_n, \theta_2) > \epsilon\big)\to 0,
+\end{gather*}
+so $\hat{\theta}_n \to \theta_1 $ in probability under $\theta_2 $. But consistency at $\theta_2 $ would also require $\hat{\theta}_n \to\theta_2 $ in probability under $\theta_2 $.
+
+A sequence cannot converge in probability to two different limits: if $Y_n\to a \text{ and } Y_n\to b $ in probability, then taking $\epsilon < d(a, b) / 2 $ gives 
+\begin{gather*}
+    1 \le P\big(d(Y_n, a) > \epsilon\big) + P\big(d(Y_n, b) > \epsilon\big)\to 0,
+\end{gather*}
+a contradiction. Hence $a = b $.
+
+Thus $\theta_1 $ must equal $\theta_2 $, contradicting non-identification. Therefore no estimator can be consistent in a non-identified model. \qed
+
+\newpage
+
+10. Show that if $X \sim \text{Poisson}(\lambda)$ then $\mathbb{E}X = \text{Var }X = \lambda $
+
+\textbf{Proof:}
+
+Let $X \sim\text{Poisson}(\lambda)$, so $P(X = k) = \exp(-\lambda)\frac{\lambda^k}{k!}\text{ for }k = 0, 1, 2, ...$
+
+Expectation: 
+\begin{gather*}
+    \mathbb{E}[X] = \sum_{k = 0}^{\infty}kP(X = k) = \exp(-\lambda)\sum_{k = 1}^{\infty}k\frac{\lambda^k}{k!} = \exp(-\lambda)\lambda\sum_{k = 1}^{\infty}\frac{\lambda^{k - 1}}{(k - 1)!} = \exp(-\lambda)\lambda\sum_{j = 0}^{\infty}\frac{\lambda^j}{j!} = \lambda
+\end{gather*}
+Second factorial moment:
+\begin{gather*}
+    \mathbb{E}[X(X - 1)] = \exp(-\lambda)\sum_{k = 0}^{\infty}k(k - 1)\frac{\lambda^k}{k!} = \exp(-\lambda)\lambda^2\sum_{k = 2}^{\infty}\frac{\lambda^{k - 2}}{(k - 2)!} = \exp(-\lambda)\lambda^2\sum_{j = 1}^{\infty}\frac{\lambda^j}{j!} = \lambda^2
+\end{gather*}
+Since $X^2 = X(X - 1) + X $, we have 
+\begin{gather*}
+    \text{Var}(X) = \mathbb{E}[X^2] - \mathbb{E}[X]^2 = \mathbb{E}[X(X - 1)] + \mathbb{E}[X] - \mathbb{E}[X]^2 = \lambda^2 + \lambda - \lambda^2 = \lambda
+\end{gather*}
+Therefore, $\mathbb{E}[X] = \text{Var}(X) = \lambda $\qed
+
+\hfill 
+
+11. Show that if $\sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{D} \mathcal{N}(0, V)$ (under $P_\theta $), then $\hat{\theta}_n\xrightarrow{P_\theta}\theta $
+
+\textbf{Proof:}
+
+Let $X_n := \sqrt{n}(\hat{\theta}_n - \theta)$. By assumption, $X_n \xrightarrow{D} Z $ with $Z\sim \mathcal{N}(0, V)$
+
+Since $1 / \sqrt{n}\to 0 $ (deterministically), Slutsky's theorem gives 
+\begin{gather*}
+    (\hat{\theta}_n - \theta) = \frac{1}{\sqrt{n}}X_n\xrightarrow{D} 0
+\end{gather*}
+Because the limit is a constant, convergence in distribution to a constant implies convergence in probability to that constant. Hence $\hat{\theta}_n\xrightarrow{P_\theta}\theta $\qed
+
+\newpage
+
+12. Suppose that $X_1, X_2, ... $ are i.i.d. with $X_i \sim \mathcal{N}(\mu, \sigma^2)$. Let $\theta = (\mu, \sigma^2)$. Find the MLE of $\theta $ and show directly (i.e. without using Thms 3.8 and 3.9) that it is asymptotically normal.
+
+For $X_1, ..., X_n \overset{iid}{\sim} \mathcal{N}(\mu, \sigma^2)$, the log.likelihood is 
+\begin{gather*}
+    \ell(\mu, \sigma^2) = -\frac{n}{2}\log (2\pi) - \frac{n}{2}\log(\sigma^2) - \frac{1}{2\sigma^2}\sum_{i = 1}^{n}(x_i - \mu)^2
+\end{gather*}
+Score equations: 
+\begin{gather*}
+    \frac{\partial\ell}{\partial\mu} = \frac{1}{\sigma^2}\sum_{i = 1}^{n}(x_i - \mu) = 0,\quad\frac{\partial\ell}{\partial\sigma^2} = -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4}\sum_{i = 1}^{n}(x_i - \mu)^2 = 0
+\end{gather*}
+Solving gives the MLEs
+\begin{gather*}
+    \hat{\mu} = \bar{X} = \frac{1}{n}\sum_{i = 1}^{n}X_i,\quad\hat{\sigma}^2 = \frac{1}{n}\sum_{i = 1}^{n}(X_i - \bar{X})^2
+\end{gather*}
+\textbf{Consistency}: by the SLLN, $\bar{X}\to\mu $ a.s., and 
+\begin{gather*}
+    \frac{1}{n}\sum_{i = 1}^{n}X_i^2\to \mathbb{E}[X^2] = \mu^2 + \sigma^2\quad\text{a.s.}
+\end{gather*}
+Since $\hat{\sigma}^2 = \frac{1}{n}\sum X_i^2 - \bar{X}^2 $, the continuous mapping theorem yields $\hat{\sigma}^2 \to \sigma^2 $ a.s.
+
+\textbf{Asymptotic normality}
+
+Write $Z_i = (X_i - \mu)^2 $. For a normal variable, 
+\begin{gather*}
+    \mathbb{E}[Z_i] = \sigma^2, \text{ Var}(Z_i) = \mathbb{E}[(X_i - \mu)^4] - \sigma^4 = 3\sigma^4 - \sigma^4 = 2\sigma^4
+\end{gather*}
+Mean: 
+\begin{gather*}
+    \sqrt{n}(\hat{\mu} - \mu) = \sqrt{n}(\bar{X} - \mu) \xRightarrow[\text{}]{\text{d}} \mathcal{N}(0, \sigma^2)
+\end{gather*}
+by the CLT 
+
+Variance: use the identity
+\begin{gather*}
+    \hat{\sigma}^2 = \frac{1}{n}\sum_{i = 1}^{n}(X_i - \bar{X})^2 = \frac{1}{n}\sum_{i = 1}^{n}(X_i - \mu)^2 - (\bar{X} - \mu)^2 = \frac{1}{n}\sum_{i = 1}^{n}Z_i - (\bar{X} - \mu)^2
+\end{gather*}
+Thus,
+\begin{gather*}
+    \sqrt{n}(\bar{X} - \mu)^2 = \big(\sqrt{n}(\bar{X} - \mu)\big)(\bar{X} - \mu) = O_p(1)\cdot O_p(n^{-1 / 2}) = o_p(1)
+\end{gather*}
+because $\sqrt{n}(\hat{\sigma}^2 - \sigma^2)\Rightarrow \mathcal{N}(0, 2\sigma^4)$ (by Slutsky)\qed
+
+\newpage
+
+13. Suppose that $X_1, X_2, ... $ are i.i.d. with logistic pdf 
+\begin{gather*}
+    p_\theta(x) = \frac{\exp\big(-(x - \theta)\big)}{\Big(1 + \exp\big(-(x - \theta)\big)\Big)^2}, \quad\theta\in(-\infty, \infty)
+\end{gather*}
+Write a function in python which computes the log-likelihood $l(\theta)$, Write a function which finds the MLE of $\theta $. [Hint: you might find the Scipy.optimize library useful] Perform a Monte-Carlo simulation exercise as follows: draw $M $ data sets of $n $ samples $X_1, …, X_n $ which are logistically distributed [Hint: numpy.random.logistic]. For each sample calculate the MLE $\hat{\theta}_n $ and the distance of $\hat{\theta}_n $ from $\theta $. Repeat this for various sample sizes $n $ and report your findings (e.g. graphically).
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{image2.png}
+\end{center}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{image3.png}
+\end{center}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{image4.png}
+\end{center}
+
+\newpage
+
+Key formulas: 
+
+Log-likelihood for data $x_1, …, x_n $
+\begin{gather*}
+    \ell(\theta) = \sum_{i = 1}^{n}\bigg(-(x_i - \theta) - 2\log\Big(1 + \exp\big(-(x_i - \theta)\big)\Big)\bigg)
+\end{gather*}
+Score: 
+\begin{gather*}
+    \ell'(\theta) = \sum_{i = 1}^{n}\tanh\left(\frac{x_i - \theta}{2}\right)
+\end{gather*}
+Hessian: 
+\begin{gather*}
+    \ell''(\theta) = -\frac{1}{2}\sum_{i = 1}^{n}\text{sech}^2\left(\frac{x_i - \theta}{2}\right) < 0,
+\end{gather*}
+so the log-likelihood is strictly concave in $\theta $, giving a unique MLE. The MLE solves $\sum_{i = 1}^{n}\tanh\big((x_i - \hat{\theta}) / 2\big) = 0 $
+
+\hfill 
+
+Prove Lemma 3.2
+
+\textbf{Context [MLEs]}: Suppose that our interest is in $g(\theta)$ rather than $\theta $. What is the MLE of $g(\theta)$? To get around techincal difficulties which may occur since one value $\eta = g(\theta)$ may correspond to multiple $\theta $ (if $g $ is not injective) we may assume all the maxima below exist and define the induced likelihood function as
+\begin{gather*}
+    L^*(\eta):= \underset{\theta\in\{\theta : g(\theta) = \eta\}}{\max}L(\theta)
+\end{gather*}
+We define the MLE of $g(\theta)$ as 
+\begin{gather*}
+    \hat{\eta} = \underset{\eta\in\{g(\theta) : \theta\in\Theta\}}{\arg\max} L^*(\eta)
+\end{gather*}
+The lemma states that: 
+\begin{gather*}
+    \underset{\eta\in\{g(\theta) : \theta\in\Theta\}}{\max}L^*(\eta) = \max_{\theta\in\Theta}L(\theta)
+\end{gather*}
+
+\textbf{Proof:}
+
+Let $\Theta $ be the parameter space, $g: \Theta\to G $, and define for each $\eta $ in the image $g(\Theta)$ the fiber \\$S_\eta := \{\theta\in\Theta : g(\theta) = \eta\}$. By assumption, all displayed maxima exist. 
+
+Upper bound: for any $\eta \in g(\Theta)$,
+\begin{gather*}
+    L^*(\eta) = \max_{\theta\in S_\eta}L(\theta) \le \max_{\theta\in\Theta}L(\theta)
+\end{gather*}
+Taking the maximum over $\eta $ on the left yields
+\begin{gather*}
+    \max_{\eta\in g(\Theta)}L(\theta) \le\max_{\theta\in\Theta}L(\theta)
+\end{gather*}
+Lower bound: 
+
+Let $\hat{\theta} \in \arg\max_{\theta\in\Theta}L(\theta)$ and set $\hat{\eta} := g(\hat{\theta})\in g(\Theta)$. Since $\hat{\theta} \in S_{\hat{\eta}}$,
+\begin{gather*}
+    L^*(\hat{\eta}) = \max_{\theta\in S_{\hat{\eta}}}L(\theta) \ge L(\hat{\theta}) = \max_{\theta\in\Theta}L(\theta)
+\end{gather*}
+Hence
+\begin{gather*}
+    \max_{\eta\in g(\Theta)}L^*(\eta) \ge \max_{\theta\in\Theta}L(\theta)
+\end{gather*}
+Combining the two inequalities gives
+\begin{gather*}
+    \max_{\eta\in g(\Theta)}L^*(\eta) = \max_{\theta\in\Theta}L(\theta)
+\end{gather*}
+\qed
 
 \end{document}

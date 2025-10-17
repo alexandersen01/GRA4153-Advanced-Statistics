@@ -1,7 +1,7 @@
-PWD /Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/exercises/2_statistics
+PWD /Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/jane_street_puzzles/robot_baseball
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt
-INPUT /Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/exercises/2_statistics/2.tex
-OUTPUT 2.log
+INPUT /Users/jakobsverrealexandersen/Documents/GRA4153-Advanced-Statistics/jane_street_puzzles/robot_baseball/answer.tex
+OUTPUT answer.log
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/article.cls
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/article.cls
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/size10.clo
@@ -62,12 +62,6 @@ INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/i
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/array.sty
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/enumitem/enumitem.sty
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/enumitem/enumitem.sty
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/mathtools/mathtools.sty
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/mathtools/mathtools.sty
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/calc.sty
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/calc.sty
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/mathtools/mhsetup.sty
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/mathtools/mhsetup.sty
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/href-ul/href-ul.sty
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/href-ul/href-ul.sty
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgfopts/pgfopts.sty
@@ -130,10 +124,10 @@ INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/i
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/generic/uniquecounter/uniquecounter.sty
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/l3backend/l3backend-pdftex.def
-INPUT ./2.aux
-INPUT ./2.aux
-INPUT 2.aux
-OUTPUT 2.aux
+INPUT ./answer.aux
+INPUT ./answer.aux
+INPUT answer.aux
+OUTPUT answer.aux
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
@@ -142,14 +136,14 @@ INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/i
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/00miktex/epstopdf-sys.cfg
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/00miktex/epstopdf-sys.cfg
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/00miktex/epstopdf-sys.cfg
-INPUT ./2.out
-INPUT ./2.out
-INPUT 2.out
-INPUT 2.out
-OUTPUT 2.pdf
-INPUT ./2.out
-INPUT ./2.out
-OUTPUT 2.out
+INPUT ./answer.out
+INPUT ./answer.out
+INPUT answer.out
+INPUT answer.out
+OUTPUT answer.pdf
+INPUT ./answer.out
+INPUT ./answer.out
+OUTPUT answer.out
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr17.tfm
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr12.tfm
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr8.tfm
@@ -175,14 +169,7 @@ INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/i
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr12.tfm
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmbx12.tfm
-INPUT ./2.toc
-INPUT ./2.toc
-INPUT 2.toc
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmbx10.tfm
-OUTPUT 2.toc
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/pdftex.map
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/jknappen/ec/tcrm1000.tfm
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm
@@ -191,56 +178,23 @@ INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/i
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/pdftex.map
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr12.tfm
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmmi12.tfm
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmex10.tfm
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmti10.tfm
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/jknappen/ec/tcrm1000.tfm
-INPUT ./image.png
-INPUT ./image.png
-INPUT ./image.png
-INPUT ./image.png
-INPUT ./image.png
-INPUT ./image.png
-INPUT ./image.png
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmbx7.tfm
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmbx5.tfm
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmcsc10.tfm
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/ueuf.fd
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/ueuf.fd
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/ueuf.fd
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/euler/eufm10.tfm
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/euler/eufm7.tfm
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/euler/eufm5.tfm
-INPUT ./image2.png
-INPUT ./image2.png
-INPUT ./image2.png
-INPUT ./image2.png
-INPUT ./image2.png
-INPUT ./image2.png
-INPUT ./image2.png
-INPUT ./image3.png
-INPUT ./image3.png
-INPUT ./image3.png
-INPUT ./image3.png
-INPUT ./image3.png
-INPUT ./image3.png
-INPUT ./image3.png
-INPUT ./image4.png
-INPUT ./image4.png
-INPUT ./image4.png
-INPUT ./image4.png
-INPUT ./image4.png
-INPUT ./image4.png
-INPUT ./image4.png
-INPUT 2.aux
-INPUT ./2.out
-INPUT ./2.out
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmtt10.tfm
+INPUT answer.aux
+INPUT ./answer.out
+INPUT ./answer.out
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb
@@ -255,21 +209,15 @@ INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/i
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr5.pfb
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr5.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/euler/eufm10.pfb
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/euler/eufm10.pfb
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmtt10.pfb
+INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm7.pfb
-INPUT /Users/jakobsverrealexandersen/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm7.pfb
